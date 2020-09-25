@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\user\Documents\GitHub\McDonald_Kiosk\obj\Debug\
+C:\Users\user\Documents\GitHub\McDonald_Kiosk\obj\Release\
 McDonald_Kiosk
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\user\Documents\GitHub\McDonald_Kiosk\App.xaml
 11151548125
 

@@ -22,7 +22,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Frame></Frame>
+            <Frame Name="MainContent"></Frame>
         </Grid>
 
     </Grid>
