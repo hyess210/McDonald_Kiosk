@@ -7,12 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas Height="60" VerticalAlignment="Top" Background="red" Panel.ZIndex="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="red">
             <Label Background="Transparent"
-                     Canvas.Right="70" Canvas.Top="10"
+                   HorizontalAlignment="Right"
+                   Margin="0 10 60 0"
                      FontSize="23" Foreground="White">2020년 9월 25일 금요일 오전 10:07</Label>
-            <Button Width="50" Height="50" Canvas.Right="10" Canvas.Top="5">홈버튼</Button>
-        </Canvas>
-        <Frame Height="360" Margin="0 60 0 0"></Frame>
+            <Button Width="50" Height="50" HorizontalAlignment="Right" Margin="6">홈버튼</Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Frame></Frame>
+        </Grid>
+
     </Grid>
 </Window>
