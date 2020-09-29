@@ -22,7 +22,11 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Frame Name="MainContent"></Frame>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="37*"/>
+                <ColumnDefinition Width="95*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Name="MainContent" Grid.ColumnSpan="2"></Frame>
         </Grid>
 
     </Grid>
