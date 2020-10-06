@@ -9,6 +9,6 @@
       Title="Order">
 
     <Grid>
-        
+        <Button Content="primaryButtonStyle">햄버거</Button>
     </Grid>
 </Page>

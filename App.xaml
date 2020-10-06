@@ -21,5 +21,23 @@
           </Setter.Value>
         </Setter>
       </Style>
+      
+      <Style x:Key="disableButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="Button">
+              <Grid>
+                <Ellipse Width="100" Height="70">
+                  <Ellipse.Fill>
+                    <SolidColorBrush Color="gray"></SolidColorBrush>
+                  </Ellipse.Fill>
+                </Ellipse>
+                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"></ContentPresenter>
+              </Grid>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
     </Application.Resources>
 </Application>
