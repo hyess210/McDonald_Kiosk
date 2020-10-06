@@ -9,6 +9,52 @@
       Title="SelectPayment">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>    
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Label Background="Transparent"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="20" Foreground="White" FontWeight="Bold">식사하실 장소를 선택해 주세요.</Label>
+        </Grid>
         
+        <Grid Grid.Row="2" Grid.Column="1">
+            <ListView></ListView>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="3">
+            <Button Content="hi" FontSize="25" Foreground="White">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="Red"></Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="5">
+            <Button>
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="20" Background="Red"></Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
     </Grid>
 </Page>
