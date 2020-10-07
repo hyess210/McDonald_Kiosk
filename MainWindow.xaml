@@ -22,11 +22,9 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="37*"/>
-                <ColumnDefinition Width="95*"/>
-            </Grid.ColumnDefinitions>
-            <Frame Name="MainContent" Grid.ColumnSpan="2"></Frame>
+            <Frame Name="MainContent" 
+                   Grid.ColumnSpan="2"
+                   Source="SelectPayment.xaml"></Frame>
         </Grid>
 
     </Grid>

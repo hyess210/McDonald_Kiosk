@@ -11,39 +11,74 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>    
-            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="10"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="30"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Label Background="Transparent"
-                   HorizontalContentAlignment="Center"
-                   VerticalContentAlignment="Center"
-                   FontSize="20" Foreground="White" FontWeight="Bold">식사하실 장소를 선택해 주세요.</Label>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <Viewbox MaxHeight="70"
+                     Margin="25 0 25 0"
+                     VerticalAlignment="Bottom">
+                <Label Background="Transparent"
+                       FontWeight="Bold" Foreground="Black">
+                       식사하실 장소를 선택해 주세요.
+                </Label>
+            </Viewbox>
         </Grid>
         
-        <Grid Grid.Row="2" Grid.Column="1">
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <ListView></ListView>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="3">
-            <Button Content="현금 결제" FontSize="25" Foreground="White" Background="red">
+        <Grid Grid.Row="2" Grid.Column="4">
+            <Button Background="red">
+                <Viewbox MaxHeight="100">
+                    <Label Background="Transparent"
+                           FontWeight="Bold"
+                           Foreground="White">
+                           현금 결제
+                    </Label>
+                </Viewbox>
             </Button>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="5">
-            <Button Content="카드 결제" FontSize="25" Foreground="White" Background="red">
+        <Grid Grid.Row="2" Grid.Column="6">
+            <Button Background="red">
+                <Viewbox MaxHeight="100">
+                    <Label Background="Transparent"
+                           FontWeight="Bold"
+                           Foreground="White">
+                           카드 결제
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Button Background="Gray"
+                    Foreground="White" FontSize="15" FontWeight="Bold"
+                    MaxHeight="50">
+                <Viewbox>
+                    <Label Background="Transparent"
+                           FontWeight="Bold"
+                           Foreground="White">
+                           이전
+                    </Label>
+                </Viewbox>
             </Button>
         </Grid>
     </Grid>
