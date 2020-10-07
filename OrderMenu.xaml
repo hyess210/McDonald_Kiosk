@@ -13,7 +13,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
-                        <Border Name="Border" Padding="10"></Border>
+                        <Border Name="Border" Padding="0" 
+                                Background='#f2f2f2'
+                                Width="100" Height="100"
+                                VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ContentPresenter/>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -67,7 +72,7 @@
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
 
-                        <ListBoxItem Content="빅맥 버거"></ListBoxItem>
+                        <ListBoxItem Content="빅맥 버거" Style="{StaticResource ListItemStyle}"></ListBoxItem>
                     </ListBox>
                 </StackPanel>
             </Grid>
