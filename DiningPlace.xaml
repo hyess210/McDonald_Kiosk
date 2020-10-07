@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:McDonald_Kiosk"
         mc:Ignorable="d"
-        Title="DiningPlace" Height="450" Width="800">
-    <Grid>
+        Title="DiningPlace" Height="325" Width="625">
+    <Frame Name="DiningPlaceContent" Background="red"
+           NavigationUIVisibility="Hidden" Source="SelectDiningPlace.xaml">
         
-    </Grid>
+    </Frame>
 </Window>
