@@ -16,16 +16,9 @@
         </Grid>
 
         <Grid Grid.Row="1" Background="red">
-<<<<<<< Updated upstream
             <Button Width="200" Height="70"
                     Background="#FFC000"
                     Foreground="White" FontSize="25">주문하기</Button>
-=======
-            <Image Source="unnamed.jpg"></Image>
-            <Button Width="200" Height="60"
-                    Background="#FFC000" BorderThickness="0"
-                    Foreground="white" FontSize="20" Click="Button_Click">주문하기</Button>
->>>>>>> Stashed changes
         </Grid>
     </Grid>
 </Window>
