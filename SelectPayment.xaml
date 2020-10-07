@@ -70,7 +70,6 @@
 
         <Grid Grid.Column="1" Grid.Row="4">
             <Button Background="Gray"
-                    Foreground="White" FontSize="15" FontWeight="Bold"
                     MaxHeight="50">
                 <Viewbox>
                     <Label Background="Transparent"
