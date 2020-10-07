@@ -25,23 +25,39 @@
                     <ListBox>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <VirtualizingStackPanel  Orientation="Horizontal"/>
+                                <VirtualizingStackPanel  Orientation="Horizontal"
+                                    HorizontalAlignment="Center"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
 
                         <ListBoxItem>
                             <Button Content="햄버거" Foreground="White"
                                     Width="80" FontSize="14" 
+                                    Style="{StaticResource YellowButton}"
                                     ></Button>
                         </ListBoxItem>
                         <ListBoxItem>
                             <Button Content="음료" Foreground="White"
-                                    Width="80" FontSize="14"></Button>
+                                    Width="80" FontSize="14"
+                                    Style="{StaticResource YellowButton}"></Button>
                         </ListBoxItem>
                         <ListBoxItem>
                             <Button Content="사이드" Foreground="White"
-                                    Width="80" FontSize="14"></Button>
+                                    Width="80" FontSize="14"
+                                    Style="{StaticResource YellowButton}"></Button>
                         </ListBoxItem>
+                    </ListBox>
+                    
+                    <!-- 메뉴 list -->
+                    <ListBox>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel  Orientation="Horizontal"
+                                    HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+
+                        <ListBoxItem Content="빅맥 버거"></ListBoxItem>
                     </ListBox>
                 </StackPanel>
             </Grid>
