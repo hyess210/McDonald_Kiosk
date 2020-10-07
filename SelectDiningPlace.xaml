@@ -15,17 +15,17 @@
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="20"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="1" Grid.Column="1">
-            <Label FontSize="25" Margin="0 120 0 0">매장 식사</Label>
+        <Button Grid.Row="1" Grid.Column="1" Background="White">
+            <Label FontSize="20" Margin="0 120 0 0">매장 식사</Label>
         </Button>
-        <Button Grid.Row="1" Grid.Column="3">
-            <Label FontSize="25" Margin="0 120 0 0">포장 식사</Label>
+        <Button Grid.Row="1" Grid.Column="3" Background="White">
+            <Label FontSize="20" Margin="0 120 0 0">포장 식사</Label>
         </Button>
     </Grid>
 </Page>

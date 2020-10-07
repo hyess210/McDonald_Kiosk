@@ -64,6 +64,9 @@
     <Compile Include="SelectDiningPlace.xaml.cs">
       <DependentUpon>SelectDiningPlace.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelectDiningTable.xaml.cs">
+      <DependentUpon>SelectDiningTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectPayment.xaml.cs">
       <DependentUpon>SelectPayment.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
     <Page Include="SelectDiningPlace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectDiningTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SelectPayment.xaml">
       <SubType>Designer</SubType>
