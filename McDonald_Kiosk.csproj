@@ -61,15 +61,18 @@
     <Compile Include="CashPayment.xaml.cs">
       <DependentUpon>CashPayment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderMenu\Category.cs" />
     <Compile Include="DiningPlace.xaml.cs">
       <DependentUpon>DiningPlace.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrderMenu.xaml.cs">
+    <Compile Include="OrderMenu\MenuList.cs" />
+    <Compile Include="OrderMenu\OrderMenu.xaml.cs">
       <DependentUpon>OrderMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderNumber.xaml.cs">
       <DependentUpon>OrderNumber.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderState.cs" />
     <Compile Include="SelectDiningPlace.xaml.cs">
       <DependentUpon>SelectDiningPlace.xaml</DependentUpon>
     </Compile>
@@ -111,7 +114,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OrderMenu.xaml">
+    <Page Include="OrderMenu\OrderMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
