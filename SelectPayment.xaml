@@ -41,15 +41,23 @@
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <ListView></ListView>
+            <ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="메뉴" Width="80"/>
+                        <GridViewColumn Header="가격" Width="80"/>
+                        <GridViewColumn Header="수량" Width="80"/>
+                        <GridViewColumn Header="총 가격" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="4">
             <Button Background="red">
                 <Viewbox MaxHeight="100">
                     <Label Background="Transparent"
-                           FontWeight="Bold"
-                           Foreground="White">
+                           FontWeight="Bold" Foreground="White">
                            현금 결제
                     </Label>
                 </Viewbox>
@@ -60,8 +68,7 @@
             <Button Background="red">
                 <Viewbox MaxHeight="100">
                     <Label Background="Transparent"
-                           FontWeight="Bold"
-                           Foreground="White">
+                           FontWeight="Bold" Foreground="White">
                            카드 결제
                     </Label>
                 </Viewbox>
@@ -73,8 +80,7 @@
                     MaxHeight="50">
                 <Viewbox>
                     <Label Background="Transparent"
-                           FontWeight="Bold"
-                           Foreground="White">
+                           FontWeight="Bold" Foreground="White">
                            이전
                     </Label>
                 </Viewbox>

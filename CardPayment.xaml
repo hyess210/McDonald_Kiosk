@@ -79,9 +79,8 @@
                     MaxHeight="50">
                 <Viewbox>
                     <Label Background="Transparent"
-                           FontWeight="Bold"
-                           Foreground="White">
-                        이전
+                           FontWeight="Bold" Foreground="White">
+                           이전
                     </Label>
                 </Viewbox>
             </Button>
