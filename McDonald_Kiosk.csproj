@@ -70,6 +70,7 @@
     <Compile Include="OrderNumber.xaml.cs">
       <DependentUpon>OrderNumber.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderState.cs" />
     <Compile Include="SelectDiningPlace.xaml.cs">
       <DependentUpon>SelectDiningPlace.xaml</DependentUpon>
     </Compile>

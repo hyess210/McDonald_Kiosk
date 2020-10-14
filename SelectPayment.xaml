@@ -45,9 +45,6 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="메뉴" Width="80"/>
-                        <GridViewColumn Header="가격" Width="80"/>
-                        <GridViewColumn Header="수량" Width="80"/>
-                        <GridViewColumn Header="총 가격" Width="80"/>
                     </GridView>
                 </ListView.View>
             </ListView>
