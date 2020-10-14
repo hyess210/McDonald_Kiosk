@@ -24,5 +24,19 @@ namespace McDonald_Kiosk
         {
             InitializeComponent();
         }
+
+        public class MenuList
+        {
+            public Category category { get; set; }
+            public string ImgPath { get; set; }
+            public string name { get; set; }
+        }
+
+        public enum Category
+        {
+            BUGER,
+            SIDE,
+            DRINK
+        }
     }
 }
