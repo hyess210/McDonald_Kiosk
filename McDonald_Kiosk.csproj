@@ -79,6 +79,7 @@
     <Compile Include="SelectPayment.xaml.cs">
       <DependentUpon>SelectPayment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Table.cs" />
     <Page Include="CardPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

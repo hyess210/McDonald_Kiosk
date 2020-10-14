@@ -25,6 +25,8 @@ namespace McDonald_Kiosk
         public SelectDiningTable()
         {
             InitializeComponent();
+
+
         }
         private void Table1_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -35,5 +37,6 @@ namespace McDonald_Kiosk
         {
 
         }
+
     }
 }
