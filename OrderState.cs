@@ -8,5 +8,11 @@ namespace McDonald_Kiosk
 {
     class OrderState
     {
+        public string Menu;
+        public int Price;
+        public int Amount;
+        public int Total;
+
+        public static List<OrderState> orderState;
     }
 }
