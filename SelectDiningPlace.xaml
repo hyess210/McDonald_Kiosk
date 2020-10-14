@@ -10,22 +10,42 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="120"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="1" Grid.Column="1" Background="White">
-            <Label FontSize="20" Margin="0 120 0 0">매장 식사</Label>
-        </Button>
-        <Button Grid.Row="1" Grid.Column="3" Background="White">
-            <Label FontSize="20" Margin="0 120 0 0">포장 식사</Label>
-        </Button>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="1" Grid.Column="1" Background="White" Name="inside" Click="Button_Click_1">
+                <Label FontSize="20" Margin="0 120 0 0">매장 식사</Label>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="3" Background="White" Name="takeout" Click="Button_Click_2">
+                <Label FontSize="20" Margin="0 120 0 0">포장 식사</Label>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Background="#FFC000" Foreground="white" Grid.Column="1" Height="22" Name="goToPay" Click="Button_Click" IsEnabled="False">
+                결제하기
+            </Button>
+        </Grid>
     </Grid>
 </Page>

@@ -6,8 +6,15 @@
         xmlns:local="clr-namespace:McDonald_Kiosk"
         mc:Ignorable="d"
         Title="DiningPlace" Height="325" Width="625">
-    <Frame Name="DiningPlaceContent" Background="red"
+    <Grid Background="red">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Frame Name="DiningPlaceContent" Grid.Row="0"
            NavigationUIVisibility="Hidden" Source="SelectDiningPlace.xaml">
-        
-    </Frame>
+
+        </Frame>
+    </Grid>
+
 </Window>

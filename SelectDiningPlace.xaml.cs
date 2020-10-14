@@ -25,13 +25,19 @@ namespace McDonald_Kiosk
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SelectDiningTable table = new SelectDiningTable();
-            NavigationService.Navigate(table);
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            SelectDiningTable selectTable = new SelectDiningTable();
+            NavigationService.Navigate(selectTable);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            goToPay.IsEnabled = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

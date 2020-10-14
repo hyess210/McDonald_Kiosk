@@ -20,9 +20,20 @@ namespace McDonald_Kiosk
     /// </summary>
     public partial class SelectDiningTable : Page
     {
+
+
         public SelectDiningTable()
         {
             InitializeComponent();
+        }
+        private void Table1_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
