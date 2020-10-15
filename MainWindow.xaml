@@ -1,4 +1,4 @@
-﻿ <Window x:Class="McDonald_Kiosk.MainWindow"
+﻿<Window x:Class="McDonald_Kiosk.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,11 +14,15 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="red">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="101*"/>
+                <ColumnDefinition Width="31*"/>
+            </Grid.ColumnDefinitions>
             <Label Background="Transparent"
                    HorizontalAlignment="Right"
                    Margin="0 10 60 0"
-                     FontSize="23" Foreground="White">2020년 9월 25일 금요일 오전 10:07</Label>
-            <Button Width="50" Height="50" HorizontalAlignment="Right" Margin="6">홈버튼</Button>
+                     FontSize="23" Foreground="White" Grid.ColumnSpan="2">2020년 9월 25일 금요일 오전 10:07</Label>
+            <Button Width="50" Height="50" HorizontalAlignment="Right" Margin="0,6,6,4" Grid.Column="1">홈버튼</Button>
         </Grid>
 
         <Grid Grid.Row="1">

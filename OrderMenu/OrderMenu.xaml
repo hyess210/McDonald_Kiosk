@@ -38,8 +38,12 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <ListBox x:Name="Category" 
-                             VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="400">
+                <ListBox x:Name="lbCategory" 
+                             VerticalAlignment="Top" Height="40" 
+                         HorizontalAlignment="Left" Width="400"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                         SelectionChanged="lbCategory_SelectionChanged">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -86,11 +90,11 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="1">
-                <ListBox x:Name="lbMenus" Margin="150, 0, 0, 0"
+                <ListBox x:Name="lbMenus"
                          Height="340"
                          FontSize="14" VerticalAlignment="Top"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="22,0"
                          >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
