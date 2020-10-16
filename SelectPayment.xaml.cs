@@ -34,5 +34,14 @@ namespace McDonald_Kiosk
         {
 
         }
+        
+        private void ListView_Load(object sender, RoutedEventArgs e)
+        {
+            ListView listview = sender as ListView;
+
+            OrderState.GetInstance().Add(new OrderState() { Menu = "불고기 버거", Price = 3000, Amount = 2, Total = 6000 });
+            OrderState.GetInstance().Add(new OrderState() { Menu = "새우 버거", Price = 3500, Amount = 1, Total = 3500 });
+            listview.ItemsSource = OrderState.GetInstance();
+        }
     }
 }

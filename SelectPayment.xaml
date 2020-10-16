@@ -41,10 +41,13 @@
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <ListView>
+            <ListView Loaded="ListView_Load">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="메뉴" Width="80"/>
+                        <GridViewColumn Header="Menu" Width="190" DisplayMemberBinding="{Binding Menu}"/>
+                        <GridViewColumn Header="Price" Width="190" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Amount" Width="190" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Header="Total" Width="190" DisplayMemberBinding="{Binding Total}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

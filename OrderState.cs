@@ -14,14 +14,14 @@ namespace McDonald_Kiosk
         public int Amount { get; set; }
         public int Total { get; set; }
 
-        private static List<OrderState> orderState;
+        private static List<OrderState> orderList;
 
-        public static List<OrderState> GetState()
+        public static List<OrderState> GetInstance()
         {
-            if (orderState == null)
-                orderState = new List<OrderState>();
+            if (orderList == null) 
+                orderList = new List<OrderState>();
 
-            return orderState;
+            return orderList;
         }
     }
 }
