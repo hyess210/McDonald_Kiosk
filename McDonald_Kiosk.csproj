@@ -66,8 +66,8 @@
       <DependentUpon>DiningPlace.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderMenu\MenuList.cs" />
-    <Compile Include="OrderMenu\OrderMenu.xaml.cs">
-      <DependentUpon>OrderMenu.xaml</DependentUpon>
+    <Compile Include="OrderMenu\OrderMenuPage.xaml.cs">
+      <DependentUpon>OrderMenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderNumber.xaml.cs">
       <DependentUpon>OrderNumber.xaml</DependentUpon>
@@ -114,7 +114,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OrderMenu\OrderMenu.xaml">
+    <Page Include="OrderMenu\OrderMenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
