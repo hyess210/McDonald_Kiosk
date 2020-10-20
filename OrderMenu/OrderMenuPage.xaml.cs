@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McDonald_Kiosk.OrderMenu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,26 +19,21 @@ namespace McDonald_Kiosk
     /// <summary>
     /// Page1.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Page1 : Page
+    public partial class OrderMenuPage : Page
     {
-        public Page1()
+        public OrderMenuPage()
         {
             InitializeComponent();
+            lbMenus.ItemsSource = lstMenu.Where(x => x.category == Category.BUGER).ToList();
         }
 
-        public class MenuList
-        {
-            public Category category { get; set; }
-            public string ImgPath { get; set; }
-            public string name { get; set; }
-        }
+        //public class MenuList
+        //{
+        //    public Category category { get; set; }
+        //    public string ImgPath { get; set; }
+        //    public string name { get; set; }
+        //}
 
-        public enum Category
-        {
-            BUGER,
-            SIDE,
-            DRINK
-        }
 
         private void lbCategory_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -90,5 +86,13 @@ namespace McDonald_Kiosk
             new MenuList() { category = Category.DRINK, name="코카 콜라", ImgPath="https://www.mcdonalds.co.kr/upload/product/pcList/1583889953745.png"},
             new MenuList() { category = Category.DRINK, name="스프라이트", ImgPath="https://www.mcdonalds.co.kr/upload/product/pcList/1583889827271.png"}
         };
+
+        private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbCategory.SelectedIndex == -1) return;
+
+            Category category = (Category)lbCategory.SelectedIndex;
+            lbMenus.ItemsSource = lstMenu.Where(x => x.category == category).ToList();
+        }
     }
 }
