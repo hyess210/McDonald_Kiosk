@@ -71,9 +71,6 @@
       <DependentUpon>SelectDiningTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderMenu\Category.cs" />
-    <Compile Include="DiningPlace.xaml.cs">
-      <DependentUpon>DiningPlace.xaml</DependentUpon>
-    </Compile>
     <Compile Include="OrderMenu\Food.cs" />
     <Compile Include="OrderMenu\OrderMenuPage.xaml.cs">
       <DependentUpon>OrderMenuPage.xaml</DependentUpon>
@@ -91,10 +88,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CashPayment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DiningPlace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
