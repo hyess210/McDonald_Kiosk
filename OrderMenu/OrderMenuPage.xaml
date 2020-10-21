@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:McDonald_Kiosk"
       mc:Ignorable="d"
-      Title="OrderMenu" Height="1080 " Width="1920">
+      Title="OrderMenuPage" Height="1080 " Width="1920">
 
     <Page.Resources>
         <Style x:Key="ListItemStyle" TargetType="ListBoxItem">
@@ -47,12 +47,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.15*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <ListBox x:Name="lbCategory" 
                          BorderBrush="Transparent"
-                             VerticalAlignment="Top" Height="98"
+                             VerticalAlignment="Top" Height="86"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                          SelectionChanged="lbCategory_SelectionChanged" Margin="71,0">
@@ -110,14 +111,13 @@
                     <ListBoxItem>음료</ListBoxItem>
                 </ListBox>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="0,0,0,116">
                 <ListBox x:Name="lbMenus"
                          Height="830"
-                         BorderBrush="Transparent"
-                         FontSize="20" VerticalAlignment="Top"
-                         HorizontalAlignment="Center"
+                         BorderBrush="Transparent" Background="#fff"
+                         VerticalAlignment="Top" HorizontalAlignment="Center"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="22,0"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                          SelectionChanged="lbMenus_SelectionChanged"
                          >
                     <ListBox.ItemsPanel>
@@ -129,12 +129,21 @@
                         <DataTemplate>
                             <StackPanel Width="250" Height="250" 
                                         Background="#f2f2f2">
-                                <Image Source="{Binding ImgPath}"/>
-                                <TextBlock Text="{Binding name}" Margin="0, 20, 0, 0" HorizontalAlignment="Center" />
+                                <Image Source="{Binding imgPath}"/>
+                                <TextBlock Text="{Binding name}" FontSize="16" Margin="0, 20, 0, 0" HorizontalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel>
+                    <Button Content="이전" Width="100" HorizontalAlignment="Left" 
+                            Foreground="White" FontSize="25"></Button>
+                    <Button Content="다음" Width="100" HorizontalAlignment="right"
+                            Foreground="White" FontSize="25"/>
+                </StackPanel>
             </Grid>
         </Grid>
 
@@ -143,23 +152,24 @@
                 <ListView
                     HorizontalAlignment="Center" VerticalAlignment="Top" 
                     Height="434" Width="760"
-                    Margin="100,30,100,0" FontSize="24"
+                    Margin="100,30,100,0" FontSize="16"
+                    Foreground="#666"
                     Name="lvAddedMenu"
                     >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn x:Name="MenuName" 
-                                            Header="메뉴" Width="240"
+                                            Header="메뉴" Width="310"
                                             DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn x:Name="MenuPrice" 
                                             Header="가격" Width="175" 
                                             DisplayMemberBinding="{Binding price}" />
                             <GridViewColumn x:Name="MenuAmount" 
-                                            Header="수량" Width="170" 
+                                            Header="수량" Width="120" 
                                             DisplayMemberBinding="{Binding amount}" />
                             <GridViewColumn x:Name="MenuButton" 
-                                            Header="삭제" Width="170" 
-                                            DisplayMemberBinding="{Binding Button}"/>
+                                            Header="삭제" Width="150" 
+                                            DisplayMemberBinding="{Binding button}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
