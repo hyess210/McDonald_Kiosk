@@ -70,6 +70,7 @@
     <Compile Include="DiningPlace\SelectDiningTable.xaml.cs">
       <DependentUpon>SelectDiningTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiningPlace\Table.cs" />
     <Compile Include="OrderMenu\Category.cs" />
     <Compile Include="DiningPlace.xaml.cs">
       <DependentUpon>DiningPlace.xaml</DependentUpon>
@@ -85,7 +86,6 @@
     <Compile Include="SelectPayment.xaml.cs">
       <DependentUpon>SelectPayment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Table.cs" />
     <Page Include="CardPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +168,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include=".vs\.vs\McDonald_Kiosk\v16\.suo" />
+    <None Include=".vs\.vs\ProjectSettings.json" />
+    <None Include=".vs\.vs\slnx.sqlite" />
+    <None Include=".vs\.vs\VSWorkspaceState.json" />
+    <None Include="bin\bin\Debug\McDonald_Kiosk.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -175,6 +180,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\bin\Debug\McDonald_Kiosk.exe" />
+    <Content Include="bin\bin\Debug\McDonald_Kiosk.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
