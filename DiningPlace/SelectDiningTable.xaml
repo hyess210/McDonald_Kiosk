@@ -5,14 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:McDonald_Kiosk"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="625"
+      d:DesignHeight="325" d:DesignWidth="625"
       Title="SelectDiningTable">
 
     <Page.Resources>
         <Style x:Key="TableNumberStyle" TargetType="Label">
-            <Setter Property="Margin" Value="60, 10, 55, 20"/>
+            <Setter Property="Margin" Value="60, 20, 55, 20"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+        <Style x:Key="TableTimeStyle" TargetType="Label">
+            <Setter Property="Margin" Value="48, 42, 45, 0"/>
         </Style>
     </Page.Resources>
 
@@ -43,59 +46,59 @@
                     <ColumnDefinition Width="140"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Name="Table1" MouseUp="Table1_MouseUp"
-              Grid.Row="1" Grid.Column="1"
+                
+                <Grid Name="Table1" Grid.Row="1" Grid.Column="1"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">1</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer1">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table2" Grid.Row="1" Grid.Column="3"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">2</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer2">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table3" Grid.Row="1" Grid.Column="5"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">3</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer3">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table4" Grid.Row="3" Grid.Column="1"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">4</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer4">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table5" Grid.Row="3" Grid.Column="3"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">5</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer5">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table6" Grid.Row="3" Grid.Column="5"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">6</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer6">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table7" Grid.Row="5" Grid.Column="1"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">7</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer7">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table8" Grid.Row="5" Grid.Column="3"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">8</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer8">00:59</Label>
                 </Grid>
 
                 <Grid Name="Table9" Grid.Row="5" Grid.Column="5"
               Background="White">
                     <Label Style="{StaticResource TableNumberStyle}">9</Label>
-                    <Label Margin="48, 35, 45, 0">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer9">00:59</Label>
                 </Grid>
             </Grid>
         </Grid>
@@ -107,7 +110,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Background="#FFC000" Foreground="white" Grid.Column="1" Height="22" Name="goToPay" Click="Button_Click" IsEnabled="False">
+            <Button Background="#FFC000" Foreground="white" Grid.Column="1" Height="22" Name="goToPay" IsEnabled="False">
                 결제하기
             </Button>
         </Grid>

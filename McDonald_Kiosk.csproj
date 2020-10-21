@@ -61,6 +61,15 @@
     <Compile Include="CashPayment.xaml.cs">
       <DependentUpon>CashPayment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiningPlace\DiningPlace.xaml.cs">
+      <DependentUpon>DiningPlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiningPlace\SelectDiningPlace.xaml.cs">
+      <DependentUpon>SelectDiningPlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiningPlace\SelectDiningTable.xaml.cs">
+      <DependentUpon>SelectDiningTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OrderMenu\Category.cs" />
     <Compile Include="DiningPlace.xaml.cs">
       <DependentUpon>DiningPlace.xaml</DependentUpon>
@@ -73,12 +82,6 @@
       <DependentUpon>OrderNumber.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderState.cs" />
-    <Compile Include="SelectDiningPlace.xaml.cs">
-      <DependentUpon>SelectDiningPlace.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SelectDiningTable.xaml.cs">
-      <DependentUpon>SelectDiningTable.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SelectPayment.xaml.cs">
       <DependentUpon>SelectPayment.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,18 @@
     <Page Include="DiningPlace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiningPlace\DiningPlace.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DiningPlace\SelectDiningPlace.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DiningPlace\SelectDiningTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Home.xaml">
       <SubType>Designer</SubType>
@@ -121,14 +136,6 @@
     <Page Include="OrderNumber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SelectDiningPlace.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SelectDiningTable.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="SelectPayment.xaml">
       <SubType>Designer</SubType>

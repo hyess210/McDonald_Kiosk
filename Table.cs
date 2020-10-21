@@ -9,7 +9,7 @@ namespace McDonald_Kiosk
 {
     class Table
     {
-        bool isEnabled;
-        DispatcherTimer timer = new DispatcherTimer();
+        public bool isEnabled = true;
+        public DispatcherTimer timer;
     }
 }
