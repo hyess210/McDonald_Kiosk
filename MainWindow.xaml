@@ -28,7 +28,7 @@
         <Grid Grid.Row="1">
             <Frame Name="MainContent" 
                    Grid.ColumnSpan="2"
-                   Source="SelectPayment.xaml"></Frame>
+                   Source="OrderMenu/OrderMenuPage.xaml"></Frame>
         </Grid>
 
     </Grid>

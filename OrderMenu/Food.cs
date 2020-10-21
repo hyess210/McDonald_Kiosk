@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace McDonald_Kiosk.OrderMenu
 {
-    public class MenuList
+    public class Food
     {
             public Category category { get; set; }
             public string ImgPath { get; set; }
             public string name { get; set; }
+        public int price { get; set; }
+        public int amount { get; set; }
     }
 }

@@ -65,7 +65,7 @@
     <Compile Include="DiningPlace.xaml.cs">
       <DependentUpon>DiningPlace.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrderMenu\MenuList.cs" />
+    <Compile Include="OrderMenu\Food.cs" />
     <Compile Include="OrderMenu\OrderMenuPage.xaml.cs">
       <DependentUpon>OrderMenuPage.xaml</DependentUpon>
     </Compile>
