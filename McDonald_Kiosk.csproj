@@ -55,10 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CardPayment.xaml.cs">
+    <Compile Include="Payment\CardPayment.xaml.cs">
       <DependentUpon>CardPayment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CashPayment.xaml.cs">
+    <Compile Include="Payment\CashPayment.xaml.cs">
       <DependentUpon>CashPayment.xaml</DependentUpon>
     </Compile>
     <Compile Include="DiningPlace\DiningPlace.xaml.cs">
@@ -79,15 +79,15 @@
       <DependentUpon>OrderNumber.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderState.cs" />
-    <Compile Include="SelectPayment.xaml.cs">
+    <Compile Include="Payment\SelectPayment.xaml.cs">
       <DependentUpon>SelectPayment.xaml</DependentUpon>
     </Compile>
     <Compile Include="DiningPlace\Table.cs" />
-    <Page Include="CardPayment.xaml">
+    <Page Include="Payment\CardPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CashPayment.xaml">
+    <Page Include="Payment\CashPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,7 +130,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectPayment.xaml">
+    <Page Include="Payment\SelectPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
