@@ -25,7 +25,7 @@ namespace McDonald_Kiosk
 
         private void webcam_QrDecoded(object sender, string e) 
         { 
-            tbRecog.Text = e; 
+            tbRecog.Content = "회원명 : " + e; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
