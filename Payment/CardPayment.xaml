@@ -84,7 +84,7 @@
 
         <Grid Grid.Column="1" Grid.Row="6">
             <Button Background="Yellow"
-                    MaxHeight="50">
+                    MaxHeight="50" Click="Button_Click">
                 <Viewbox>
                     <Label Background="Transparent"
                            FontWeight="Bold" Foreground="White">

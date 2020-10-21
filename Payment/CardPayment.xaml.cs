@@ -27,5 +27,11 @@ namespace McDonald_Kiosk
         { 
             tbRecog.Text = e; 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+                NavigationService.GoBack();
+        }
     }
 }
