@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
 
         <Frame Name="DiningPlaceContent" Grid.Row="0"
-           NavigationUIVisibility="Hidden" Source="SelectDiningPlace.xaml">
+           NavigationUIVisibility="Hidden" Source="/OrderMenu/OrderMenu.xaml">
 
         </Frame>
     </Grid>

@@ -114,9 +114,11 @@
                 <ListBox x:Name="lbMenus"
                          Height="830"
                          BorderBrush="Transparent"
-                         FontSize="14" VerticalAlignment="Top"
+                         FontSize="20" VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="22,0"
+                         SelectionChanged="lbMenus_SelectionChanged"
                          >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -125,7 +127,8 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="250" Height="250">
+                            <StackPanel Width="250" Height="250" 
+                                        Background="#f2f2f2">
                                 <Image Source="{Binding ImgPath}"/>
                                 <TextBlock Text="{Binding name}" Margin="0, 20, 0, 0" HorizontalAlignment="Center" />
                             </StackPanel>
@@ -140,29 +143,54 @@
                 <ListView
                     HorizontalAlignment="Center" VerticalAlignment="Top" 
                     Height="434" Width="760"
-                    Margin="100,10,100,0" FontSize="24"
+                    Margin="100,30,100,0" FontSize="24"
+                    Name="lvAddedMenu"
                     >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn x:Name="MenuName" 
                                             Header="메뉴" Width="240"
-                                            DisplayMemberBinding="{Binding Name}"/>
+                                            DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn x:Name="MenuPrice" 
                                             Header="가격" Width="175" 
-                                            DisplayMemberBinding="{Binding Price}" />
+                                            DisplayMemberBinding="{Binding price}" />
                             <GridViewColumn x:Name="MenuAmount" 
                                             Header="수량" Width="170" 
-                                            DisplayMemberBinding="{Binding Amount}" />
+                                            DisplayMemberBinding="{Binding amount}" />
                             <GridViewColumn x:Name="MenuButton" 
                                             Header="삭제" Width="170" 
                                             DisplayMemberBinding="{Binding Button}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Style="{StaticResource RoundButton}" 
-                        Width="140" Background="#000" 
-                        FontSize="24" Margin="0 20 0 0"
-                        Content="모두 삭제"/>
+                <Button>
+                    <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Width" Value="220"/>
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Margin" Value="0 30 100 0"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="Content" Value="모두 삭제"/>
+                            <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="Black" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#f4f4f4"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
         </Grid>
 
