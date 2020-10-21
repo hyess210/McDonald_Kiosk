@@ -41,7 +41,7 @@
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <ListView Loaded="ListView_Load">
+            <ListView Loaded="ListView_Load" FontSize="30">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Menu" Width="190" DisplayMemberBinding="{Binding Menu}"/>
@@ -54,7 +54,7 @@
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="4">
-            <Button Background="red">
+            <Button Background="red" Click="Button_Click">
                 <Viewbox MaxHeight="100">
                     <Label Background="Transparent"
                            FontWeight="Bold" Foreground="White">
@@ -65,7 +65,7 @@
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="6">
-            <Button Background="red">
+            <Button Background="red" Click="Button_Click_1">
                 <Viewbox MaxHeight="100">
                     <Label Background="Transparent"
                            FontWeight="Bold" Foreground="White">
@@ -77,7 +77,8 @@
 
         <Grid Grid.Column="1" Grid.Row="4">
             <Button Background="Gray"
-                    MaxHeight="50">
+                    MaxHeight="50"
+                    Click="Button_Click_2">
                 <Viewbox>
                     <Label Background="Transparent"
                            FontWeight="Bold" Foreground="White">

@@ -15,14 +15,17 @@ using System.Windows.Shapes;
 
 namespace McDonald_Kiosk
 {
-    /// <summary>
-    /// CardPayment.xaml에 대한 상호 작용 논리
-    /// </summary>
     public partial class CardPayment : Page
     {
         public CardPayment()
         {
             InitializeComponent();
+            webcam.CameraIndex = 0;
+        }
+
+        private void webcam_QrDecoded(object sender, string e) 
+        { 
+            tbRecog.Text = e; 
         }
     }
 }
