@@ -87,5 +87,17 @@
                 </Viewbox>
             </Button>
         </Grid>
+
+        <Grid Grid.Column="5" Grid.Row="6">
+            <Button Background="Red" Name="PaymentBtn"
+                    MaxHeight="50" Click="Button1_Click" Loaded="Button1_Load">
+                <Viewbox>
+                    <Label Background="Transparent"
+                           FontWeight="Bold" Foreground="White">
+                        결제
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

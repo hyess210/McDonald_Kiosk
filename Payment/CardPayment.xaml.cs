@@ -25,13 +25,28 @@ namespace McDonald_Kiosk
 
         private void webcam_QrDecoded(object sender, string e) 
         { 
-            tbRecog.Content = "회원명 : " + e; 
+            if(!PaymentBtn.IsEnabled)
+            {
+                tbRecog.Content = "회원명 : " + e;
+                PaymentBtn.IsEnabled = true;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoBack)
                 NavigationService.GoBack();
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            OrderNumber orderNumber = new OrderNumber();
+            NavigationService.Navigate(orderNumber);
+        }
+
+        private void Button1_Load(object sender, RoutedEventArgs e)
+        {
+            PaymentBtn.IsEnabled = false;
         }
     }
 }
