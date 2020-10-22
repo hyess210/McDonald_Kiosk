@@ -23,17 +23,21 @@ namespace McDonald_Kiosk
     /// </summary>
     public partial class SelectDiningTable : Page
     {
+        List<Table> tables = new List<Table>();
+        List<Label> timeText = new List<Label>();
         public SelectDiningTable()
         {
             InitializeComponent();
 
-            List<Table> tables = new List<Table>();
+            
 
-            tableManage(tables);
+            tableManage();
+            textBoxManage();
             timerManage(tables);
+            leftTimeMapping();
         }
 
-        private void tableManage(List<Table> tables)
+        private void tableManage()
         {
             Table table1 = new Table();
             Table table2 = new Table();
@@ -56,6 +60,19 @@ namespace McDonald_Kiosk
             tables.Add(table9);
         }
 
+        private void textBoxManage()
+        {
+            timeText.Add(timer1);
+            timeText.Add(timer2);
+            timeText.Add(timer3);
+            timeText.Add(timer4);
+            timeText.Add(timer5);
+            timeText.Add(timer6);
+            timeText.Add(timer7);
+            timeText.Add(timer8);
+            timeText.Add(timer9);
+        } 
+
         private void timerManage(List<Table> tables) 
         {
             for(int i = 0; i < tables.Count; i++)
@@ -70,16 +87,20 @@ namespace McDonald_Kiosk
 
         private void timer_Tick(object s, EventArgs a, Table table)
         {
-            if(table.left_time > 0)
-            {
-                --table.left_time;
-            } 
+            if(table.left_time > 0) --table.left_time;
             else
             {
+                table.isEnabled = true;
                 table.timer.Stop();
             }
         }
 
-        
+        private void leftTimeMapping()
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                tables.[i] =
+            }
+        }
     }
 }

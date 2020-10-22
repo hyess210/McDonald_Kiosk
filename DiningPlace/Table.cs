@@ -9,7 +9,6 @@ namespace McDonald_Kiosk
 {
     class Table
     {
-        public int idx;
         public int left_time = 60;
         public bool isEnabled = true;
         public DispatcherTimer timer;
