@@ -64,31 +64,37 @@
         <Grid Grid.Row="4" Grid.Column="3">
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
-                <Label Background="Transparent"
+                <Label x:Name="tbRecog"
+                       Background="Transparent"
                        Foreground="Black">
-                    회원명 : 배주현
+                    회원명 : 
                 </Label>
             </Viewbox>
         </Grid>
 
         <Grid Grid.Row="5" Grid.Column="3">
             <qrcode:KQRWebCam x:Name="webcam" Margin="12" QrDecoded="webcam_QrDecoded"/>
-            <TextBox x:Name="tbRecog" 
-                     Margin="12, 12, 12, 0"
-                     Text="" 
-                     Height="30" 
-                     VerticalAlignment="Bottom" 
-                     HorizontalContentAlignment="Stretch" 
-                     VerticalContentAlignment="Center"></TextBox>
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="6">
             <Button Background="Yellow"
-                    MaxHeight="50">
+                    MaxHeight="50" Click="Button_Click">
                 <Viewbox>
                     <Label Background="Transparent"
                            FontWeight="Bold" Foreground="White">
                            이전
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="5" Grid.Row="6">
+            <Button Background="Red" Name="PaymentBtn"
+                    MaxHeight="50" Click="Button1_Click" Loaded="Button1_Load">
+                <Viewbox>
+                    <Label Background="Transparent"
+                           FontWeight="Bold" Foreground="White">
+                        결제
                     </Label>
                 </Viewbox>
             </Button>
