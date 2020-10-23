@@ -88,7 +88,7 @@
                 <TextBox Background="Transparent"
                          Foreground="Black"
                          Width="100" Name="CardNumber"
-                         Loaded="TextBox_Load">
+                         Loaded="TextBox_Load" TextChanged="CardNumber_TextChanged">
                 </TextBox>
             </Viewbox>
         </Grid>
@@ -101,6 +101,18 @@
                            FontWeight="Bold"
                            Foreground="White">
                            이전
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="5" Grid.Row="8">
+            <Button Background="Red" Name="PaymentBtn"
+                    MaxHeight="50" Click="Button1_Click" Loaded="Button1_Load">
+                <Viewbox>
+                    <Label Background="Transparent"
+                           FontWeight="Bold" Foreground="White">
+                        결제
                     </Label>
                 </Viewbox>
             </Button>

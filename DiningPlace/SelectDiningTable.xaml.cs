@@ -99,7 +99,7 @@ namespace McDonald_Kiosk
         {
             for(int i = 0; i < 9; i++)
             {
-                tables.[i] =
+                //tables.[i] =
             }
         }
     }
