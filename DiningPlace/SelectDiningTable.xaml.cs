@@ -74,27 +74,33 @@ namespace McDonald_Kiosk
 
         private void timerManage() 
         {
-            for(int i = 0; i < tables.Count -1; i++)
-            {
-                Table table = tables[i];
-                table.timer = new DispatcherTimer();
-                table.timer.Interval = TimeSpan.FromSeconds(1);
-                table.timer.Tick += (object s, EventArgs a) => timer_Tick(s, a, table.timer);
-                table.timer.Start();
-            }
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (object s, EventArgs a) => timer_Tick(s, a, timer);
+            timer.Start();
         }
 
-        private void timer_Tick(object s, EventArgs a)
+        private void timer_Tick(object s, EventArgs a, DispatcherTimer timer)
         {
             for(int i = 0; i < 9; i++)
             {
-                --tables[i].left_time;
+                if (!tables[i].isEnabled)
+                {
+                    if (tables[i].left_time < 1)
+                        tables[i].isEnabled = true;
+                    else
+                        --tables[i].left_time;
+                }
+                leftTimeMapping(i);
             }
         }
 
-        private void leftTimeMapping(x)
+        private void leftTimeMapping(int idx)
         {
-            timeText[idx].Content = tables[idx].left_time;
+            if(tables[idx].isEnabled)
+                timeText[idx].Content = "";
+            else
+                timeText[idx].Content = tables[idx].left_time;
         }
     }
 }

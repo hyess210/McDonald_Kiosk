@@ -15,7 +15,7 @@
             <Setter Property="Foreground" Value="Blue"/>
         </Style>
         <Style x:Key="TableTimeStyle" TargetType="Label">
-            <Setter Property="Margin" Value="48, 42, 45, 0"/>
+            <Setter Property="Margin" Value="58, 42, 50, 0"/>
         </Style>
     </Page.Resources>
 
