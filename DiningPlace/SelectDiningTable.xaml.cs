@@ -32,9 +32,8 @@ namespace McDonald_Kiosk
             
 
             tableManage();
-            textBoxManage();
-            timerManage(tables);
-            leftTimeMapping();
+            timeTextManage();
+            timerManage();
         }
 
         private void tableManage()
@@ -60,7 +59,7 @@ namespace McDonald_Kiosk
             tables.Add(table9);
         }
 
-        private void textBoxManage()
+        private void timeTextManage()
         {
             timeText.Add(timer1);
             timeText.Add(timer2);
@@ -73,34 +72,29 @@ namespace McDonald_Kiosk
             timeText.Add(timer9);
         } 
 
-        private void timerManage(List<Table> tables) 
+        private void timerManage() 
         {
-            for(int i = 0; i < tables.Count; i++)
+            for(int i = 0; i < tables.Count -1; i++)
             {
                 Table table = tables[i];
                 table.timer = new DispatcherTimer();
                 table.timer.Interval = TimeSpan.FromSeconds(1);
-                table.timer.Tick += (object s, EventArgs a) => timer_Tick(s, a, table);
+                table.timer.Tick += (object s, EventArgs a) => timer_Tick(s, a, table.timer);
                 table.timer.Start();
             }
         }
 
-        private void timer_Tick(object s, EventArgs a, Table table)
-        {
-            if(table.left_time > 0) --table.left_time;
-            else
-            {
-                table.isEnabled = true;
-                table.timer.Stop();
-            }
-        }
-
-        private void leftTimeMapping()
+        private void timer_Tick(object s, EventArgs a)
         {
             for(int i = 0; i < 9; i++)
             {
-                tables.[i] =
+                --tables[i].left_time;
             }
+        }
+
+        private void leftTimeMapping(x)
+        {
+            timeText[idx].Content = tables[idx].left_time;
         }
     }
 }
