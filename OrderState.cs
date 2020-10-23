@@ -9,6 +9,7 @@ namespace McDonald_Kiosk
 {
     public class OrderState
     {
+        public Category category { get; set; }
         public string Menu { get; set; }
         public int Price { get; set; }
         public int Amount { get; set; }
