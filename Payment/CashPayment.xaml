@@ -74,11 +74,22 @@
 
         <Grid Grid.Row="6" Grid.Column="3">
             <Viewbox MaxHeight="70"
-                     VerticalAlignment="Top">
+                     VerticalAlignment="Bottom">
                 <Label Background="Transparent"
                        Foreground="Black">
-                       인증 카드 번호 : XB2JD09
+                       인증 카드 번호 :
                 </Label>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Column="3" Grid.Row="7">
+            <Viewbox MaxHeight="70"
+                     VerticalAlignment="top">
+                <TextBox Background="Transparent"
+                         Foreground="Black"
+                         Width="100" Name="CardNumber"
+                         Loaded="TextBox_Load">
+                </TextBox>
             </Viewbox>
         </Grid>
 

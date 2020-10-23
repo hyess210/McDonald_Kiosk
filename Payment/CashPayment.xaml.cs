@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace McDonald_Kiosk
 {
-    /// <summary>
-    /// CashPayment.xaml에 대한 상호 작용 논리
-    /// </summary>
     public partial class CashPayment : Page
     {
         public CashPayment()
@@ -29,6 +27,11 @@ namespace McDonald_Kiosk
         {
             if (NavigationService.CanGoBack)
                 NavigationService.GoBack();
+        }
+
+        private void TextBox_Load(object sender, RoutedEventArgs e)
+        {
+            Keyboard.Focus(CardNumber);
         }
     }
 }
