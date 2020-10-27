@@ -107,6 +107,15 @@ namespace McDonald_Kiosk
             NavigationService.Navigate(selectPayment);
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectPayment selectPayment = new SelectPayment();
+            if(NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+        }
+
         //private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         //    if (lbCategory.SelectedIndex == -1) return;
