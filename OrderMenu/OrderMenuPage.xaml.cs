@@ -98,7 +98,13 @@ namespace McDonald_Kiosk
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
+            lvAddedMenu.Items.Clear();
+        }
 
+        private void GoPayment_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            SelectPayment selectPayment = new SelectPayment();
+            NavigationService.Navigate(selectPayment);
         }
 
         //private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
