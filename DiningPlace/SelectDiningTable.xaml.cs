@@ -29,8 +29,6 @@ namespace McDonald_Kiosk
         {
             InitializeComponent();
 
-            
-
             tableManage();
             timeTextManage();
             timerManage();
@@ -88,6 +86,7 @@ namespace McDonald_Kiosk
                 {
                     if (tables[i].left_time < 1)
                         tables[i].isEnabled = true;
+                        
                     else
                         --tables[i].left_time;
                 }
