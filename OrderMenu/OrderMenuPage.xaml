@@ -202,6 +202,12 @@
                     </Style>
                     </Button.Style>
                 </Button>
+                <Button Height="40" Width="100" 
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Margin="0 250 100 0"
+                    FontSize="24" Background="Gold" Foreground="White"
+                    Content="결제하기" Click="GoPayment_ButtonClick"
+                            />
             </StackPanel>
         </Grid>
 
