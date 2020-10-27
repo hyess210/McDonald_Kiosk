@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace McDonald_Kiosk
@@ -17,11 +18,17 @@ namespace McDonald_Kiosk
     /// <summary>
     /// Home.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Home : Window
+    public partial class Home : Page
     {
         public Home()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OrderMenuPage order = new OrderMenuPage();
+            NavigationService.Navigate(order);
         }
     }
 }

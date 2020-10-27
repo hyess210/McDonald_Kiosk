@@ -80,18 +80,23 @@ namespace McDonald_Kiosk
 
         private void timer_Tick(object s, EventArgs a, DispatcherTimer timer)
         {
+            int count = 0;
             for(int i = 0; i < 9; i++)
             {
                 if (!tables[i].isEnabled)
                 {
                     if (tables[i].left_time < 1)
                         tables[i].isEnabled = true;
-                        
                     else
                         --tables[i].left_time;
                 }
+                else
+                    ++count;
                 leftTimeMapping(i);
             }
+            if (count == 9)
+                timer.Stop();
+
         }
 
         private void leftTimeMapping(int idx)
