@@ -98,7 +98,7 @@ namespace McDonald_Kiosk
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
-
+            lvAddedMenu.Items.Clear();
         }
 
         //private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
