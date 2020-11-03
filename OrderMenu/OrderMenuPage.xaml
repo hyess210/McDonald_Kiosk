@@ -166,11 +166,28 @@
                                             Header="가격" Width="175" 
                                             DisplayMemberBinding="{Binding Price}" />
                             <GridViewColumn x:Name="MenuAmount" 
-                                            Header="수량" Width="120" 
-                                            DisplayMemberBinding="{Binding Amount}" />
+                                            Header="수량" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Button Click="MenuAddButton_Click">+</Button>
+                                            <TextBlock Text="{Binding Amount}" x:Name="MenuAmount" />
+                                            <Button Click="MenuMinusButton_Click">-</Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn x:Name="MenuButton" 
-                                            Header="총 가격" Width="150" 
-                                            DisplayMemberBinding="{Binding Total}"/>
+                                            Header="총 가격" Width="150">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Total}"/>
+                                            <Button>x</Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

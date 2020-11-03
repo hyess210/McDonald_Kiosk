@@ -92,13 +92,26 @@ namespace McDonald_Kiosk
         {
             if (lbMenus.SelectedIndex == -1) return;
             Food food = lbMenus.SelectedItem as Food;
-
+            food.Total = food.Amount * food.Price;
             lvAddedMenu.Items.Add(food);
         }
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
             lvAddedMenu.Items.Clear();
+        }
+
+        private void MenuAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Food food = lbMenus.SelectedItem as Food;
+            food.Amount++;
+            TextBlock MenuAmount = new TextBlock();
+            MenuAmount.Text = food.Amount.ToString();
+        }
+
+        private void MenuMinusButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void GoPayment_ButtonClick(object sender, RoutedEventArgs e)
@@ -114,6 +127,16 @@ namespace McDonald_Kiosk
             {
                 NavigationService.GoBack();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
