@@ -1,6 +1,7 @@
 ﻿using McDonald_Kiosk.OrderMenu;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,32 +91,34 @@ namespace McDonald_Kiosk
 
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("start");
-            if (lbMenus.SelectedIndex == -1) return;
+            bool isExist = false;
             Food food = new Food();
+
+            if (lbMenus.SelectedIndex == -1) 
+                return;
             
             for(int i=0; i < OrderState.GetInstance().Count; i++)
             {
                 if(OrderState.GetInstance()[i].Menu.Equals(food.Name))
                 {
+                    isExist = true;
                     OrderState.GetInstance()[i].Amount++;
-                } else
-                {
-                    OrderState.GetInstance().Add(new OrderState() 
-                    { 
-                        category = food.category,
-                        Menu = food.Name,
-                        Price = food.Price,
-                        Amount = food.Amount
-                    });
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
                 }
-                OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
-                //lvAddedMenu.ItemsSource = OrderState.GetInstance();
-                //lvAddedMenu.Items.Add(OrderState.GetInstance()[i]);
-                ListView listView = new ListView();
-                listView.ItemsSource = OrderState.GetInstance();
-                Console.WriteLine(OrderState.GetInstance());
             }
+            if (!isExist)
+            {
+                OrderState.GetInstance().Add(new OrderState()
+                {
+                    category = food.category,
+                    Menu = food.Name,
+                    Price = food.Price,
+                    Amount = food.Amount,
+                    Total = 1
+                });
+            }
+            ListView listview = (ListView)FindName("lvAddedMenu");
+            listview.ItemsSource = OrderState.GetInstance();
         }
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
