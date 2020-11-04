@@ -155,7 +155,7 @@
                     Height="434" Width="760"
                     Margin="100,30,100,0" FontSize="16"
                     Foreground="#666"
-                    Name="lvAddedMenu"
+                    x:Name="lvAddedMenu"
                     >
                     <ListView.View>
                         <GridView>

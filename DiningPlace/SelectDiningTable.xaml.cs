@@ -123,17 +123,17 @@ namespace McDonald_Kiosk
         }
 
         private void leftTimeMapping(int idx)
-        {
+        {/*
             if (tables[idx].isEnabled)
                 timeText[idx].Content = "";
             else
-                timeText[idx].Content = tables[idx].left_time;
+                timeText[idx].Content = tables[idx].left_time;*/
         }
 
         
 
         private void getLeftTime(DateTime order_time, int count)
-        {
+        {/*
             if (leftTime < 60 || leftTime > 0)
             {
                 timeText[count].Content = leftTime;
@@ -141,7 +141,7 @@ namespace McDonald_Kiosk
             else
             {
                 timeText[count].Content = "";
-            }
+            }*/
         }
     }
 }

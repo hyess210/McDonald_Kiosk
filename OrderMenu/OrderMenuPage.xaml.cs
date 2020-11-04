@@ -117,16 +117,14 @@ namespace McDonald_Kiosk
                     Total = 1
                 });
             }
-            ListView listview = (ListView)FindName("lvAddedMenu");
-            listview.ItemsSource = OrderState.GetInstance();
+            lvAddedMenu.ItemsSource = OrderState.GetInstance();
+            lvAddedMenu.Items.Refresh();
         }
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
             OrderState.GetInstance().Clear();
-
-            ListView listview = (ListView)FindName("lvAddedMenu");
-            listview.ItemsSource = OrderState.GetInstance();
+            lvAddedMenu.Items.Refresh();
         }
 
         private void MenuAddButton_Click(object sender, RoutedEventArgs e)
