@@ -90,7 +90,6 @@ namespace McDonald_Kiosk
 
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("start");
             if (lbMenus.SelectedIndex == -1) return;
             Food food = new Food();
             
@@ -99,7 +98,9 @@ namespace McDonald_Kiosk
                 if(OrderState.GetInstance()[i].Menu.Equals(food.Name))
                 {
                     OrderState.GetInstance()[i].Amount++;
-                } else
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
+                    break;
+                } else if (OrderState.GetInstance().Count == i+1)
                 {
                     OrderState.GetInstance().Add(new OrderState() 
                     { 
@@ -108,14 +109,11 @@ namespace McDonald_Kiosk
                         Price = food.Price,
                         Amount = food.Amount
                     });
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
                 }
-                OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
-                //lvAddedMenu.ItemsSource = OrderState.GetInstance();
-                //lvAddedMenu.Items.Add(OrderState.GetInstance()[i]);
-                ListView listView = new ListView();
-                listView.ItemsSource = OrderState.GetInstance();
-                Console.WriteLine(OrderState.GetInstance());
             }
+            ListView listView = new ListView();
+            listView.ItemsSource = OrderState.GetInstance();
         }
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
