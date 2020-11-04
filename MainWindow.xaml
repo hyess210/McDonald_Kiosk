@@ -19,9 +19,11 @@
                 <ColumnDefinition Width="31*"/>
             </Grid.ColumnDefinitions>
             <Label Background="Transparent"
+                   x:Name="DateLabel"
                    HorizontalAlignment="Right"
                    Margin="0 10 60 0"
-                     FontSize="23" Foreground="White" Grid.ColumnSpan="2">2020년 9월 25일 금요일 오전 10:07</Label>
+                   FontSize="23" Foreground="White" 
+                   Grid.ColumnSpan="2" /> 
             <Button Width="50" Height="50" 
                     HorizontalAlignment="Right" 
                     Margin="0,6,6,4" Grid.Column="1" 

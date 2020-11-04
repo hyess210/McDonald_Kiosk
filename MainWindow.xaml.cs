@@ -25,6 +25,7 @@ namespace McDonald_Kiosk
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
+            DateLabel.Content = DateTime.Now.ToString("f");
         }
 
         public void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -33,6 +34,7 @@ namespace McDonald_Kiosk
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
+            MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
         }
     }
 }
