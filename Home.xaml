@@ -18,7 +18,17 @@
         </Grid>
 
         <Grid Grid.Row="1" Background="red">
-            <Button Width="200" Height="70"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="1" Grid.Row="1"
                     Background="#FFC000"
                     Foreground="White" FontSize="25" Click="Button_Click">주문하기</Button>
         </Grid>
