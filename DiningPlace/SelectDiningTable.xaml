@@ -54,7 +54,7 @@
                 </Grid>
 
                 <Grid Name="Table2" Grid.Row="1" Grid.Column="3"
-              Background="White" UIElement.PreviewMouseDown="">
+              Background="White" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">2</Label>
                     <Label Style="{StaticResource TableTimeStyle}" Name="timer2">00:59</Label>
                 </Grid>

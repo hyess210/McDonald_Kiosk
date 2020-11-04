@@ -25,39 +25,19 @@ namespace McDonald_Kiosk
     /// </summary>
     public partial class SelectDiningTable : Page
     {
-        SelectDiningPlace select = new SelectDiningPlace();
         List<Table> tables = new List<Table>();
-        List<Label> labels = new List<Label>();
+        List<Label> timeTexts = new List<Label>();
         public SelectDiningTable()
         {
             InitializeComponent();
 
-            tableManage();
-            timerManage();
-            timeTextManage();
+            setTable();
+            setTimeText();
             DBConnection();
-        }
-        private void DBConnection()
-        {
-            string url = "server=10.80.162.193; user=root; database=mcdonald_kiosk; port=3306; password=kmk5632980; sslmode=none;";
-            string sql = "SELECT order_time FROM ordering";
-            MySqlConnection connection = new MySqlConnection(url);
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            MySqlDataReader dataReader;
-
-            connection.Open();
-            dataReader = command.ExecuteReader();
-            int count = 0;
-
-            while (dataReader.Read())
-            {
-                DateTime order_time = (DateTime)dataReader["order_time"];
-                getLeftTime(order_time, count++);
-
-            }
+            timerManage();
         }
 
-        private void tableManage()
+        private void setTable()
         {
             Table table1 = new Table();
             Table table2 = new Table();
@@ -80,17 +60,47 @@ namespace McDonald_Kiosk
             tables.Add(table9);
         }
 
-        private void timeTextManage()
+        private void setTimeText()
         {
-            labels.Add(timer1);
-            labels.Add(timer2);
-            labels.Add(timer3);
-            labels.Add(timer4);
-            labels.Add(timer5);
-            labels.Add(timer6);
-            labels.Add(timer7);
-            labels.Add(timer8);
-            labels.Add(timer9);
+            timeTexts.Add(timer1);
+            timeTexts.Add(timer2);
+            timeTexts.Add(timer3);
+            timeTexts.Add(timer4);
+            timeTexts.Add(timer5);
+            timeTexts.Add(timer6);
+            timeTexts.Add(timer7);
+            timeTexts.Add(timer8);
+            timeTexts.Add(timer9);
+        }
+        private void DBConnection()
+        {
+            int count = 1;
+            string url = "server=10.80.162.193; user=root; database=mcdonald_kiosk; port=3306; password=kmk5632980; sslmode=none;";
+            MySqlConnection connection = new MySqlConnection(url);
+            MySqlCommand command;
+            MySqlDataReader dataReader;
+
+            while (count < 10)
+            {
+                string sql = "SELECT order_time FROM ordering WHERE tableNum = " + count + " order by desc;";
+                command = new MySqlCommand(sql, connection);
+                dataReader = command.ExecuteReader();
+
+                connection.Open();
+
+                if (dataReader.IsDBNull(0))
+                    tables[count].isEnabled = true;
+                else
+                {
+                    DateTime order_time = (DateTime)dataReader[0];
+
+                    TimeSpan leftTime = DateTime.Now - order_time;
+                    if (TimeSpan.Compare(leftTime, new TimeSpan(0, 1, 0)) == 1)
+                        tables[count].left_time = leftTime.Seconds;
+                }
+
+                connection.Close();
+            }
         }
 
         private void timerManage()
@@ -103,7 +113,6 @@ namespace McDonald_Kiosk
 
         private void timer_Tick(object s, EventArgs a, DispatcherTimer timer)
         {
-            int count = 0;
             for (int i = 0; i < 9; i++)
             {
                 if (!tables[i].isEnabled)
@@ -113,35 +122,25 @@ namespace McDonald_Kiosk
                     else
                         --tables[i].left_time;
                 }
-                else
-                    ++count;
-                leftTimeMapping(i);
+                realTimeMapping(i, tables[i].isEnabled);
             }
-            if (count == 9)
-                timer.Stop();
-
+            timer.Stop();
         }
 
-        private void leftTimeMapping(int idx)
-        {/*
-            if (tables[idx].isEnabled)
-                timeText[idx].Content = "";
+        private void realTimeMapping(int idx, bool isEnabled)
+        {
+            if (isEnabled)
+                timeTexts[idx].Content = "";
             else
-                timeText[idx].Content = tables[idx].left_time;*/
+                timeTexts[idx].Content = tables[idx].left_time;
         }
 
-        
-
-        private void getLeftTime(DateTime order_time, int count)
-        {/*
-            if (leftTime < 60 || leftTime > 0)
-            {
-                timeText[count].Content = leftTime;
-            }
-            else
-            {
-                timeText[count].Content = "";
-            }*/
+        private void Click_Grid(object sender, EventArgs args)
+        {
+            Grid param = sender as Grid;
+            int idx = int.Parse(param.Name.Substring(5));
+            if(tables[idx].isEnabled)
+                param.Background = new SolidColorBrush(Color.FromRgb(255, 192, 0));
         }
     }
 }
