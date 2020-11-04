@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace McDonald_Kiosk
 {
@@ -24,11 +25,40 @@ namespace McDonald_Kiosk
         }
 
         private void webcam_QrDecoded(object sender, string e) 
-        { 
-            if(!PaymentBtn.IsEnabled)
+        {
+            bool isRegistered = false;
+            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = "SELECT * FROM user";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                
+                while (rdr.Read())
+                {
+                    //Console.WriteLine("{0} : {1} : {2} : {3} : {4}", rdr["user_idx"], rdr["user_id"], rdr["user_password"], rdr["user_name"], rdr["barcode"]);
+                    if(e.Equals(rdr["User_name"]))
+                    {
+                        Console.WriteLine("Logined");
+                        isRegistered = true;
+                        break;
+                    }
+                }
+                rdr.Close();
+            }
+
+            if(isRegistered)
             {
                 tbRecog.Content = "회원명 : " + e;
                 PaymentBtn.IsEnabled = true;
+            }
+            else
+            {
+                tbRecog.Content = "가입되지 않은 바코드입니다.";
+                PaymentBtn.IsEnabled = false;
             }
         }
 

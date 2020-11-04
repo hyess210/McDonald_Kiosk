@@ -91,14 +91,53 @@ namespace McDonald_Kiosk
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbMenus.SelectedIndex == -1) return;
-            Food food = lbMenus.SelectedItem as Food;
-
-            lvAddedMenu.Items.Add(food);
+            Food food = new Food();
+            
+            for(int i=0; i < OrderState.GetInstance().Count; i++)
+            {
+                if(OrderState.GetInstance()[i].Menu.Equals(food.Name))
+                {
+                    OrderState.GetInstance()[i].Amount++;
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
+                    break;
+                } else if (OrderState.GetInstance().Count == i+1)
+                {
+                    OrderState.GetInstance().Add(new OrderState() 
+                    { 
+                        category = food.category,
+                        Menu = food.Name,
+                        Price = food.Price,
+                        Amount = food.Amount
+                    });
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
+                }
+            }
+            ListView listView = new ListView();
+            listView.ItemsSource = OrderState.GetInstance();
         }
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
             lvAddedMenu.Items.Clear();
+        }
+
+        private void MenuAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            OrderState order = lbMenus.SelectedItem as OrderState;
+            if(order.Amount == 0)
+            {
+                OrderState.GetInstance().Remove(order);
+            } else
+            {
+                order.Amount++;
+                TextBlock MenuAmount = new TextBlock();
+                MenuAmount.Text = order.Amount.ToString();
+            }
+        }
+
+        private void MenuMinusButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void GoPayment_ButtonClick(object sender, RoutedEventArgs e)
@@ -115,13 +154,5 @@ namespace McDonald_Kiosk
                 NavigationService.GoBack();
             }
         }
-
-        //private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (lbCategory.SelectedIndex == -1) return;
-
-        //    Category category = (Category)lbCategory.SelectedIndex;
-        //    lbMenus.ItemsSource = lstMenu.Where(x => x.category == category).ToList();
-        //}
     }
 }
