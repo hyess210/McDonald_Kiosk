@@ -90,10 +90,32 @@ namespace McDonald_Kiosk
 
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Console.WriteLine("start");
             if (lbMenus.SelectedIndex == -1) return;
-            Food food = lbMenus.SelectedItem as Food;
-            food.Total = food.Amount * food.Price;
-            lvAddedMenu.Items.Add(food);
+            Food food = new Food();
+            
+            for(int i=0; i < OrderState.GetInstance().Count; i++)
+            {
+                if(OrderState.GetInstance()[i].Menu.Equals(food.Name))
+                {
+                    OrderState.GetInstance()[i].Amount++;
+                } else
+                {
+                    OrderState.GetInstance().Add(new OrderState() 
+                    { 
+                        category = food.category,
+                        Menu = food.Name,
+                        Price = food.Price,
+                        Amount = food.Amount
+                    });
+                }
+                OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
+                //lvAddedMenu.ItemsSource = OrderState.GetInstance();
+                //lvAddedMenu.Items.Add(OrderState.GetInstance()[i]);
+                ListView listView = new ListView();
+                listView.ItemsSource = OrderState.GetInstance();
+                Console.WriteLine(OrderState.GetInstance());
+            }
         }
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
@@ -103,10 +125,16 @@ namespace McDonald_Kiosk
 
         private void MenuAddButton_Click(object sender, RoutedEventArgs e)
         {
-            Food food = lbMenus.SelectedItem as Food;
-            food.Amount++;
-            TextBlock MenuAmount = new TextBlock();
-            MenuAmount.Text = food.Amount.ToString();
+            OrderState order = lbMenus.SelectedItem as OrderState;
+            if(order.Amount == 0)
+            {
+                OrderState.GetInstance().Remove(order);
+            } else
+            {
+                order.Amount++;
+                TextBlock MenuAmount = new TextBlock();
+                MenuAmount.Text = order.Amount.ToString();
+            }
         }
 
         private void MenuMinusButton_Click(object sender, RoutedEventArgs e)
@@ -128,23 +156,5 @@ namespace McDonald_Kiosk
                 NavigationService.GoBack();
             }
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (lbCategory.SelectedIndex == -1) return;
-
-        //    Category category = (Category)lbCategory.SelectedIndex;
-        //    lbMenus.ItemsSource = lstMenu.Where(x => x.category == category).ToList();
-        //}
     }
 }
