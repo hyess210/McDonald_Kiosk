@@ -92,7 +92,7 @@ namespace McDonald_Kiosk
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             bool isExist = false;
-            Food food = new Food();
+            Food food = lbMenus.SelectedItem as Food;
 
             if (lbMenus.SelectedIndex == -1) 
                 return;
@@ -123,7 +123,10 @@ namespace McDonald_Kiosk
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
-            lvAddedMenu.Items.Clear();
+            OrderState.GetInstance().Clear();
+
+            ListView listview = (ListView)FindName("lvAddedMenu");
+            listview.ItemsSource = OrderState.GetInstance();
         }
 
         private void MenuAddButton_Click(object sender, RoutedEventArgs e)

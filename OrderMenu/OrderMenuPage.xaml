@@ -161,7 +161,7 @@
                         <GridView>
                             <GridViewColumn x:Name="MenuName" 
                                             Header="메뉴" Width="310"
-                                            DisplayMemberBinding="{Binding Name}"/>
+                                            DisplayMemberBinding="{Binding Menu}"/>
                             <GridViewColumn x:Name="MenuPrice" 
                                             Header="가격" Width="175" 
                                             DisplayMemberBinding="{Binding Price}" />
