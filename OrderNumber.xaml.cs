@@ -32,6 +32,18 @@ namespace McDonald_Kiosk
             timer.Interval = TimeSpan.FromSeconds(15);
             timer.Tick += GoHomePage;
             timer.Start();
+            DataReset();
+        }
+        private void GoHomePage(object sender, EventArgs e)
+        {
+            Home home = new Home();
+            NavigationService.Navigate(home);
+            timer.Stop();
+        }
+
+        private void DataReset()
+        {
+            OrderState.GetInstance().Clear();
         }
 
         public void Label1_Loaded(object sender, RoutedEventArgs e)
@@ -44,13 +56,6 @@ namespace McDonald_Kiosk
                 totalPayment += OrderState.GetInstance()[i].Total;
             }
             label.Content = "총 결제 금액 : " + totalPayment;
-        }
-
-        private void GoHomePage(object sender, EventArgs e)
-        {
-            Home home = new Home();
-            NavigationService.Navigate(home);
-            timer.Stop();
         }
     }
 }
