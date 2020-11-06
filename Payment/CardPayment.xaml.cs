@@ -52,7 +52,9 @@ namespace McDonald_Kiosk
 
             if(isRegistered)
             {
-                tbRecog.Content = "회원명 : " + e;
+                //tbRecog.Content = "회원명 : " + e;
+                OrderNumber orderNumber = new OrderNumber();
+                NavigationService.Navigate(orderNumber);
             }
             else
             {

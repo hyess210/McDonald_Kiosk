@@ -46,5 +46,15 @@ namespace McDonald_Kiosk
             }
             label.Content = "총 결제 금액 : " + totalPayment;
         }
+
+        private void CardNumber_TextChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if(tb.Text.Equals("1234")) //임시 설정
+            {
+                OrderNumber orderNumber = new OrderNumber();
+                NavigationService.Navigate(orderNumber);
+            }
+        }
     }
 }

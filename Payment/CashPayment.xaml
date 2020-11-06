@@ -79,7 +79,7 @@
                 <TextBox Background="Transparent"
                          Foreground="Black"
                          Width="100" Name="CardNumber"
-                         Loaded="TextBox_Load">
+                         Loaded="TextBox_Load" TextChanged="CardNumber_TextChanged">
                 </TextBox>
             </Viewbox>
         </Grid>
