@@ -34,6 +34,18 @@ namespace McDonald_Kiosk
             timer.Start();
         }
 
+        public void Label1_Loaded(object sender, RoutedEventArgs e)
+        {
+            Label label = (Label)sender;
+            float totalPayment = 0;
+
+            for(int i = 0; i < OrderState.GetInstance().Count; i++)
+            {
+                totalPayment += OrderState.GetInstance()[i].Total;
+            }
+            label.Content = "총 결제 금액 : " + totalPayment;
+        }
+
         private void GoHomePage(object sender, EventArgs e)
         {
             Home home = new Home();

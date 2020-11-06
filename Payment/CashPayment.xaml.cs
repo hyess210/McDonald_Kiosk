@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Cmp;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -51,6 +52,18 @@ namespace McDonald_Kiosk
             {
                 PaymentBtn.IsEnabled = true;
             }
+        }
+
+        private void Label1_Loaded(object sender, RoutedEventArgs e)
+        {
+            Label label = (Label)sender;
+            float totalPayment = 0;
+
+            for (int i = 0; i < OrderState.GetInstance().Count; i++)
+            {
+                totalPayment += OrderState.GetInstance()[i].Total;
+            }
+            label.Content = "총 결제 금액 : " + totalPayment;
         }
     }
 }

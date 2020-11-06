@@ -41,7 +41,7 @@
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <ListView Loaded="ListView_Load" FontSize="30">
+            <ListView Loaded="ListView_Load" FontSize="15">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Menu" Width="190" DisplayMemberBinding="{Binding Menu}"/>

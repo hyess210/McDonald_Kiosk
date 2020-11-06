@@ -40,8 +40,9 @@
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
                 <Label Background="Transparent"
-                       FontWeight="Bold" Foreground="Black">
-                    총 결제 금액 : 6000원
+                       FontWeight="Bold" Foreground="Black"
+                       Loaded="Label1_Loaded">
+                    총 결제 금액 : 
                 </Label>
             </Viewbox>
         </Grid>

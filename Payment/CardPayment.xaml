@@ -55,8 +55,9 @@
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
                 <Label Background="Transparent"
-                       Foreground="Black">
-                    총 금액 : 6000원
+                       Foreground="Black"
+                       Loaded="Label_Loaded">
+                    총 금액 : 
                 </Label>
             </Viewbox>
         </Grid>
