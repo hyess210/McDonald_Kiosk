@@ -15,7 +15,11 @@
             <Setter Property="Foreground" Value="Blue"/>
         </Style>
         <Style x:Key="TableTimeStyle" TargetType="Label">
-            <Setter Property="Margin" Value="58, 42, 50, 0"/>
+            <Setter Property="Margin" Value="0, 40, 0, 0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TableStyle" TargetType="Grid">
+            <Setter Property="Background" Value="#EAEAEA"/>
         </Style>
     </Page.Resources>
 
@@ -48,57 +52,57 @@
                 </Grid.ColumnDefinitions>
                 
                 <Grid Name="Table1" Grid.Row="1" Grid.Column="1"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">1</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer1">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer1">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table2" Grid.Row="1" Grid.Column="3"
-              Background="White" UIElement.PreviewMouseDown="Click_Grid">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">2</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer2">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer2">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table3" Grid.Row="1" Grid.Column="5"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">3</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer3">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer3">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table4" Grid.Row="3" Grid.Column="1"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">4</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer4">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer4">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table5" Grid.Row="3" Grid.Column="3"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">5</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer5">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer5">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table6" Grid.Row="3" Grid.Column="5"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">6</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer6">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer6">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table7" Grid.Row="5" Grid.Column="1"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">7</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer7">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer7">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table8" Grid.Row="5" Grid.Column="3"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">8</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer8">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer8">Loding...</Label>
                 </Grid>
 
                 <Grid Name="Table9" Grid.Row="5" Grid.Column="5"
-              Background="White">
+              Style="{StaticResource TableStyle}" UIElement.PreviewMouseDown="Click_Grid">
                     <Label Style="{StaticResource TableNumberStyle}">9</Label>
-                    <Label Style="{StaticResource TableTimeStyle}" Name="timer9">00:59</Label>
+                    <Label Style="{StaticResource TableTimeStyle}" Name="timer9">Loding...</Label>
                 </Grid>
             </Grid>
         </Grid>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace McDonald_Kiosk
@@ -11,6 +13,5 @@ namespace McDonald_Kiosk
     {
         public int left_time = 0;
         public bool isEnabled = false;
-        public DispatcherTimer timer;
     }
 }
