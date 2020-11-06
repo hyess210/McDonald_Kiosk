@@ -90,7 +90,7 @@ namespace McDonald_Kiosk
         };
 
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
             bool isExist = false;
             Food food = lbMenus.SelectedItem as Food;
 
@@ -113,10 +113,11 @@ namespace McDonald_Kiosk
                     category = food.category,
                     Menu = food.Name,
                     Price = food.Price,
-                    Amount = food.Amount,
-                    Total = 1
+                    Amount = 1,
+                    Total = food.Price
                 });
             }
+            lbMenus.UnselectAll();
             lvAddedMenu.ItemsSource = OrderState.GetInstance();
             lvAddedMenu.Items.Refresh();
         }

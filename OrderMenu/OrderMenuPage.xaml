@@ -170,11 +170,16 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <Button Click="MenuAddButton_Click" x:Name="MenuAddButton">
+                                            <Button Click="MenuAddButton_Click" x:Name="MenuAddButton"
+                                                    Background="White" BorderBrush="Transparent"
+                                                    Width="40" Height="40">
                                                 +
                                             </Button>
-                                            <TextBlock Text="{Binding Amount}" x:Name="MenuAmount" />
-                                            <Button Click="MenuMinusButton_Click" x:Name="MenuMinusButton">
+                                            <TextBlock Text="{Binding Amount}" x:Name="MenuAmount"
+                                                       TextAlignment="Center"/>
+                                            <Button Click="MenuMinusButton_Click" x:Name="MenuMinusButton"
+                                                    Background="White" BorderBrush="Transparent"
+                                                    Width="40" Height="40">
                                                 -
                                             </Button>
                                         </StackPanel>
@@ -182,12 +187,14 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn x:Name="MenuButton" 
-                                            Header="총 가격" Width="150">
+                                            Header="총 가격" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Total}"/>
-                                            <Button Click="MenuDeleteButton_Click" x:Name="MenuDeleteButton">x</Button>
+                                            <TextBlock Text="{Binding Total}" HorizontalAlignment="Center"/>
+                                            <Button Click="MenuDeleteButton_Click" x:Name="MenuDeleteButton"
+                                                    Background="White" BorderBrush="Transparent"
+                                                    Width="40" Height="40">x</Button>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
