@@ -13,11 +13,11 @@
             <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition Height="0.7*"></RowDefinition>
             <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="0.65*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="0.65*"></RowDefinition>
-            <RowDefinition Height="0.65*"></RowDefinition>
-            <RowDefinition Height="0.65*"></RowDefinition>
-            <RowDefinition Height="1.35*"></RowDefinition>
+
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -52,68 +52,46 @@
             </Viewbox>
         </Grid>
 
-        <Grid Grid.Row="4" Grid.Column="3">
+        <Grid Grid.Row="3" Grid.Column="3">
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
                 <Label Background="Transparent"
-                       Foreground="Black"
+                       Foreground="Black" FontWeight="Bold"
                        Loaded="Label1_Loaded">
                        총 금액 : 
                 </Label>
             </Viewbox>
         </Grid>
 
-        <Grid Grid.Row="5" Grid.Column="3">
+        <Grid Grid.Row="4" Grid.Column="3">
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
                 <Label Background="Transparent"
-                       Foreground="Black">
-                       회원명 : 배주현
+                       Foreground="Black" FontWeight="Bold">
+                    회원명 : 인식되지 않음
                 </Label>
             </Viewbox>
         </Grid>
 
-        <Grid Grid.Row="6" Grid.Column="3">
+        <Grid Grid.Column="3" Grid.Row="6">
             <Viewbox MaxHeight="70"
-                     VerticalAlignment="Bottom">
-                <Label Background="Transparent"
-                       Foreground="Black">
-                       인증 카드 번호 :
-                </Label>
-            </Viewbox>
-        </Grid>
-
-        <Grid Grid.Column="3" Grid.Row="7">
-            <Viewbox MaxHeight="70"
-                     VerticalAlignment="top">
+                     VerticalAlignment="Top">
                 <TextBox Background="Transparent"
                          Foreground="Black"
                          Width="100" Name="CardNumber"
-                         Loaded="TextBox_Load" TextChanged="CardNumber_TextChanged">
+                         Loaded="TextBox_Load">
                 </TextBox>
             </Viewbox>
         </Grid>
 
-        <Grid Grid.Column="1" Grid.Row="8">
+        <Grid Grid.Column="1" Grid.Row="7">
             <Button Background="Yellow"
                     MaxHeight="50" Click="Button_Click">
                 <Viewbox>
                     <Label Background="Transparent"
                            FontWeight="Bold"
                            Foreground="White">
-                           이전
-                    </Label>
-                </Viewbox>
-            </Button>
-        </Grid>
-
-        <Grid Grid.Column="5" Grid.Row="8">
-            <Button Background="Red" Name="PaymentBtn"
-                    MaxHeight="50" Click="Button1_Click" Loaded="Button1_Load">
-                <Viewbox>
-                    <Label Background="Transparent"
-                           FontWeight="Bold" Foreground="White">
-                        결제
+                        이전
                     </Label>
                 </Viewbox>
             </Button>

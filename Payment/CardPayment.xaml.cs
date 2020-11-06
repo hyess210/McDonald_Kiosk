@@ -53,12 +53,10 @@ namespace McDonald_Kiosk
             if(isRegistered)
             {
                 tbRecog.Content = "회원명 : " + e;
-                PaymentBtn.IsEnabled = true;
             }
             else
             {
                 tbRecog.Content = "가입되지 않은 바코드입니다.";
-                PaymentBtn.IsEnabled = false;
             }
         }
 
@@ -66,17 +64,6 @@ namespace McDonald_Kiosk
         {
             if (NavigationService.CanGoBack)
                 NavigationService.GoBack();
-        }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            OrderNumber orderNumber = new OrderNumber();
-            NavigationService.Navigate(orderNumber);
-        }
-
-        private void Button1_Load(object sender, RoutedEventArgs e)
-        {
-            PaymentBtn.IsEnabled = false;
         }
 
         private void Label_Loaded(object sender, RoutedEventArgs e)

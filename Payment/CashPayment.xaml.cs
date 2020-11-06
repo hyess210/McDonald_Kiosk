@@ -30,28 +30,9 @@ namespace McDonald_Kiosk
                 NavigationService.GoBack();
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            OrderNumber orderNumber = new OrderNumber();
-            NavigationService.Navigate(orderNumber);
-        }
-
-        private void Button1_Load(object sender, RoutedEventArgs e)
-        {
-            PaymentBtn.IsEnabled = false;
-        }
-
         private void TextBox_Load(object sender, RoutedEventArgs e)
         {
             Keyboard.Focus(CardNumber);
-        }
-
-        private void CardNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!PaymentBtn.IsEnabled)
-            {
-                PaymentBtn.IsEnabled = true;
-            }
         }
 
         private void Label1_Loaded(object sender, RoutedEventArgs e)

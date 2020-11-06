@@ -40,7 +40,7 @@
                 </Label>
             </Viewbox>
         </Grid>
-        
+
         <Grid Grid.Row="2" Grid.Column="3">
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
@@ -57,7 +57,7 @@
                 <Label Background="Transparent"
                        Foreground="Black"
                        Loaded="Label_Loaded">
-                    총 금액 : 
+                    총 금액 :
                 </Label>
             </Viewbox>
         </Grid>
@@ -68,7 +68,7 @@
                 <Label x:Name="tbRecog"
                        Background="Transparent"
                        Foreground="Black">
-                    회원명 : 
+                    회원명 :
                 </Label>
             </Viewbox>
         </Grid>
@@ -83,19 +83,7 @@
                 <Viewbox>
                     <Label Background="Transparent"
                            FontWeight="Bold" Foreground="White">
-                           이전
-                    </Label>
-                </Viewbox>
-            </Button>
-        </Grid>
-
-        <Grid Grid.Column="5" Grid.Row="6">
-            <Button Background="Red" Name="PaymentBtn"
-                    MaxHeight="50" Click="Button1_Click" Loaded="Button1_Load">
-                <Viewbox>
-                    <Label Background="Transparent"
-                           FontWeight="Bold" Foreground="White">
-                        결제
+                        이전
                     </Label>
                 </Viewbox>
             </Button>

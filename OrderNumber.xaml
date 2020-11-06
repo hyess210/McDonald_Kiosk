@@ -22,8 +22,9 @@
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
-            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Grid.Column="2">
@@ -47,7 +48,27 @@
             </Viewbox>
         </Grid>
 
-        <Grid Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3">
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3">
+            <Viewbox MaxHeight="70"
+                     VerticalAlignment="Top">
+                <Label Background="Transparent"
+                       FontWeight="Bold" Foreground="Black">
+                    회원명 : 
+                </Label>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4">
+            <Viewbox MaxHeight="70"
+                     VerticalAlignment="Top">
+                <Label Background="Transparent"
+                       FontWeight="Bold" Foreground="Black">
+                    카드번호 :
+                </Label>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3">
             <Viewbox MaxHeight="150"
                      VerticalAlignment="Center">
                 <Label Loaded="Label_Loaded"
