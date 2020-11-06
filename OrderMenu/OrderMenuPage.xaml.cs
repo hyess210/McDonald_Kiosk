@@ -129,21 +129,47 @@ namespace McDonald_Kiosk
 
         private void MenuAddButton_Click(object sender, RoutedEventArgs e)
         {
-            OrderState order = lbMenus.SelectedItem as OrderState;
-            if(order.Amount == 0)
+            OrderState BtnMenu = (sender as Button).DataContext as OrderState;
+            
+            for ( int i = 0; i < OrderState.GetInstance().Count; i++)
             {
-                OrderState.GetInstance().Remove(order);
-            } else
-            {
-                order.Amount++;
-                TextBlock MenuAmount = new TextBlock();
-                MenuAmount.Text = order.Amount.ToString();
+                if (OrderState.GetInstance()[i].Menu.Equals(BtnMenu.Menu))
+                {
+                    OrderState.GetInstance()[i].Amount++;
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
+                }
             }
+            lvAddedMenu.Items.Refresh();
         }
 
         private void MenuMinusButton_Click(object sender, RoutedEventArgs e)
         {
+            OrderState BtnMenu = (sender as Button).DataContext as OrderState;
 
+            for (int i = 0; i < OrderState.GetInstance().Count; i++)
+            {
+                if (OrderState.GetInstance()[i].Menu.Equals(BtnMenu.Menu) && OrderState.GetInstance()[i].Amount > 1)
+                {
+                    OrderState.GetInstance()[i].Amount--;
+                    OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
+                } else if (OrderState.GetInstance()[i].Menu.Equals(BtnMenu.Menu)) { 
+                    OrderState.GetInstance().Remove(OrderState.GetInstance()[i]);
+                }
+            }
+            lvAddedMenu.Items.Refresh();
+        }
+        private void MenuDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            OrderState BtnMenu = (sender as Button).DataContext as OrderState;
+
+            for (int i = 0; i < OrderState.GetInstance().Count; i++)
+            {
+                if (OrderState.GetInstance()[i].Menu.Equals(BtnMenu.Menu))
+                {
+                    OrderState.GetInstance().Remove(OrderState.GetInstance()[i]);
+                }
+            }
+            lvAddedMenu.Items.Refresh();
         }
 
         private void GoPayment_ButtonClick(object sender, RoutedEventArgs e)
@@ -160,5 +186,6 @@ namespace McDonald_Kiosk
                 NavigationService.GoBack();
             }
         }
+
     }
 }

@@ -170,9 +170,13 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <Button Click="MenuAddButton_Click">+</Button>
+                                            <Button Click="MenuAddButton_Click" x:Name="MenuAddButton">
+                                                +
+                                            </Button>
                                             <TextBlock Text="{Binding Amount}" x:Name="MenuAmount" />
-                                            <Button Click="MenuMinusButton_Click">-</Button>
+                                            <Button Click="MenuMinusButton_Click" x:Name="MenuMinusButton">
+                                                -
+                                            </Button>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -183,7 +187,7 @@
                                     <DataTemplate>
                                         <StackPanel>
                                             <TextBlock Text="{Binding Total}"/>
-                                            <Button>x</Button>
+                                            <Button Click="MenuDeleteButton_Click" x:Name="MenuDeleteButton">x</Button>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

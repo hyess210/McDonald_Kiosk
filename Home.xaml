@@ -29,8 +29,20 @@
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Button Grid.Column="1" Grid.Row="1"
-                    Background="#FFC000"
-                    Foreground="White" FontSize="25" Click="Button_Click">주문하기</Button>
+                    Foreground="White" FontSize="25"
+                    Width="150" Height="50"
+                    Click="Button_Click" Content="주문하기">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Gold"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DarkGoldenrod"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Page>
