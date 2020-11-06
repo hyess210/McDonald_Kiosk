@@ -26,15 +26,20 @@ namespace McDonald_Kiosk
     public partial class SelectDiningTable : Page
     {
         List<Table> tables = new List<Table>();
+        List<Grid> grids = new List<Grid>();
         List<Label> timeTexts = new List<Label>();
+        int selectedIdx = 0;
+        int beforeCount = 0;
         public SelectDiningTable()
         {
             InitializeComponent();
 
             setTable();
             setTimeText();
+            setGrids();
             DBConnection();
             timerManage();
+            changeBackground();
         }
 
         private void setTable()
@@ -72,6 +77,20 @@ namespace McDonald_Kiosk
             timeTexts.Add(timer8);
             timeTexts.Add(timer9);
         }
+
+        private void setGrids()
+        {
+            grids.Add(Table1);
+            grids.Add(Table2);
+            grids.Add(Table3);
+            grids.Add(Table4);
+            grids.Add(Table5);
+            grids.Add(Table6);
+            grids.Add(Table7);
+            grids.Add(Table8);
+            grids.Add(Table9);
+        }
+
         private void DBConnection()
         {
             int count = 1;
@@ -82,24 +101,27 @@ namespace McDonald_Kiosk
 
             while (count < 10)
             {
-                string sql = "SELECT order_time FROM ordering WHERE tableNum = " + count + " order by desc;";
+                string sql = "SELECT order_time FROM ordering WHERE tableNum = " + count + " ORDER BY order_time DESC;";
                 command = new MySqlCommand(sql, connection);
+                connection.Open();
                 dataReader = command.ExecuteReader();
 
-                connection.Open();
+                if (dataReader.Read())
+                {
+                     DateTime order_time = (DateTime)dataReader[0];
 
-                if (dataReader.IsDBNull(0))
-                    tables[count].isEnabled = true;
+                     TimeSpan leftTime = new TimeSpan(0, 1, 0) - (DateTime.Now - order_time);
+                     if (TimeSpan.Compare(leftTime, new TimeSpan(0, 1, 0)) == -1 && TimeSpan.Compare(leftTime, new TimeSpan(0, 0, 0)) == 1)
+                         tables[count - 1].left_time = leftTime.Seconds;
+                     else
+                         tables[count - 1].isEnabled = true;
+                }
                 else
                 {
-                    DateTime order_time = (DateTime)dataReader[0];
-
-                    TimeSpan leftTime = DateTime.Now - order_time;
-                    if (TimeSpan.Compare(leftTime, new TimeSpan(0, 1, 0)) == 1)
-                        tables[count].left_time = leftTime.Seconds;
+                    tables[count - 1].isEnabled = true;
                 }
-
                 connection.Close();
+                count++;
             }
         }
 
@@ -113,6 +135,7 @@ namespace McDonald_Kiosk
 
         private void timer_Tick(object s, EventArgs a, DispatcherTimer timer)
         {
+            int count = 0;
             for (int i = 0; i < 9; i++)
             {
                 if (!tables[i].isEnabled)
@@ -121,10 +144,17 @@ namespace McDonald_Kiosk
                         tables[i].isEnabled = true;
                     else
                         --tables[i].left_time;
+                    count++;
                 }
                 realTimeMapping(i, tables[i].isEnabled);
+                if (count != beforeCount)
+                {
+                    changeBackground();
+                    if (count == 9)
+                        timer.Stop();
+                }
             }
-            timer.Stop();
+            
         }
 
         private void realTimeMapping(int idx, bool isEnabled)
@@ -135,12 +165,33 @@ namespace McDonald_Kiosk
                 timeTexts[idx].Content = tables[idx].left_time;
         }
 
+        private void changeBackground()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                if (!tables[i].isEnabled)
+                    grids[i].Background = new SolidColorBrush(Color.FromRgb(234, 234, 234));
+                else
+                    grids[i].Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            }
+        }
+
         private void Click_Grid(object sender, EventArgs args)
         {
             Grid param = sender as Grid;
-            int idx = int.Parse(param.Name.Substring(5));
-            if(tables[idx].isEnabled)
+            int idx = int.Parse(param.Name.Substring(5)) - 1;
+            if (tables[idx - 1].isEnabled)
+            {
                 param.Background = new SolidColorBrush(Color.FromRgb(255, 192, 0));
+                if (selectedIdx != 0)
+                {
+                    grids[selectedIdx].Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                }
+                selectedIdx = idx;
+            }
+            else
+            {
+            }
         }
     }
 }
