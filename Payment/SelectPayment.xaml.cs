@@ -50,5 +50,17 @@ namespace McDonald_Kiosk
             //OrderState.GetInstance().Add(new OrderState() { Menu = "새우 버거", Price = 3500, Amount = 1, Total = 3500 });
             listview.ItemsSource = OrderState.GetInstance();
         }
+
+        private void Label_Loaded(object sender, RoutedEventArgs e)
+        {
+            Label label = (Label)sender;
+            float totalPayment = 0;
+
+            for (int i = 0; i < OrderState.GetInstance().Count; i++)
+            {
+                totalPayment += OrderState.GetInstance()[i].Total;
+            }
+            label.Content = totalPayment;
+        }
     }
 }
