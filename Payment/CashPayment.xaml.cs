@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Asn1.Cmp;
+﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,10 +51,38 @@ namespace McDonald_Kiosk
         private void CardNumber_TextChanged(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if(tb.Text.Equals("1234")) //임시 설정
+            bool isRegistered = false;
+            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
             {
+                conn.Open();
+                string sql = "SELECT * FROM user";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    if (tb.Text.Equals(rdr["barcode"]))
+                    {
+                        Console.WriteLine("Logined");
+                        isRegistered = true;
+                        break;
+                    }
+                }
+                rdr.Close();
+            }
+
+            if (isRegistered)
+            {
+                UserName.Content = "인증되었습니다.";
                 OrderNumber orderNumber = new OrderNumber();
                 NavigationService.Navigate(orderNumber);
+            }
+            else
+            {
+                UserName.Content = "가입되지 않은 바코드입니다.";
             }
         }
     }
