@@ -234,7 +234,7 @@
                     HorizontalAlignment="Right" VerticalAlignment="Bottom"
                     Margin="0 250 100 0"
                     FontSize="24" Background="Gold" Foreground="White"
-                    Content="결제하기" Click="GoPayment_ButtonClick"
+                    Content="결제하기" Click="GoDiningSelect_ButtonClick"
                             />
             </StackPanel>
         </Grid>

@@ -173,16 +173,16 @@ namespace McDonald_Kiosk
             lvAddedMenu.Items.Refresh();
         }
 
-        private void GoPayment_ButtonClick(object sender, RoutedEventArgs e)
+        private void GoDiningSelect_ButtonClick(object sender, RoutedEventArgs e)
         {
-            SelectPayment selectPayment = new SelectPayment();
-            NavigationService.Navigate(selectPayment);
+            DiningPlace diningPlace = new DiningPlace();
+            diningPlace.ShowDialog();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SelectPayment selectPayment = new SelectPayment();
-            if(NavigationService.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
                 NavigationService.GoBack();
             }
