@@ -8,13 +8,14 @@ namespace McDonald_Kiosk
 {
     public class Customer
     {
-        public int user_idx;
-        public string user_name;
-        public string user_barcode;
+        public int user_idx { get; set; }
+        public string user_name { get; set; }
+        public string user_barcode { get; set; }
 
-        public int order_idx;
-        public DateTime order_time;
-        public int tableNum;
+        public int order_idx { get; set; }
+        public DateTime order_time { get; set; }
+        public int tableNum { get; set; }
+        public bool isCard { get; set; }
 
         private static Customer customer = new Customer();
 
