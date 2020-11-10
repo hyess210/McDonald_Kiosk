@@ -25,6 +25,11 @@ namespace McDonald_Kiosk
             InitializeComponent();
         }
 
+        private void playVideo()
+        {
+            VideoDrawing video = new VideoDrawing();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OrderMenuPage order = new OrderMenuPage();
