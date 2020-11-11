@@ -52,7 +52,8 @@
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
                 <Label Background="Transparent"
-                       FontWeight="Bold" Foreground="Black">
+                       FontWeight="Bold" Foreground="Black"
+                       Loaded="Label2_Loaded">
                     회원명 : 
                 </Label>
             </Viewbox>
@@ -62,7 +63,8 @@
             <Viewbox MaxHeight="70"
                      VerticalAlignment="Top">
                 <Label Background="Transparent"
-                       FontWeight="Bold" Foreground="Black">
+                       FontWeight="Bold" Foreground="Black"
+                       Loaded="Label3_Loaded">
                     카드번호 :
                 </Label>
             </Viewbox>

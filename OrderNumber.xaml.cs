@@ -57,5 +57,17 @@ namespace McDonald_Kiosk
             }
             label.Content = "총 결제 금액 : " + totalPayment;
         }
+
+        public void Label2_Loaded(object sender, RoutedEventArgs e)
+        {
+            Label label = (Label)sender;
+            label.Content = "회원명 : " + Customer.getInstance().user_name;
+        }
+
+        public void Label3_Loaded(object sender, RoutedEventArgs e)
+        {
+            Label label = (Label)sender;
+            label.Content = "카드번호 : " + Customer.getInstance().user_barcode;
+        }
     }
 }

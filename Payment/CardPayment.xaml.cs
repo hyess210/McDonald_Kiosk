@@ -39,11 +39,13 @@ namespace McDonald_Kiosk
                 
                 while (rdr.Read())
                 {
-                    //Console.WriteLine("{0} : {1} : {2} : {3} : {4}", rdr["user_idx"], rdr["user_id"], rdr["user_password"], rdr["user_name"], rdr["barcode"]);
                     if(e.Equals(rdr["User_name"]))
                     {
-                        Console.WriteLine("Logined");
                         isRegistered = true;
+                        Customer.getInstance().user_idx = int.Parse(rdr["user_idx"].ToString());
+                        Customer.getInstance().user_name = rdr["user_name"].ToString();
+                        Customer.getInstance().user_barcode = rdr["barcode"].ToString();
+                        Customer.getInstance().isCard = true;
                         break;
                     }
                 }
@@ -52,7 +54,6 @@ namespace McDonald_Kiosk
 
             if(isRegistered)
             {
-                //tbRecog.Content = "회원명 : " + e;
                 OrderNumber orderNumber = new OrderNumber();
                 NavigationService.Navigate(orderNumber);
             }
