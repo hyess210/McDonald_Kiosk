@@ -48,6 +48,8 @@ namespace McDonald_Kiosk
                 rdr.Close();
             }
 
+            Customer.getInstance().order_time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Console.WriteLine(Customer.getInstance().order_time);
             Customer.getInstance().order_idx = orderNum + 1;
 
             Label label = (Label)sender;

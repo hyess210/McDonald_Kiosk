@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace McDonald_Kiosk
         public string user_barcode { get; set; }
 
         public int order_idx { get; set; }
-        public DateTime order_time { get; set; }
+        public string order_time { get; set; }
         public int tableNum { get; set; }
         public bool isCard { get; set; }
 
