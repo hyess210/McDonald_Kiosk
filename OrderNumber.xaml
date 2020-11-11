@@ -76,7 +76,7 @@
                 <Label Loaded="Label_Loaded"
                        Background="Transparent"
                        FontWeight="Bold" Foreground="Black">
-                    주문 번호 : 23
+                    주문 번호 : 
                 </Label>
             </Viewbox>
         </Grid>
