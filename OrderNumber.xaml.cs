@@ -48,12 +48,11 @@ namespace McDonald_Kiosk
                 rdr.Close();
             }
 
-            Customer.getInstance().order_time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            Console.WriteLine(Customer.getInstance().order_time);
             Customer.getInstance().order_idx = orderNum + 1;
 
             Label label = (Label)sender;
             label.Content = "주문번호 : " + Customer.getInstance().order_idx;
+            InsertData();
 
             timer.Interval = TimeSpan.FromSeconds(15);
             timer.Tick += GoHomePage;
@@ -94,6 +93,39 @@ namespace McDonald_Kiosk
         {
             Label label = (Label)sender;
             label.Content = "카드번호 : " + Customer.getInstance().user_barcode;
+        }
+
+        public void InsertData()
+        {
+            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+            MySqlConnection connection = new MySqlConnection(connStr);
+
+            string sql = "Insert INTO ordering(order_idx, user_idx, tableNum, isCard) VALUES (" 
+                + Customer.getInstance().order_idx + ',' 
+                + Customer.getInstance().user_idx + ','
+                + Customer.getInstance().tableNum + ',' 
+                + Customer.getInstance().isCard + ")";
+
+            connection.Open();
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            try
+            {
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("정상적으로 갔다");
+                }
+                else
+                {
+                    MessageBox.Show("비정상 이당");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            connection.Close();
         }
     }
 }

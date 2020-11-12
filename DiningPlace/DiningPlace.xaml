@@ -29,9 +29,9 @@
                 <RowDefinition Height="4*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Background="#FFC000" Foreground="white" Grid.Column="1" Grid.Row="1" Name="goToPay" IsEnabled="False" Click="goToPay_Click">
+            <!--<Button Background="#FFC000" Foreground="white" Grid.Column="1" Grid.Row="1" Name="goToPay" IsEnabled="False" Click="goToPay_Click">
                 결제하기
-            </Button>        
+            </Button>        -->
         </Grid>
     </Grid>
 
