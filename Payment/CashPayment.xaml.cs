@@ -66,7 +66,11 @@ namespace McDonald_Kiosk
                 {
                     if (tb.Text.Equals(rdr["barcode"]))
                     {
-                        Console.WriteLine("Logined");
+                        Customer.getInstance().user_idx = int.Parse(rdr["user_idx"].ToString());
+                        Customer.getInstance().user_name = rdr["user_name"].ToString();
+                        Customer.getInstance().user_barcode = rdr["barcode"].ToString();
+                        Customer.getInstance().isCard = false;
+                        Console.WriteLine(Customer.getInstance().user_idx + " " + Customer.getInstance().user_name + " " + Customer.getInstance().user_barcode + " " + Customer.getInstance().isCard);
                         isRegistered = true;
                         break;
                     }

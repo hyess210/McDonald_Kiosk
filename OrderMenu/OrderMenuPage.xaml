@@ -45,9 +45,9 @@
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.15*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.15*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -127,7 +127,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="250" Height="250" 
+                            <StackPanel Width="250" Height="220" 
                                         Background="#f2f2f2">
                                 <Image Source="{Binding ImgPath}"/>
                                 <TextBlock Text="{Binding Name}" FontSize="16" Margin="0, 20, 0, 0" HorizontalAlignment="Center" />
@@ -138,11 +138,24 @@
             </Grid>
 
             <Grid Grid.Row="2">
-                <StackPanel>
+                <StackPanel Orientation="Horizontal">
                     <Button Height="40" Width="100" 
                             HorizontalAlignment="Left" Margin="30 30 0 0"
                             FontSize="24"
                             Content="이전" Click="Button_Click"
+                            />
+                    <Button Width="160" Height="40" FontSize="24"
+                            VerticalAlignment="Center" HorizontalAlignment="Right"
+                            Content="이전 페이지"
+                            Margin="430 30 0 0"
+                            Click="BeforeMenuButton_Click"
+                            />
+                    <Button Width="160" Height="40" FontSize="24"
+                            VerticalAlignment="Center" HorizontalAlignment="Right"
+                            Background="Gold" Foreground="White"
+                            Content="다음 페이지"
+                            Margin="10 30 0 0"
+                            Click="NextMenuButton_Click"
                             />
                 </StackPanel>
             </Grid>
