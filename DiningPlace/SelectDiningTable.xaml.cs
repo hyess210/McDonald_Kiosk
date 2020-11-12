@@ -67,7 +67,7 @@ namespace McDonald_Kiosk
 
         private void setTimeText()
         {
-            timeTexts.Add(timer1);
+            timeTexts.Add(timer0);
             timeTexts.Add(timer2);
             timeTexts.Add(timer3);
             timeTexts.Add(timer4);
@@ -101,7 +101,7 @@ namespace McDonald_Kiosk
 
             while (count < 10)
             {
-                string sql = "SELECT order_time FROM ordering WHERE tableNum = " + count + " ORDER BY order_time DESC;";
+                string sql = "SELECT order_time FROM ordering WHERE tableNum=" + count + " ORDER BY order_time DESC;";
                 command = new MySqlCommand(sql, connection);
                 connection.Open();
                 dataReader = command.ExecuteReader();
@@ -182,14 +182,14 @@ namespace McDonald_Kiosk
             int idx = int.Parse(param.Name.Substring(5)) - 1;
             if (tables[idx].isEnabled)
             {
-                selectedIdx = idx;
+                selectedIdx = idx + 1;
                 goToPay.IsEnabled = true;
             }
         }
 
-        private void goToPay_Click(object sender, RoutedEventArgs e)
+        private void setTableNum(object sender, RoutedEventArgs e)
         {
-            
+            Customer.getInstance().tableNum = selectedIdx;
         }
     }
 }

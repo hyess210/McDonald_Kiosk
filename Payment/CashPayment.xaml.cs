@@ -52,7 +52,7 @@ namespace McDonald_Kiosk
         {
             TextBox tb = (TextBox)sender;
             bool isRegistered = false;
-            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+            string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
