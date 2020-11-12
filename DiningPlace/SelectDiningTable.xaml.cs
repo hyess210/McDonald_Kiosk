@@ -183,7 +183,6 @@ namespace McDonald_Kiosk
             if (tables[idx].isEnabled)
             {
                 selectedIdx = idx + 1;
-                goToPay.IsEnabled = true;
             }
         }
 

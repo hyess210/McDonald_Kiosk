@@ -29,10 +29,10 @@ namespace McDonald_Kiosk
 
         }
 
-        private void goToPay_Click(object sender, RoutedEventArgs e)
-        {
-            SelectDiningTable selectDiningTable = new SelectDiningTable();
-        }
+        //private void goToPay_Click(object sender, RoutedEventArgs e)
+        //{
+        //    SelectDiningTable selectDiningTable = new SelectDiningTable();
+        //}
 
         private void goToPay()
         {

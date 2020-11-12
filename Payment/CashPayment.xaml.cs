@@ -70,7 +70,6 @@ namespace McDonald_Kiosk
                         Customer.getInstance().user_name = rdr["user_name"].ToString();
                         Customer.getInstance().user_barcode = rdr["barcode"].ToString();
                         Customer.getInstance().isCard = false;
-                        Console.WriteLine(Customer.getInstance().user_idx + " " + Customer.getInstance().user_name + " " + Customer.getInstance().user_barcode + " " + Customer.getInstance().isCard);
                         isRegistered = true;
                         break;
                     }
