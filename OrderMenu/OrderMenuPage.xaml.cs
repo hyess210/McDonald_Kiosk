@@ -26,9 +26,16 @@ namespace McDonald_Kiosk
 
         private List<OrderMenu.Food> lstMenu = new List<OrderMenu.Food>();
         private List<OrderMenu.Food> menuList = new List<OrderMenu.Food>();
+        private List<OrderMenu.Food> bugerList = new List<OrderMenu.Food>();
+        private List<OrderMenu.Food> sideList = new List<OrderMenu.Food>();
+        private List<OrderMenu.Food> drinkList = new List<OrderMenu.Food>();
+
         public int pageCount = 0;
+
+
         public OrderMenuPage()
         {
+            this.Loaded += OrderMenuPage_Loaded;
             int i = 0;
             InitializeComponent();
             lbMenus.ItemsSource = lstMenu.Where(x => x.category == Category.BUGER).ToList();
@@ -48,11 +55,13 @@ namespace McDonald_Kiosk
 
                 while (rdr.Read())
                 {
+
                     menuList.Add(new OrderMenu.Food()
                     {
                         Price = Int32.Parse(rdr["price"].ToString()),
-                        Name = rdr["name"].ToString(),
-                        ImgPath = rdr["stored_path"].ToString()
+                        Name = rdr["menu_name"].ToString(),
+                        ImgPath = rdr["stored_path"].ToString(),
+                        Menu_idx = Int32.Parse(rdr["menu_idx"].ToString())
                     });
 
                     string category = rdr["category"].ToString();
@@ -73,6 +82,57 @@ namespace McDonald_Kiosk
                 }
                 rdr.Close();
                 lbMenus.ItemsSource = lstMenu;
+            }
+        }
+
+        private void OrderMenuPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < menuList.Count; i++)
+            {
+                Debug.WriteLine(i);
+                if (menuList[i].category.Equals(Category.BUGER))
+                {
+                    bugerList.Add(new OrderMenu.Food()
+                    {
+                        Price = menuList[i].Price,
+                        Name = menuList[i].Name,
+                        ImgPath = menuList[i].ImgPath,
+                        Menu_idx = menuList[i].Menu_idx,
+                        Amount = menuList[i].Amount
+                    });
+                }
+                else if (menuList[i].category.Equals(Category.SIDE))
+                {
+                    sideList.Add(new OrderMenu.Food()
+                    {
+                        Price = menuList[i].Price,
+                        Name = menuList[i].Name,
+                        ImgPath = menuList[i].ImgPath,
+                        Menu_idx = menuList[i].Menu_idx,
+                        Amount = menuList[i].Amount
+                    });
+                }
+                else if (menuList[i].category.Equals(Category.DRINK))
+                {
+                    drinkList.Add(new OrderMenu.Food()
+                    {
+                        Price = menuList[i].Price,
+                        Name = menuList[i].Name,
+                        ImgPath = menuList[i].ImgPath,
+                        Menu_idx = menuList[i].Menu_idx,
+                        Amount = menuList[i].Amount
+                    });
+                } else
+                {
+                    bugerList.Add(new OrderMenu.Food()
+                    {
+                        Price = menuList[i].Price,
+                        Name = menuList[i].Name,
+                        ImgPath = menuList[i].ImgPath,
+                        Menu_idx = menuList[i].Menu_idx,
+                        Amount = menuList[i].Amount
+                    });
+                }
             }
         }
 
@@ -108,7 +168,8 @@ namespace McDonald_Kiosk
                     Menu = food.Name,
                     Price = food.Price,
                     Amount = 1,
-                    Total = food.Price
+                    Total = food.Price,
+                    Menu_idx = food.Menu_idx
                 });
             }
             lbMenus.UnselectAll();
@@ -184,19 +245,25 @@ namespace McDonald_Kiosk
             }
         }
 
-        private void BeforeMenuButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void NextMenuButton_Click(object sender, RoutedEventArgs e)
+        private void MenuPageButton_Click(object sender, RoutedEventArgs e)
         {
             lstMenu.Clear();
-            for (int i = 0; i <= 8; i++)
+            Category category = (Category)lbCategory.SelectedIndex;
+            if (category.Equals(Category.BUGER))
             {
-                pageCount++;
-                lstMenu.Add(menuList[pageCount]);
+                for (int i = 0; i <= 8; i++)
+                {
+                    pageCount++;
+                    lstMenu.Add(bugerList[pageCount]);
+                }
             }
             lbMenus.ItemsSource = lstMenu;
+        }
+
+        private void MenuBeforeButton_Click(object sender, RoutedEventArgs e)
+        {
+            pageCount -= 8;
+            MenuPageButton_Click(sender, e);
         }
     }
 }

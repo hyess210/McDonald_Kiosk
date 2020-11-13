@@ -172,7 +172,6 @@ namespace McDonald_Kiosk
             if (tables[idx].isEnabled)
             {
                 selectedIdx = idx + 1;
-                DiningPlace.
                 Customer.getInstance().tableNum = selectedIdx;
             }
         }
