@@ -54,11 +54,11 @@ namespace McDonald_Kiosk
 
             InsertOrdering();
             InsertOrderedMenu();
+            DataReset();
 
             timer.Interval = TimeSpan.FromSeconds(15);
             timer.Tick += GoHomePage;
             timer.Start();
-            DataReset();
         }
         private void GoHomePage(object sender, EventArgs e)
         {
@@ -126,10 +126,10 @@ namespace McDonald_Kiosk
             string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             MySqlConnection connection = new MySqlConnection(connStr);
 
-            string sql = "Insert INTO ordered_menu(ordered_menu_id, order_idx, amount) VALUES ("
-                + OrderState.GetInstance()[0].Menu + ',' 
-                + Customer.getInstance().user_idx + ','
-                + Customer.getInstance().tableNum + ")";
+            string sql = "Insert INTO ordered_menu(menu_idx, order_idx, amount) VALUES ("
+                + OrderState.GetInstance()[0].Menu_idx + ',' 
+                + Customer.getInstance().order_idx + ','
+                + OrderState.GetInstance()[0].Amount + ")";
 
             connection.Open();
             MySqlCommand command = new MySqlCommand(sql, connection);
