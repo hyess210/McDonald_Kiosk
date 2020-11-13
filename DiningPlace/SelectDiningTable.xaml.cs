@@ -16,6 +16,7 @@ namespace McDonald_Kiosk
         List<Table> tables = new List<Table>();
         List<Grid> grids = new List<Grid>();
         List<Label> timeTexts = new List<Label>();
+        DiningPlace diningPlace = new DiningPlace();
         int selectedIdx = -1;
         int beforeCount = 0;
         public SelectDiningTable()
@@ -171,12 +172,10 @@ namespace McDonald_Kiosk
             if (tables[idx].isEnabled)
             {
                 selectedIdx = idx + 1;
+                DiningPlace.
+                Customer.getInstance().tableNum = selectedIdx;
             }
         }
 
-        private void setTableNum(object sender, RoutedEventArgs e)
-        {
-            Customer.getInstance().tableNum = selectedIdx;
-        }
     }
 }

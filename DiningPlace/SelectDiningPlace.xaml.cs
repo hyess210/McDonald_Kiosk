@@ -34,7 +34,7 @@ namespace McDonald_Kiosk
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            goToPay.IsEnabled = true;
+            Customer.getInstance().tableNum = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
