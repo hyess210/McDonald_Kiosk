@@ -49,10 +49,11 @@ namespace McDonald_Kiosk
             }
 
             Customer.getInstance().order_idx = orderNum + 1;
-
             Label label = (Label)sender;
             label.Content = "주문번호 : " + Customer.getInstance().order_idx;
-            InsertData();
+
+            InsertOrdering();
+            InsertOrderedMenu();
 
             timer.Interval = TimeSpan.FromSeconds(15);
             timer.Tick += GoHomePage;
@@ -95,7 +96,7 @@ namespace McDonald_Kiosk
             label.Content = "카드번호 : " + Customer.getInstance().user_barcode;
         }
 
-        public void InsertData()
+        public void InsertOrdering()
         {
             string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             MySqlConnection connection = new MySqlConnection(connStr);
@@ -111,20 +112,36 @@ namespace McDonald_Kiosk
 
             try
             {
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("정상적으로 갔다");
-                }
-                else
-                {
-                    MessageBox.Show("비정상 이당");
-                }
+                command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
+            connection.Close();
+        }
 
+        public void InsertOrderedMenu()
+        {
+            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+            MySqlConnection connection = new MySqlConnection(connStr);
+
+            string sql = "Insert INTO ordered_menu(ordered_menu_id, order_idx, amount) VALUES ("
+                + OrderState.GetInstance()[0].Menu + ',' 
+                + Customer.getInstance().user_idx + ','
+                + Customer.getInstance().tableNum + ")";
+
+            connection.Open();
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             connection.Close();
         }
     }
