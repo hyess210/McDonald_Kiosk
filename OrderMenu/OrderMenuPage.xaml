@@ -148,14 +148,14 @@
                             VerticalAlignment="Center" HorizontalAlignment="Right"
                             Content="이전 페이지"
                             Margin="430 30 0 0"
-                            Click="BeforeMenuButton_Click"
+                            Click="MenuBeforeButton_Click"
                             />
                     <Button Width="160" Height="40" FontSize="24"
                             VerticalAlignment="Center" HorizontalAlignment="Right"
                             Background="Gold" Foreground="White"
                             Content="다음 페이지"
                             Margin="10 30 0 0"
-                            Click="NextMenuButton_Click"
+                            Click="MenuPageButton_Click"
                             />
                 </StackPanel>
             </Grid>
