@@ -148,6 +148,7 @@
                             VerticalAlignment="Center" HorizontalAlignment="Right"
                             Content="이전 페이지"
                             Margin="430 30 0 0"
+                            x:Name="MenuBeforeButton"
                             Click="MenuBeforeButton_Click"
                             />
                     <Button Width="160" Height="40" FontSize="24"
@@ -155,6 +156,7 @@
                             Background="Gold" Foreground="White"
                             Content="다음 페이지"
                             Margin="10 30 0 0"
+                            x:Name="MenuPageButton"
                             Click="MenuPageButton_Click"
                             />
                 </StackPanel>
