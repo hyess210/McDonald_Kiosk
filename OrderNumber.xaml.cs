@@ -100,7 +100,7 @@ namespace McDonald_Kiosk
         {
             string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             MySqlConnection connection = new MySqlConnection(connStr);
-
+            
             string sql = "Insert INTO ordering(order_idx, user_idx, tableNum, isCard) VALUES (" 
                 + Customer.getInstance().order_idx + ',' 
                 + Customer.getInstance().user_idx + ','
@@ -123,9 +123,9 @@ namespace McDonald_Kiosk
 
         public void InsertOrderedMenu()
         {
-            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+            string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             MySqlConnection connection = new MySqlConnection(connStr);
-
+            //OrderState.GetInstance().Add(new OrderState() { Menu_idx = 1, Menu = "불고기 버거", Price = 3000, Amount = 2, Total = 6000 });
             string sql = "Insert INTO ordered_menu(menu_idx, order_idx, amount) VALUES ("
                 + OrderState.GetInstance()[0].Menu_idx + ',' 
                 + Customer.getInstance().order_idx + ','
