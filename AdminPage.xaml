@@ -9,27 +9,6 @@
       Title="AdminPage">
 
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="2.5*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Label FontSize="30" FontWeight="Bold">전체 구동 시간 : 20h 24m 51s</Label>
-                <Label FontSize="30" FontWeight="Bold" Margin="0, 50, 0, 0" >총 매출액 : 519800원 / 카드 254000원 / 현금 26000원</Label>
-                <Label FontSize="30" FontWeight="Bold" Margin="0, 100, 0, 0">순수 매출액 : 445300원 / 카드 254000원 / 현금 26000원</Label>
-                <Label FontSize="30" FontWeight="Bold" Margin="0, 150, 0, 0">할인 금액 : 65300원</Label>
-            </Grid>
-
-            <Grid Grid.Column="0" Grid.Row="1">
-                <Button Width="200" Height="50" FontSize="20" HorizontalAlignment="Left" Margin="10, 0, 0, 500">좌석별</Button>
-                <Button Width="200" Height="50" FontSize="20" HorizontalAlignment="Left" Margin="250, 0, 0, 500">통합</Button>
-            </Grid>
-        </Grid>
+        
     </Grid>
 </Page>
