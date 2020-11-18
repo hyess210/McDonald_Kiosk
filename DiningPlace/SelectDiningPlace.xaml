@@ -8,8 +8,7 @@
       d:DesignHeight="325" d:DesignWidth="625"
       Title="SelectDiningPlace">
 
-    <Grid>
-        <Grid Grid.Row="0">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="10*"></RowDefinition>
@@ -29,5 +28,4 @@
                 <Label FontSize="20" Margin="0 120 0 0">포장 식사</Label>
             </Button>
         </Grid>
-    </Grid>
 </Page>

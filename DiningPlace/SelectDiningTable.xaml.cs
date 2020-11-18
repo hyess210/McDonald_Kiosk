@@ -172,9 +172,14 @@ namespace McDonald_Kiosk
             if (tables[idx].isEnabled)
             {
                 selectedIdx = idx + 1;
-                Customer.getInstance().tableNum = selectedIdx;
+                goToPay.IsEnabled = true;
             }
         }
 
+        private void goToPay_Click(object sender, EventArgs args)
+        {
+            Customer.getInstance().tableNum = selectedIdx;
+            Window.GetWindow(this).Close();
+        }
     }
 }

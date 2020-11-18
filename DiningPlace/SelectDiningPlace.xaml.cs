@@ -35,6 +35,7 @@ namespace McDonald_Kiosk
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Customer.getInstance().tableNum = 0;
+            Window.GetWindow(this).Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
