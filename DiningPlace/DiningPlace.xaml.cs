@@ -28,10 +28,9 @@ namespace McDonald_Kiosk
         void DiningPlace_Closed(object sender, EventArgs e)
 
         {
-            OrderMenuPage order = new OrderMenuPage();
+            MainWindow mainWindow = new MainWindow();
             SelectPayment select = new SelectPayment();
-            order.NavigationService.Navigate(select);
-
+            mainWindow.MainContent.Navigate(select);
         }
     }
 }
