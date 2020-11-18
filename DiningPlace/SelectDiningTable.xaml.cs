@@ -16,7 +16,6 @@ namespace McDonald_Kiosk
         List<Table> tables = new List<Table>();
         List<Grid> grids = new List<Grid>();
         List<Label> timeTexts = new List<Label>();
-        DiningPlace diningPlace = new DiningPlace();
         int selectedIdx = -1;
         int beforeCount = 0;
         public SelectDiningTable()
