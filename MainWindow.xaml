@@ -27,6 +27,7 @@
             <Button Width="50" Height="50" 
                     HorizontalAlignment="Right" 
                     Margin="0,6,6,4" Grid.Column="1" 
+                    Background="White"
                     Click="HomeButton_Click">홈버튼</Button>
         </Grid>
 

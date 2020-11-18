@@ -146,7 +146,8 @@ namespace McDonald_Kiosk
             if (isTrue)
             {
                 button.IsEnabled = true;
-            } else
+            }
+            else
             {
                 button.IsEnabled = false;
             }
@@ -159,7 +160,8 @@ namespace McDonald_Kiosk
                 SetButtonEnable(OrderButton, false);
                 SetButtonEnable(DeleteAllButton, false);
                 return;
-            } else
+            }
+            else
             {
                 SetButtonEnable(OrderButton, true);
                 SetButtonEnable(OrderButton, true);
@@ -220,7 +222,8 @@ namespace McDonald_Kiosk
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
-            void DeleteAllMenu() {
+            void DeleteAllMenu()
+            {
                 OrderState.GetInstance().Clear();
                 lvAddedMenu.Items.Refresh();
 
@@ -228,7 +231,7 @@ namespace McDonald_Kiosk
                 DeleteAllButton.IsEnabled = false;
             }
 
-            if(OrderState.GetInstance().Count > 0)
+            if (OrderState.GetInstance().Count > 0)
             {
                 MessageBoxResult m = MessageBox.Show("선택하신 모든 메뉴가 삭제됩니다.", "모두 삭제 하시겠습니까?", MessageBoxButton.YesNo);
                 if (m == MessageBoxResult.Yes)
@@ -240,7 +243,8 @@ namespace McDonald_Kiosk
                 {
                     return;
                 }
-            } else
+            }
+            else
             {
                 DeleteAllMenu();
             }
