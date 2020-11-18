@@ -114,9 +114,6 @@
     <Compile Include="Payment\CashPayment.xaml.cs">
       <DependentUpon>CashPayment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiningPlace\DiningPlace.xaml.cs">
-      <DependentUpon>DiningPlace.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DiningPlace\SelectDiningPlace.xaml.cs">
       <DependentUpon>SelectDiningPlace.xaml</DependentUpon>
     </Compile>
@@ -151,10 +148,6 @@
     <Page Include="Payment\CashPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DiningPlace\DiningPlace.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="DiningPlace\SelectDiningPlace.xaml">
       <Generator>MSBuild:Compile</Generator>

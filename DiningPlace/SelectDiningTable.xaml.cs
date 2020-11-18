@@ -179,7 +179,8 @@ namespace McDonald_Kiosk
         private void goToPay_Click(object sender, EventArgs args)
         {
             Customer.getInstance().tableNum = selectedIdx;
-            Window.GetWindow(this).Close();
+            SelectPayment select = new SelectPayment();
+            NavigationService.Navigate(select);
         }
     }
 }

@@ -301,8 +301,8 @@ namespace McDonald_Kiosk
 
         private void GoDiningSelect_ButtonClick(object sender, RoutedEventArgs e)
         {
-            DiningPlace diningPlace = new DiningPlace();
-            diningPlace.ShowDialog();
+            SelectDiningPlace select = new SelectDiningPlace();
+            NavigationService.Navigate(select);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
