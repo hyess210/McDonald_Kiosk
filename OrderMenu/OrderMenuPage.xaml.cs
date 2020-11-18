@@ -87,6 +87,9 @@ namespace McDonald_Kiosk
 
         private void OrderMenuPage_Loaded(object sender, RoutedEventArgs e)
         {
+            SetButtonEnable(OrderButton, false);
+            SetButtonEnable(DeleteAllButton, false);
+
             for (int i = 0; i < menuList.Count; i++)
             {
                 Debug.WriteLine(i);
@@ -135,6 +138,33 @@ namespace McDonald_Kiosk
                     });
                 }
             }
+            MenuPageButton_Click(sender, e);
+        }
+
+        private void SetButtonEnable(Button button, bool isTrue)
+        {
+            if (isTrue)
+            {
+                button.IsEnabled = true;
+            } else
+            {
+                button.IsEnabled = false;
+            }
+        }
+
+        private void CheckLvAddedMenuEmpty()
+        {
+            if (OrderState.GetInstance().Count <= 0)
+            {
+                SetButtonEnable(OrderButton, false);
+                SetButtonEnable(DeleteAllButton, false);
+                return;
+            } else
+            {
+                SetButtonEnable(OrderButton, true);
+                SetButtonEnable(OrderButton, true);
+                return;
+            }
         }
 
         private void lbCategory_SelectionChanged(object sender, RoutedEventArgs e)
@@ -154,6 +184,9 @@ namespace McDonald_Kiosk
             bool isExist = false;
             Food food = lbMenus.SelectedItem as Food;
 
+            SetButtonEnable(OrderButton, true);
+            SetButtonEnable(DeleteAllButton, true);
+
             if (lbMenus.SelectedIndex == -1)
                 return;
 
@@ -165,6 +198,7 @@ namespace McDonald_Kiosk
                     OrderState.GetInstance()[i].Amount++;
                     OrderState.GetInstance()[i].Total = OrderState.GetInstance()[i].Amount * OrderState.GetInstance()[i].Price;
                 }
+
             }
             if (!isExist)
             {
@@ -178,6 +212,7 @@ namespace McDonald_Kiosk
                     Menu_idx = food.Menu_idx
                 });
             }
+
             lbMenus.UnselectAll();
             lvAddedMenu.ItemsSource = OrderState.GetInstance();
             lvAddedMenu.Items.Refresh();
@@ -185,8 +220,30 @@ namespace McDonald_Kiosk
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
-            OrderState.GetInstance().Clear();
-            lvAddedMenu.Items.Refresh();
+            void DeleteAllMenu() {
+                OrderState.GetInstance().Clear();
+                lvAddedMenu.Items.Refresh();
+
+                OrderButton.IsEnabled = false;
+                DeleteAllButton.IsEnabled = false;
+            }
+
+            if(OrderState.GetInstance().Count > 0)
+            {
+                MessageBoxResult m = MessageBox.Show("선택하신 모든 메뉴가 삭제됩니다.", "모두 삭제 하시겠습니까?", MessageBoxButton.YesNo);
+                if (m == MessageBoxResult.Yes)
+                {
+                    DeleteAllMenu();
+                    return;
+                }
+                else if (m == MessageBoxResult.No)
+                {
+                    return;
+                }
+            } else
+            {
+                DeleteAllMenu();
+            }
         }
 
         private void MenuAddButton_Click(object sender, RoutedEventArgs e)
@@ -218,6 +275,7 @@ namespace McDonald_Kiosk
                 else if (OrderState.GetInstance()[i].Menu.Equals(BtnMenu.Menu))
                 {
                     OrderState.GetInstance().Remove(OrderState.GetInstance()[i]);
+                    CheckLvAddedMenuEmpty();
                 }
             }
             lvAddedMenu.Items.Refresh();
@@ -231,6 +289,7 @@ namespace McDonald_Kiosk
                 if (OrderState.GetInstance()[i].Menu.Equals(BtnMenu.Menu))
                 {
                     OrderState.GetInstance().Remove(OrderState.GetInstance()[i]);
+                    CheckLvAddedMenuEmpty();
                 }
             }
             lvAddedMenu.Items.Refresh();
@@ -247,7 +306,24 @@ namespace McDonald_Kiosk
             SelectPayment selectPayment = new SelectPayment();
             if (NavigationService.CanGoBack)
             {
-                NavigationService.GoBack();
+                if (OrderState.GetInstance().Count > 0)
+                {
+                    MessageBoxResult m = MessageBox.Show("선택하신 모든 메뉴가 삭제됩니다.", "이전 페이지로 가시겠습니까?", MessageBoxButton.YesNo);
+                    if (m == MessageBoxResult.Yes)
+                    {
+                        OrderState.GetInstance().Clear();
+                        NavigationService.GoBack();
+                        return;
+                    }
+                    else if (m == MessageBoxResult.No)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    NavigationService.GoBack();
+                }
             }
         }
 
@@ -284,13 +360,16 @@ namespace McDonald_Kiosk
             if (category.Equals(Category.BUGER))
             {
                 MenuMovePage(bugerList);
-            } else if (category.Equals(Category.DRINK))
+            }
+            else if (category.Equals(Category.DRINK))
             {
                 MenuMovePage(drinkList);
-            } else if (category.Equals(Category.SIDE))
+            }
+            else if (category.Equals(Category.SIDE))
             {
                 MenuMovePage(sideList);
-            } else
+            }
+            else
             {
                 MenuMovePage(bugerList);
             }
@@ -303,5 +382,11 @@ namespace McDonald_Kiosk
             pageCount -= pageCount;
             MenuPageButton_Click(sender, e);
         }
+
+        //private void DiningPlace_Closed (object sender, RoutedEventArgs e)
+        //{
+        //    SelectPayment selectPayment = new SelectPayment();
+        //    NavigationService.Navigate(selectPayment);
+        //}
     }
 }
