@@ -34,7 +34,21 @@ namespace McDonald_Kiosk
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+            if (OrderState.GetInstance().Count > 0)
+            {
+                MessageBoxResult m = MessageBox.Show("선택하신 모든 메뉴가 삭제됩니다.", "이전 페이지로 가시겠습니까?", MessageBoxButton.YesNo);
+                if (m == MessageBoxResult.Yes)
+                {
+                    OrderMenuPage order = new OrderMenuPage();
+                    OrderState.GetInstance().Clear();
+                    MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+                }
+            }
+            else
+            {
+                OrderState.GetInstance().Clear();
+                MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+            }
         }
     }
 }
