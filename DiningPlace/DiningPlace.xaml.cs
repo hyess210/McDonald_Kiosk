@@ -22,6 +22,16 @@ namespace McDonald_Kiosk
         public DiningPlace()
         {
             InitializeComponent();
+            this.Closed += new EventHandler(DiningPlace_Closed);
+        }
+
+        void DiningPlace_Closed(object sender, EventArgs e)
+
+        {
+            OrderMenuPage order = new OrderMenuPage();
+            SelectPayment select = new SelectPayment();
+            order.NavigationService.Navigate(select);
+
         }
     }
 }
