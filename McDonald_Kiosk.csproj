@@ -104,7 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminPage.xaml.cs">
+    <Compile Include="AdminPage\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
@@ -136,7 +136,9 @@
       <DependentUpon>SelectPayment.xaml</DependentUpon>
     </Compile>
     <Compile Include="DiningPlace\Table.cs" />
-    <Page Include="AdminPage.xaml">
+    <Compile Include="ServerManager\DB.cs" />
+    <Compile Include="ServerManager\Mysql.cs" />
+    <Page Include="AdminPage\AdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
