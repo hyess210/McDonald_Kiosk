@@ -26,7 +26,7 @@
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <Label Margin="10">아이디</Label>
-            <TextBox x:Name="id_TextBox" Margin="80 10 30 10" TextChanged="TextBox_TextChanged"></TextBox>
+            <TextBox x:Name="id_TextBox" Margin="80 10 30 10"></TextBox>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
                 <ColumnDefinition Width="109*"/>
             </Grid.ColumnDefinitions>
             <Label Margin="10,10,9.8,9.6" Grid.ColumnSpan="2">비밀번호</Label>
-            <TextBox Name="pw_TextBox" Margin="80,10,29.8,9.6" Grid.ColumnSpan="2" TextChanged="TextBox_TextChanged"></TextBox>
+            <TextBox Name="pw_TextBox" Margin="80,10,29.8,9.6" Grid.ColumnSpan="2"></TextBox>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right">
             <Label>자동로그인</Label>

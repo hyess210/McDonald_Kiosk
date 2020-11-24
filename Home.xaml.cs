@@ -23,6 +23,7 @@ namespace McDonald_Kiosk
         public Home()
         {
             InitializeComponent();
+            ShowLoginPage();
         }
 
         private void playVideo()
@@ -34,6 +35,12 @@ namespace McDonald_Kiosk
         {
             OrderMenuPage order = new OrderMenuPage();
             NavigationService.Navigate(order);
+        }
+
+        private void ShowLoginPage()
+        {
+            McDonald_Kiosk.Login login = new McDonald_Kiosk.Login();
+            login.ShowDialog();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace McDonald_Kiosk
     /// </summary>
     public partial class Login : Window
     {
+        bool isAutoLogin = false;
+        string userId;
         public Login()
         {
             InitializeComponent();
@@ -26,7 +28,28 @@ namespace McDonald_Kiosk
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            checkOverlap(id_TextBox.Text, pw_TextBox.Text);
+        }
+
+        private void checkOverlap(string id, string pw)
+        {
+            if (id == "baejoohyun" && pw == "a1234567")
+            {
+                userId = id_TextBox.Text;
+                Window.GetWindow(this).Close();
+            }
+            else
+                MessageBox.Show("아이디 또는 비밀번호가 올바르지 않습니다.");
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            isAutoLogin = true;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            isAutoLogin = false;
         }
     }
 }
