@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,6 +29,16 @@ namespace McDonald_Kiosk
         public OrderNumber()
         {
             InitializeComponent();
+            SendMessage();
+        }
+
+        private void SendMessage()
+        {
+            TcpClient tcp = new TcpClient("10.80.163.155", 80);
+            string msg = "{" +
+                         "  \"MSGType\" : 2" +
+                         "  \"Id\" : " + Customer.getInstance().user_id;
+                         "  \"\""
         }
 
         public void Label_Loaded(object sender, RoutedEventArgs e)
