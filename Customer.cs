@@ -15,6 +15,7 @@ namespace McDonald_Kiosk
 
         public string user_id { get; set; }
 
+        public bool isLogin { get; set; }
         public bool isAutoLogin { get; set; }
 
         public int order_idx { get; set; }

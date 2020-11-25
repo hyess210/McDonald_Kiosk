@@ -23,7 +23,6 @@ namespace McDonald_Kiosk
         public Home()
         {
             InitializeComponent();
-            ShowLoginPage();
         }
 
         private void playVideo()
@@ -39,11 +38,17 @@ namespace McDonald_Kiosk
 
         private void ShowLoginPage()
         {
-            if(!Customer.getInstance().isAutoLogin)
+            if(!Customer.getInstance().isAutoLogin && !Customer.getInstance().isLogin)
             {
                 Login login = new Login();
                 login.ShowDialog();
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowLoginPage();
+
         }
     }
 }

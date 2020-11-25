@@ -37,7 +37,7 @@ namespace McDonald_Kiosk
             TcpClient tcp = new TcpClient("10.80.163.155", 80);
             var json = new JObject();
             json.Add("MSGType", 2);
-            json.Add("Id", 2211);
+            json.Add("Id", "2211");
             json.Add("Content", "짜쟌");
             json.Add("ShopName", "맥도날드");
             json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx).ToString());

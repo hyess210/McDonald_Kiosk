@@ -22,7 +22,6 @@ namespace McDonald_Kiosk
         public Login()
         {
             InitializeComponent();
-            Customer.getInstance().isAutoLogin = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,6 +34,7 @@ namespace McDonald_Kiosk
             if (id == "baejoohyun" && pw == "a1234567")
             {
                 Customer.getInstance().user_id = id_TextBox.Text;
+                Customer.getInstance().isLogin = true;
                 Window.GetWindow(this).Close();
             }
             else
@@ -49,6 +49,14 @@ namespace McDonald_Kiosk
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Customer.getInstance().isAutoLogin = false;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(Customer.getInstance().isLogin)
+                e.Cancel = false;
+            else
+                e.Cancel = true;
         }
     }
 }

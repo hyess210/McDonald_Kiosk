@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:McDonald_Kiosk"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Home">
+      Title="Home"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

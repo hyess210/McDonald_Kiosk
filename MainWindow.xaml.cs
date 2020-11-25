@@ -41,13 +41,16 @@ namespace McDonald_Kiosk
                 {
                     OrderMenuPage order = new OrderMenuPage();
                     OrderState.GetInstance().Clear();
-                    MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+                    //MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+                    MainContent.Navigate(new Home());
                 }
             }
             else
             {
                 OrderState.GetInstance().Clear();
-                MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+                //MainContent.Navigate(new Uri("Home.xaml", UriKind.Relative));
+                MainContent.Navigate(new Home());
+
             }
         }
     }
