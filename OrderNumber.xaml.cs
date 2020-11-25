@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Windows;
+using Newtonsoft.Json.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -34,28 +35,28 @@ namespace McDonald_Kiosk
         private void SendMessage()
         {
             TcpClient tcp = new TcpClient("10.80.163.155", 80);
-            string msg = "{" +
-                         "  \"MSGType\" : 2" +
-                         "  \"Id\" : \"2211\"" +
-                         "  \"Content\" : \"짜쟌\"" +
-                         "  \"ShopName\" : \"맥도날드\"" +
-                         "  \"OrderNumber\" : " + OrderNumOp(Customer.getInstance().order_idx) + "\"" +
-                         "  \"Menus\" : [";
+            var json = new JObject();
+            json.Add("MSGType", 2);
+            json.Add("Id", 2211);
+            json.Add("Content", "짜쟌");
+            json.Add("ShopName", "맥도날드");
+            json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx).ToString());
+            var menus = new JObject();
             int max = OrderState.GetInstance().Count;
             for (int i = 0; i < max; i++)
             {
                 OrderState orderMenus = OrderState.GetInstance()[i];
-                msg += "{" +
-                       "    \"Name\" : \"" + orderMenus.Menu + "\"" +
-                       "    \"Count\" : " + orderMenus.Amount +
-                       "    \"Price\" : " + orderMenus.Price +
-                       "}" + (i != (max - 1) ? "," : "");
+                var menu = new JObject();
+                menu.Add("Name", orderMenus.Menu);
+                menu.Add("Count", orderMenus.Amount);
+                menu.Add("Price", orderMenus.Price);
+                menus.Add(menu);
             }
-            msg += "    ]" +
-                   "}";
-            byte[] buff = Encoding.UTF8.GetBytes(msg);
+            json.Add("Menus", menus);
+            byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
             NetworkStream network = tcp.GetStream();
             network.Write(buff, 0, buff.Length);
+            Console.WriteLine(json.ToString());
         }
 
         private string OrderNumOp(int num)
