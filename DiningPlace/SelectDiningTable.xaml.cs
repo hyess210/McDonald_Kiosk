@@ -167,12 +167,8 @@ namespace McDonald_Kiosk
         private void Click_Grid(object sender, EventArgs args)
         {
             Grid param = sender as Grid;
-            int idx = int.Parse(param.Name.Substring(5)) - 1;
-            if (tables[idx].isEnabled)
-            {
-                selectedIdx = idx + 1;
-                goToPay.IsEnabled = true;
-            }
+            selectedIdx = int.Parse(param.Tag.ToString());
+            goToPay.IsEnabled = true;
         }
 
         private void goToPay_Click(object sender, EventArgs args)
