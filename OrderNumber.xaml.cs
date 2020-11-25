@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace McDonald_Kiosk
@@ -37,8 +36,37 @@ namespace McDonald_Kiosk
             TcpClient tcp = new TcpClient("10.80.163.155", 80);
             string msg = "{" +
                          "  \"MSGType\" : 2" +
-                         "  \"Id\" : " + Customer.getInstance().user_id;
-                         "  \"\""
+                         "  \"Id\" : \"2211\"" +
+                         "  \"Content\" : \"짜쟌\"" +
+                         "  \"ShopName\" : \"맥도날드\"" +
+                         "  \"OrderNumber\" : " + OrderNumOp(Customer.getInstance().order_idx) + "\"" +
+                         "  \"Menus\" : [";
+            int max = OrderState.GetInstance().Count;
+            for (int i = 0; i < max; i++)
+            {
+                OrderState orderMenus = OrderState.GetInstance()[i];
+                msg += "{" +
+                       "    \"Name\" : \"" + orderMenus.Menu + "\"" +
+                       "    \"Count\" : " + orderMenus.Amount +
+                       "    \"Price\" : " + orderMenus.Price +
+                       "}" + (i != (max - 1) ? "," : "");
+            }
+            msg += "    ]" +
+                   "}";
+            byte[] buff = Encoding.UTF8.GetBytes(msg);
+            NetworkStream network = tcp.GetStream();
+            network.Write(buff, 0, buff.Length);
+        }
+
+        private string OrderNumOp(int num)
+        {
+            num %= 100;
+            if (num == 0)
+                return "100";
+            else if(num >= 10)
+                return "0" + num;
+            else
+                return "00" + num;
         }
 
         public void Label_Loaded(object sender, RoutedEventArgs e)
