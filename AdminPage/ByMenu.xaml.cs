@@ -35,12 +35,14 @@ namespace McDonald_Kiosk.AdminPage
             public double[] count_table;
             public double[] price_table;
         };
-
+        
         public struct Category_Info
         {
             public string name;
             public double total_count;
             public double total_price;
+            public double[] count_table;
+            public double[] price_table;
         };
 
         public List<Menu_Info> MenuData = new List<Menu_Info>();
@@ -60,10 +62,15 @@ namespace McDonald_Kiosk.AdminPage
 
         private void ListSetting()
         {
-            Category_Info ci = new Category_Info();
-            CategoryData.Add(ci);
-            CategoryData.Add(ci);
-            CategoryData.Add(ci);
+            for(int i = 0; i < 3; i++)
+            {
+                Category_Info ci = new Category_Info();
+                double[] ctAmount = new double[9];
+                double[] ctPrice = new double[9];
+                ci.count_table = ctAmount;
+                ci.price_table = ctPrice;
+                CategoryData.Add(ci);
+            }
         }
 
         private void GetValues()
@@ -132,28 +139,51 @@ namespace McDonald_Kiosk.AdminPage
                         tempMenu.price_table = priceArr;
                     }
                     MenuData[menu_idx] = tempMenu;
+
+                    Category_Info category = new Category_Info();
+                    double[] ctAmount = new double[9];
+                    double[] ctPrice = new double[9];
+
+                    if (tableNum >= 0)
+                    {
+                        ctAmount = CategoryData[GetTypeOfCategory(tempMenu.category)].count_table;
+                        ctPrice = CategoryData[GetTypeOfCategory(tempMenu.category)].price_table;
+                        ctAmount[tableNum] += double.Parse(rdr["amount"].ToString());
+                        ctPrice[tableNum] = ctAmount[tableNum] * tempMenu.price;
+                        category.count_table = ctAmount;
+                        category.price_table = ctPrice;
+                        CategoryData[GetTypeOfCategory(tempMenu.category)] = category;
+                    }
                 }
 
                 foreach (Menu_Info menu in MenuData)
                 {
-                    int categoryType = 0;
-
-                    if (menu.category.Equals("burger"))
-                        categoryType = 0;
-                    else if (menu.category.Equals("side"))
-                        categoryType = 1;
-                    else
-                        categoryType = 2;
+                    int categoryType = GetTypeOfCategory(menu.category);
 
                     Category_Info category = new Category_Info();
                     category.name = menu.category;
                     category.total_count = menu.total_count + CategoryData[categoryType].total_count;
                     category.total_price = menu.total_price + CategoryData[categoryType].total_price;
-
+                    category.count_table = CategoryData[categoryType].count_table;
+                    category.price_table = CategoryData[categoryType].price_table;
                     CategoryData[categoryType] = category;
                 }
                 rdr.Close();
             }
+        }
+
+        private int GetTypeOfCategory(string value)
+        {
+            int categoryType = 0;
+
+            if (value.Equals("burger"))
+                categoryType = 0;
+            else if (value.Equals("side"))
+                categoryType = 1;
+            else
+                categoryType = 2;
+
+            return categoryType;
         }
 
         private void CreateValues()
@@ -240,7 +270,11 @@ namespace McDonald_Kiosk.AdminPage
             }
             if(SeatType && MenuType)
             {
-                SetSeatValues();
+                SetTableMenuValues();
+            }
+            if(SeatType && !MenuType)
+            {
+                SetTableCategoryValues();
             }
         }
 
@@ -274,7 +308,7 @@ namespace McDonald_Kiosk.AdminPage
             SetCategoryLabel();
         }
 
-        private void SetSeatValues()
+        private void SetTableMenuValues()
         {
             int barCnt = 0;
             int tableNum = Seat.SelectedIndex - 1;
@@ -284,11 +318,23 @@ namespace McDonald_Kiosk.AdminPage
                 {
                     TopChart[0].Values.Add(double.Parse(menu.count_table[tableNum].ToString()));
                     BottomChart[0].Values.Add(double.Parse(menu.price_table[tableNum].ToString()));
-                    //BottomChart[0].Values.Add(menu.total_price);
                 }
                 barCnt++;
             }
             SetMenuLabel();
+        }
+
+        private void SetTableCategoryValues()
+        {
+            double[] count = new double[3];
+            double[] price = new double[3];
+            
+            foreach (Category_Info category in CategoryData)
+            {
+                TopChart[0].Values.Add(category.count_table[Seat.SelectedIndex - 1]);
+                BottomChart[0].Values.Add(category.price_table[Seat.SelectedIndex - 1]);
+            }
+            SetCategoryLabel();
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -302,7 +348,6 @@ namespace McDonald_Kiosk.AdminPage
             ComboBox cb = (ComboBox)sender;
 
             Menu_Category.IsEnabled = true;
-            Page.IsEnabled = true;
 
             if (cb.SelectedIndex == 0)
             {
@@ -312,10 +357,12 @@ namespace McDonald_Kiosk.AdminPage
             {
                 Page.SelectedIndex = 4;
                 Page.IsEnabled = false;
+                SeatType = true;
             }
-            else
+            else if(cb.SelectedIndex != 0 && Menu_Category.SelectedIndex == 0)
             {
                 Page.SelectedIndex = 0;
+                Page.IsEnabled = true;
                 SeatType = true;
             }
 
@@ -336,6 +383,8 @@ namespace McDonald_Kiosk.AdminPage
             {
                 MenuType = false;
                 Page.SelectedIndex = 4;
+                minRange = 0;
+                maxRange = 10;
                 Page.IsEnabled = false;
             }
 
