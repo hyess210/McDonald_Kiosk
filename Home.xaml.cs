@@ -32,8 +32,7 @@ namespace McDonald_Kiosk
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OrderMenuPage order = new OrderMenuPage();
-            NavigationService.Navigate(order);
+            GoNavigation_Click(sender, e, "OrderMenu/OrderMenuPage.xaml");
         }
 
         private void ShowLoginPage()

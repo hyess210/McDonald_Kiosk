@@ -87,8 +87,18 @@ namespace McDonald_Kiosk
 
         private void OrderMenuPage_Loaded(object sender, RoutedEventArgs e)
         {
-            SetButtonEnable(OrderButton, false);
-            SetButtonEnable(DeleteAllButton, false);
+            lvAddedMenu.ItemsSource = OrderState.GetInstance();
+            lvAddedMenu.Items.Refresh();
+
+            if (OrderState.GetInstance().Count == 0)
+            {
+                SetButtonEnable(OrderButton, false);
+                SetButtonEnable(DeleteAllButton, false);
+            } else
+            {
+                SetButtonEnable(OrderButton, true);
+                SetButtonEnable(DeleteAllButton, true);
+            }
 
             for (int i = 0; i < menuList.Count; i++)
             {

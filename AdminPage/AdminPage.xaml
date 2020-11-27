@@ -42,7 +42,7 @@
                     Margin="0 0 0 80"
                     Click="GoByMenu_Click"
                     ></Button>
-            <Button Content="Button" Style="{StaticResource RoundButton}" 
+            <Button Content="할인율" Style="{StaticResource RoundButton}" 
                     Width="150" Height="70"
                     Margin="0 100 0 0"
                     Click="GoSales_Click"
