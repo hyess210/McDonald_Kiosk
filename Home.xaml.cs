@@ -50,5 +50,14 @@ namespace McDonald_Kiosk
             ShowLoginPage();
 
         }
+
+        private void GoAdminPage_Click(object sender, RoutedEventArgs e)
+        {
+            GoNavigation_Click(sender, e, "AdminPage/AdminPage.xaml");
+        }
+        private void GoNavigation_Click(object sender, RoutedEventArgs e, string navigateUrl)
+        {
+            NavigationService.Navigate(new Uri(navigateUrl, UriKind.Relative));
+        }
     }
 }
