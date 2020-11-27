@@ -126,6 +126,9 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Message.xaml.cs">
+      <DependentUpon>Message.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Payment\CardPayment.xaml.cs">
       <DependentUpon>CardPayment.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Message.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Payment\CardPayment.xaml">
       <SubType>Designer</SubType>

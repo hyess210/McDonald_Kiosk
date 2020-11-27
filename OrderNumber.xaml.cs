@@ -33,7 +33,11 @@ namespace McDonald_Kiosk
 
         private void SendMessage()
         {
-            TcpClient tcp = new TcpClient("10.80.162.152", 80);
+            TcpClient tcp = new TcpClient("10.80.162.151", 80);
+            if(!tcp.Connected)
+            {
+                MessageBox.Show("연결이 안되요!");
+            }
             var json = new JObject();
             json.Add("MSGType", 2);
             json.Add("Id", "2211");

@@ -53,5 +53,11 @@ namespace McDonald_Kiosk
 
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Message message = new Message();
+            message.ShowDialog();
+        }
     }
 }

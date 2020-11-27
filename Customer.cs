@@ -18,6 +18,8 @@ namespace McDonald_Kiosk
         public bool isLogin { get; set; }
         public bool isAutoLogin { get; set; }
 
+        public bool isGroupMessage { get; set; }
+
         public int order_idx { get; set; }
         public int tableNum { get; set; }
         public bool isCard { get; set; }
