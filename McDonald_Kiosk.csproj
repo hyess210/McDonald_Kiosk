@@ -110,8 +110,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminPage\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage\ByMenu.xaml.cs">
       <DependentUpon>ByMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPage\Sales.xaml.cs">
+      <DependentUpon>Sales.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="Home.xaml.cs">
@@ -147,7 +153,15 @@
     <Compile Include="DiningPlace\Table.cs" />
     <Compile Include="ServerManager\DB.cs" />
     <Compile Include="ServerManager\Mysql.cs" />
+    <Page Include="AdminPage\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminPage\ByMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPage\Sales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

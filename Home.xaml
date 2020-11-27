@@ -12,7 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Name="videoView">
@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Button Grid.Column="1" Grid.Row="1"
@@ -44,6 +44,14 @@
                     </Style>
                 </Button.Style>
             </Button>
+            <Button
+                Content="관리자 화면"
+                Background="Red"
+                Foreground="White"
+                FontSize="12px"
+                HorizontalAlignment="Left"
+                Click="GoAdminPage_Click"
+                />
         </Grid>
     </Grid>
 </Page>
