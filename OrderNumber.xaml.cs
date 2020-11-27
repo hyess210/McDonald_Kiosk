@@ -78,7 +78,7 @@ namespace McDonald_Kiosk
 
         public void Label_Loaded(object sender, RoutedEventArgs e)
         {
-            string connStr = "Server=localhost;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+            string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             int orderNum = 0;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))

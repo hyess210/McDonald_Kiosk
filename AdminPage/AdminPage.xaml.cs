@@ -25,6 +25,11 @@ namespace McDonald_Kiosk.AdminPage
             InitializeComponent();
         }
 
+        private void GoTotal_Click(object sender, RoutedEventArgs e)
+        {
+            GoNavigation_Click(sender, e, "AdminPage/TotalPage.xaml");
+        }
+
         private void GoByMenu_Click(object sender, RoutedEventArgs e)
         {
             GoNavigation_Click(sender, e, "AdminPage/ByMenu.xaml");
@@ -32,7 +37,7 @@ namespace McDonald_Kiosk.AdminPage
 
         private void GoSales_Click(object sender, RoutedEventArgs e)
         {
-            GoNavigation_Click(sender, e, "Sales.xaml");
+            GoNavigation_Click(sender, e, "AdminPage/Sales.xaml");
         }
 
         private void GoNavigation_Click(object sender, RoutedEventArgs e, string navigateUrl)
