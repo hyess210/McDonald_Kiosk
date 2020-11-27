@@ -43,5 +43,11 @@ namespace McDonald_Kiosk
         {
 
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+                NavigationService.GoBack();
+        }
     }
 }

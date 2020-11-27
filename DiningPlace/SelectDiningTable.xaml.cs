@@ -177,5 +177,11 @@ namespace McDonald_Kiosk
             SelectPayment select = new SelectPayment();
             NavigationService.Navigate(select);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+                NavigationService.GoBack();
+        }
     }
 }

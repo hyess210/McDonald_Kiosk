@@ -29,29 +29,31 @@ namespace McDonald_Kiosk
         public OrderNumber()
         {
             InitializeComponent();
-            SendMessage();
         }
 
         private void SendMessage()
         {
-            TcpClient tcp = new TcpClient("10.80.163.155", 80);
+            TcpClient tcp = new TcpClient("10.80.162.152", 80);
             var json = new JObject();
             json.Add("MSGType", 2);
             json.Add("Id", "2211");
-            json.Add("Content", "짜쟌");
             json.Add("ShopName", "맥도날드");
-            json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx).ToString());
-            var menus = new JObject();
+            json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx));
+            var menus = new JArray();
             int max = OrderState.GetInstance().Count;
             for (int i = 0; i < max; i++)
             {
                 OrderState orderMenus = OrderState.GetInstance()[i];
+                Console.WriteLine(orderMenus);
                 var menu = new JObject();
+                Console.WriteLine(orderMenus.Menu);
                 menu.Add("Name", orderMenus.Menu);
                 menu.Add("Count", orderMenus.Amount);
                 menu.Add("Price", orderMenus.Price);
+                Console.WriteLine(menu.ToString());
                 menus.Add(menu);
             }
+            Console.WriteLine(menus.ToString());
             json.Add("Menus", menus);
             byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
             NetworkStream network = tcp.GetStream();
@@ -61,10 +63,14 @@ namespace McDonald_Kiosk
 
         private string OrderNumOp(int num)
         {
-            num %= 100;
-            if (num == 0)
-                return "100";
-            else if(num >= 10)
+            if (num > 100)
+            {
+                if (num % 100 == 0)
+                    return "100";
+                else 
+                    return (num % 100).ToString();
+            }
+            else if (num >= 10)
                 return "0" + num;
             else
                 return "00" + num;
@@ -95,6 +101,7 @@ namespace McDonald_Kiosk
             label.Content = "주문번호 : " + Customer.getInstance().order_idx;
 
             InsertAllData();
+            SendMessage();
             DataReset();
             RestartCount();
         }

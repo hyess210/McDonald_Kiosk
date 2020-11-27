@@ -18,7 +18,7 @@
 
         <Grid Grid.Row="0">
             <Label FontSize="50" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="0, 30, 0, 0">메뉴별 차트</Label>            
+                   HorizontalAlignment="Center" Margin="0, 30, 0, 0">통계 차트</Label>            
             <ComboBox Name="Seat" Margin="0,58,550,8" Height="25" Width="250" Loaded="ComboBox_Loaded" SelectionChanged="ComboBox1_SelectionChanged">
                 <ComboBoxItem Content="전체"/>
                 <ComboBoxItem Content="Seat1"/>
