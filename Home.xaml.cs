@@ -47,7 +47,6 @@ namespace McDonald_Kiosk
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ShowLoginPage();
-
         }
 
         private void GoAdminPage_Click(object sender, RoutedEventArgs e)

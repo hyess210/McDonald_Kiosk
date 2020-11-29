@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:McDonald_Kiosk"
       mc:Ignorable="d"
-      Title="OrderMenuPage" Height="900 " Width="1920">
+      Title="OrderMenuPage" Height="900" Width="1920">
 
     <Page.Resources>
         <Style x:Key="ListItemStyle" TargetType="ListBoxItem">

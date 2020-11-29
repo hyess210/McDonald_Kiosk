@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,6 +37,7 @@ namespace McDonald_Kiosk
             {
                 Customer.getInstance().user_id = id_TextBox.Text;
                 Customer.getInstance().isLogin = true;
+                //SendMessage();
                 Window.GetWindow(this).Close();
             }
             else
@@ -57,6 +60,23 @@ namespace McDonald_Kiosk
                 e.Cancel = false;
             else
                 e.Cancel = true;
+        }
+
+        private void SendMessage()
+        {
+            try {
+                TcpClient tcp = new TcpClient("10.80.162.151", 80);
+                var json = new JObject();
+                json.Add("MSGType", 0);
+                json.Add("Id", "2211");
+                byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
+                NetworkStream network = tcp.GetStream();
+                network.Write(buff, 0, buff.Length);
+                Console.WriteLine(json.ToString());
+            } catch(SocketException e)
+            {
+                MessageBox.Show("서버와 연결이 되지 않습니다.");
+            }
         }
     }
 }

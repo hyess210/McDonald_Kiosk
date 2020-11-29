@@ -33,36 +33,39 @@ namespace McDonald_Kiosk
 
         private void SendMessage()
         {
-            TcpClient tcp = new TcpClient("10.80.162.151", 80);
-            if(!tcp.Connected)
+            try
             {
-                MessageBox.Show("연결이 안되요!");
-            }
-            var json = new JObject();
-            json.Add("MSGType", 2);
-            json.Add("Id", "2211");
-            json.Add("ShopName", "맥도날드");
-            json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx));
-            var menus = new JArray();
-            int max = OrderState.GetInstance().Count;
-            for (int i = 0; i < max; i++)
+                TcpClient tcp = new TcpClient("10.80.162.151", 80);
+                var json = new JObject();
+                json.Add("MSGType", 2);
+                json.Add("Id", "2211");
+                json.Add("ShopName", "맥도날드");
+                json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx));
+                var menus = new JArray();
+                int max = OrderState.GetInstance().Count;
+                for (int i = 0; i < max; i++)
+                {
+                    OrderState orderMenus = OrderState.GetInstance()[i];
+                    Console.WriteLine(orderMenus);
+                    var menu = new JObject();
+                    Console.WriteLine(orderMenus.Menu);
+                    menu.Add("Name", orderMenus.Menu);
+                    menu.Add("Count", orderMenus.Amount);
+                    menu.Add("Price", orderMenus.Price);
+                    Console.WriteLine(menu.ToString());
+                    menus.Add(menu);
+                }
+                Console.WriteLine(menus.ToString());
+                json.Add("Menus", menus);
+                byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
+                NetworkStream network = tcp.GetStream();
+                network.Write(buff, 0, buff.Length);
+                Console.WriteLine(json.ToString());
+            } catch(SocketException e)
             {
-                OrderState orderMenus = OrderState.GetInstance()[i];
-                Console.WriteLine(orderMenus);
-                var menu = new JObject();
-                Console.WriteLine(orderMenus.Menu);
-                menu.Add("Name", orderMenus.Menu);
-                menu.Add("Count", orderMenus.Amount);
-                menu.Add("Price", orderMenus.Price);
-                Console.WriteLine(menu.ToString());
-                menus.Add(menu);
+                MessageBox.Show("서버와 연결이 되지 않습니다.");
             }
-            Console.WriteLine(menus.ToString());
-            json.Add("Menus", menus);
-            byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
-            NetworkStream network = tcp.GetStream();
-            network.Write(buff, 0, buff.Length);
-            Console.WriteLine(json.ToString());
+            Console.WriteLine(Customer.getInstance().isAutoLogin);
         }
 
         private string OrderNumOp(int num)

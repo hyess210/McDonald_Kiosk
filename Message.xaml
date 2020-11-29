@@ -25,14 +25,14 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
                 <Label Content="메세지"></Label>
-                <TextBox HorizontalAlignment="Right" Width="330" Margin="10"></TextBox>
+                <TextBox HorizontalAlignment="Right" Width="330" Margin="10" Name="message"></TextBox>
             </Grid>
             <Grid Grid.Row="2" HorizontalAlignment="Right">
                 <CheckBox HorizontalAlignment="Right" Width="74" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
                 <Label Content="그룹 메세지"></Label>
             </Grid>
             <Grid Grid.Row="3">
-                <Button Width="100" Content="전송"></Button>
+                <Button Width="100" Content="전송" Click="Button_Click"></Button>
             </Grid>
         </Grid>
         <TextBox>
