@@ -85,10 +85,10 @@
                                             DisplayMemberBinding="{Binding userName}"/>
                         <GridViewColumn x:Name="lvUserPrice"  Width="200"
                                             Header="바코드" 
-                                            DisplayMemberBinding="{Binding userQR}" />
+                                            DisplayMemberBinding="{Binding userBarcode}" />
                         <GridViewColumn x:Name="lvUserAmount"  Width="100"
                                             Header="QR코드" 
-                                        DisplayMemberBinding="{Binding userBarcode}" />
+                                        DisplayMemberBinding="{Binding userQR}" />
                     </GridView>
                 </ListView.View>
             </ListView>

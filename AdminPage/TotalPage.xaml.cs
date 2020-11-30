@@ -59,18 +59,18 @@ namespace McDonald_Kiosk.AdminPage
                         totalProfit = 0;
                     }
                 }
-
                 if (tbTotal != null)
                 {
                     tbTotal.Text = totalProfit.ToString();
                 }
-
                 rdr.Close();
             }
         }
 
         private void cbTotalProfit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            totalProfit = 0;
+
             switch (cbTotalProfit.SelectedIndex)
             {
                 case 0:

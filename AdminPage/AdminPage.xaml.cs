@@ -95,6 +95,8 @@ namespace McDonald_Kiosk.AdminPage
 
         private void GetUserInfo()
         {
+            listData.GetInstance().Clear();
+            lvUserInfo.Items.Refresh();
             string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -111,11 +113,10 @@ namespace McDonald_Kiosk.AdminPage
                 while (rdr.Read())
                 {
                     userName = rdr["user_name"].ToString();
-                    userQR = rdr["user_id"].ToString();
+                    userQR = rdr["user_name"].ToString();
                     userBarcode = rdr["barcode"].ToString();
                 }
                 rdr.Close();
-                Console.WriteLine(userName);
                 listData.GetInstance().Add(new listData() { userName = userName, userQR = userQR, userBarcode = userBarcode });
                 lvUserInfo.ItemsSource = listData.GetInstance();
             }
