@@ -37,7 +37,7 @@ namespace McDonald_Kiosk
 
         private void ShowLoginPage()
         {
-            if(!Customer.getInstance().isAutoLogin)
+            if(!Properties.Settings.Default.isAutoLogin)
             {
                 Login login = new Login();
                 login.ShowDialog();
