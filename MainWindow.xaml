@@ -20,8 +20,9 @@
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
             <Button Width="50" Height="50" 
-                    HorizontalAlignment="Right" 
-                    Margin="0,6,6,4" Grid.Column="0" 
+                    HorizontalAlignment="Left" 
+                    Margin="4,6,6,0"
+                    Grid.Column="0" 
                     Background="White"
                     Click="Button_Click">메세지</Button>
             <Label Background="Transparent"

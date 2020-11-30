@@ -62,11 +62,13 @@ namespace McDonald_Kiosk
                 var json = new JObject();
                 json.Add("MSGType", 0);
                 json.Add("Id", "2211");
+                json.Add("Group", false);
                 byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
                 NetworkStream network = tcp.GetStream();
                 network.Write(buff, 0, buff.Length);
                 Console.WriteLine(json.ToString());
-            } catch(SocketException e)
+            } 
+            catch(SocketException e)
             {
                 MessageBox.Show("서버와 연결이 되지 않습니다.");
             }
