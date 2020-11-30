@@ -23,11 +23,21 @@ namespace McDonald_Kiosk
         public Home()
         {
             InitializeComponent();
+
+            this.startMedia.Play();
+
+            this.startMedia.MediaEnded += new RoutedEventHandler(startMedia_MediaEnded);
         }
 
-        private void playVideo()
+        private void startMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
-            VideoDrawing video = new VideoDrawing();
+
+            this.startMedia.Stop();
+
+            this.startMedia.Position = TimeSpan.FromSeconds(0);
+
+            this.startMedia.Play();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

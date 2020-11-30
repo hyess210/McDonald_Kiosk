@@ -79,7 +79,6 @@ namespace McDonald_Kiosk
             MySqlConnection connection = new MySqlConnection(url);
             MySqlCommand command;
             MySqlDataReader dataReader;
-            int index = 0;
 
             while (count < 10)
             {
@@ -90,7 +89,7 @@ namespace McDonald_Kiosk
 
                 if (dataReader.Read())
                 {
-                    index = count - 1;
+                    int index = count - 1;
                     DateTime order_time = (DateTime)dataReader[0];
 
                     TimeSpan leftTime = new TimeSpan(0, 1, 0) - (DateTime.Now - order_time);

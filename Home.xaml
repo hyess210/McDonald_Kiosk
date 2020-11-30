@@ -12,11 +12,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Name="videoView">
-        </Grid>
+        <MediaElement x:Name="startMedia" Source="Assets/McDonaldCf.mp4"  LoadedBehavior="Manual"  VerticalAlignment="Top" Grid.Row="0"
+                      MediaEnded="startMedia_MediaEnded"
+              />
 
         <Grid Grid.Row="1" Background="red">
             <Grid.ColumnDefinitions>

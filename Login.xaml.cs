@@ -29,6 +29,7 @@ namespace McDonald_Kiosk
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             checkOverlap(id_TextBox.Text, pw_TextBox.Text);
+            SendMessage();
         }
 
         private void checkOverlap(string id, string pw)
@@ -46,19 +47,17 @@ namespace McDonald_Kiosk
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.isAutoLogin = true;
-            Console.WriteLine(Properties.Settings.Default.isAutoLogin);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.isAutoLogin = false;
-            Console.WriteLine(Properties.Settings.Default.isAutoLogin);
         }
 
         private void SendMessage()
         {
             try {
-                TcpClient tcp = new TcpClient("10.80.162.151", 80);
+                TcpClient tcp = new TcpClient("10.80.163.155", 80);
                 var json = new JObject();
                 json.Add("MSGType", 0);
                 json.Add("Id", "2211");
@@ -66,7 +65,6 @@ namespace McDonald_Kiosk
                 byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
                 NetworkStream network = tcp.GetStream();
                 network.Write(buff, 0, buff.Length);
-                Console.WriteLine(json.ToString());
             } 
             catch(SocketException e)
             {

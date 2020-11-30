@@ -26,10 +26,12 @@ namespace McDonald_Kiosk
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
             DateLabel.Content = DateTime.Now.ToString("f");
+            Properties.Settings.Default.isAutoLogin = false;
         }
 
         public void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
