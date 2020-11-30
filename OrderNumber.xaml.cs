@@ -61,11 +61,11 @@ namespace McDonald_Kiosk
                 NetworkStream network = tcp.GetStream();
                 network.Write(buff, 0, buff.Length);
                 Console.WriteLine(json.ToString());
-            } catch(SocketException e)
+            } catch(SocketException)
             {
                 MessageBox.Show("서버와 연결이 되지 않습니다.");
             }
-            Console.WriteLine(Customer.getInstance().isAutoLogin);
+            Console.WriteLine(Properties.Settings.Default.isAutoLogin);
         }
 
         private string OrderNumOp(int num)

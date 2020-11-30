@@ -14,7 +14,6 @@ namespace McDonald_Kiosk
         public string user_barcode { get; set; }
 
         public string user_id { get; set; }
-        public bool isAutoLogin { get; set; }
 
         public bool isGroupMessage { get; set; }
 

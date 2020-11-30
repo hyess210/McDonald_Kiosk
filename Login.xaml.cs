@@ -46,11 +46,13 @@ namespace McDonald_Kiosk
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.isAutoLogin = true;
+            Console.WriteLine(Properties.Settings.Default.isAutoLogin);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.isAutoLogin = false;
+            Console.WriteLine(Properties.Settings.Default.isAutoLogin);
         }
 
         private void SendMessage()

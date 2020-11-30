@@ -30,7 +30,6 @@ namespace McDonald_Kiosk
 
         public void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Customer.getInstance().isAutoLogin = false;
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
