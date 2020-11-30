@@ -22,6 +22,9 @@ namespace McDonald_Kiosk.AdminPage
     /// </summary>
     public partial class AdminPage : Page
     {
+        int hour = 0;
+        int min = 0;
+        int sec = 0;
         public AdminPage()
         {
             InitializeComponent();
@@ -37,18 +40,13 @@ namespace McDonald_Kiosk.AdminPage
             timer.Start();
         }
 
-        //private void MainWindow_Exit(object sender, ExitEventArgs e)
-        //{
-        //    Properties.Settings.Default.Save();
-        //}
-
         private void runningTimer(object sender, EventArgs args, DispatcherTimer timer)
         {
             void timeManage(double time, TextBlock textBlock)
             {
-                if (time > 59)
+                if (time < 10)
                 {
-                    textBlock.Text = "0";
+                    textBlock.Text = "0" + time.ToString();
                 }
                 else
                 {
@@ -60,11 +58,16 @@ namespace McDonald_Kiosk.AdminPage
             Properties.Settings.Default.runningTime++;
             Properties.Settings.Default.Save();
 
-            timeManage(Math.Floor((double)(Properties.Settings.Default.runningTime / 3600)), tbRunningTimeHour);
-            tbRunningTimeSecond.Text = Math.Floor((double)Properties.Settings.Default.runningTime % 3600).ToString();
-            timeManage(Math.Floor((double)(Properties.Settings.Default.runningTime / 60)), tbRunningTimeMinute);
-            tbRunningTimeSecond.Text = Math.Floor((double)Properties.Settings.Default.runningTime % 60).ToString();
-            //timeManage(Math.Floor((double)Properties.Settings.Default.runningTime % 3600), tbRunningTimeSecond);
+            TimeSpan timespan = TimeSpan.FromSeconds(Properties.Settings.Default.runningTime);
+
+            hour = timespan.Hours;
+            min = timespan.Minutes;
+            sec = timespan.Seconds;
+
+            timeManage(hour, tbRunningTimeHour);
+            timeManage(sec, tbRunningTimeSecond);
+            timeManage(min, tbRunningTimeMinute);
+            timeManage(sec, tbRunningTimeSecond);
         }
 
         private void GoTotal_Click(object sender, RoutedEventArgs e)

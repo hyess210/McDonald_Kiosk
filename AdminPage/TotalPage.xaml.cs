@@ -22,6 +22,7 @@ namespace McDonald_Kiosk.AdminPage
         int isCard = 2;
 
         int totalProfit = 0;
+
         public TotalPage()
         {
             InitializeComponent();
@@ -45,20 +46,24 @@ namespace McDonald_Kiosk.AdminPage
 
                 while (rdr.Read())
                 {
-                    if (isCard == 2 )
+                    if (isCard == 2)
                     {
                         totalProfit += Int32.Parse(rdr["total"].ToString());
                     }
                     else if (isCard == Int32.Parse(rdr["isCard"].ToString()))
                     {
                         totalProfit += Int32.Parse(rdr["total"].ToString());
-                    } else
+                    }
+                    else
                     {
                         totalProfit = 0;
                     }
                 }
-                if(tbTotal != null)
+
+                if (tbTotal != null)
+                {
                     tbTotal.Text = totalProfit.ToString();
+                }
 
                 rdr.Close();
             }
