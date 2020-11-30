@@ -14,14 +14,16 @@
                 <ComboBoxItem>현금 결제 총 매출액</ComboBoxItem>
                 <ComboBoxItem>카드 결제 총 매출액</ComboBoxItem>
             </ComboBox>
-            
-            <TextBlock Text="총 매출액 : " FontSize="20" />
-            <TextBlock Text="{Binding totalProfit}" 
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="총 매출액 : " FontSize="20" />
+                <TextBlock Text="{Binding totalProfit}" 
                        FontSize="30" Foreground="Gold" 
                        x:Name="tbTotal"/>
-            <TextBlock Text="원" FontSize="20" />
+                <TextBlock Text="원" FontSize="20" />
+            </StackPanel>
             
-            <TextBlock Text="할인 제외 순수 매출액 : " FontSize="20" />
+            <!--<TextBlock Text="할인 제외 순수 매출액 : " FontSize="20" />
             <TextBlock Text="{Binding noneSaleProfit}" 
                        FontSize="30" Foreground="Gold" 
                        x:Name="tbNoSaleTotal"/>
@@ -31,7 +33,7 @@
             <TextBlock Text="{Binding saledPrice}" 
                        FontSize="30" Foreground="Gold" 
                        x:Name="tbSaledPrice"/>
-            <TextBlock Text="원" FontSize="20" />
+            <TextBlock Text="원" FontSize="20" />-->
         </StackPanel>
     </Grid>
 </Page>

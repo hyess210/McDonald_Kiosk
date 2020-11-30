@@ -48,11 +48,11 @@ namespace McDonald_Kiosk.AdminPage
             {
                 if (time > 59)
                 {
-                    textBlock.Text = time.ToString() + "0 : ";
+                    textBlock.Text = "0";
                 }
                 else
                 {
-                    textBlock.Text = time.ToString() + " : ";
+                    textBlock.Text = time.ToString();
                 }
 
             }

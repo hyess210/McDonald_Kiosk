@@ -22,13 +22,7 @@ namespace McDonald_Kiosk.AdminPage
         {
             InitializeComponent();
 
-            int totalProfit = 203203;
-            int noneSaleProfit = 10238;
-            int saledPrice = 210293;
-
-            tbTotal.Text = totalProfit.ToString();
-            tbNoSaleTotal.Text = noneSaleProfit.ToString();
-            tbSaledPrice.Text = saledPrice.ToString();
+            int totalProfit = 0;
 
             string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -45,33 +39,10 @@ namespace McDonald_Kiosk.AdminPage
 
                 while (rdr.Read())
                 {
-
-                    //menuList.Add(new OrderMenu.Food()
-                    //{
-                    //    Price = Int32.Parse(rdr["price"].ToString()),
-                    //    Name = rdr["menu_name"].ToString(),
-                    //    ImgPath = rdr["stored_path"].ToString(),
-                    //    Menu_idx = Int32.Parse(rdr["menu_idx"].ToString())
-                    //});
-
-                    //string category = rdr["category"].ToString();
-
-                    //if (category.Equals("burger"))
-                    //{
-                    //    menuList[i].category = Category.BUGER;
-                    //}
-                    //else if (category.Equals("side"))
-                    //{
-                    //    menuList[i].category = Category.SIDE;
-                    //}
-                    //else if (category.Equals("drink"))
-                    //{
-                    //    menuList[i].category = Category.DRINK;
-                    //}
-                    //i++;
+                    totalProfit += Int32.Parse(rdr["total"].ToString());
                 }
                 rdr.Close();
-                //lbMenus.ItemsSource = lstMenu;
+                tbTotal.Text = totalProfit.ToString();
             }
         }
     }
