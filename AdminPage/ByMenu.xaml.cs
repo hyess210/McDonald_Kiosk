@@ -74,7 +74,7 @@ namespace McDonald_Kiosk.AdminPage
         }
 
         private void GetValues()
-        {
+        {//10.80.162.193
             string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
 
             using (MySqlConnection conn = new MySqlConnection(connStr))

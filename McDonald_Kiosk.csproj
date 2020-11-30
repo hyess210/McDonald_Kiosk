@@ -113,11 +113,17 @@
     <Compile Include="AdminPage\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminPage\ByDays.xaml.cs">
+      <DependentUpon>ByDays.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage\ByMenu.xaml.cs">
       <DependentUpon>ByMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminPage\Sales.xaml.cs">
       <DependentUpon>Sales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPage\StatisticsPage.xaml.cs">
+      <DependentUpon>StatisticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminPage\TotalPage.xaml.cs">
       <DependentUpon>TotalPage.xaml</DependentUpon>
@@ -163,11 +169,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AdminPage\ByDays.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminPage\ByMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminPage\Sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPage\StatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

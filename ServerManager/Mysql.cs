@@ -29,10 +29,10 @@ class Mysql : DB
         connection.Close();
     }
 
-    public void InsertData(int menu_idx, int order_idx, int amount)
+    public void InsertData(int menu_idx, int order_idx, int amount, int total)
     {
-        string sql = "Insert INTO ordered_menu(menu_idx, order_idx, amount) " +
-            "VALUES (" + menu_idx + ',' + order_idx + ',' + amount + ")";
+        string sql = "Insert INTO ordered_menu(menu_idx, order_idx, amount, total) " +
+            "VALUES (" + menu_idx + ',' + order_idx + ',' + amount + ',' + total +")";
 
         connection.Open();
         MySqlCommand command = new MySqlCommand(sql, connection);

@@ -116,7 +116,7 @@ namespace McDonald_Kiosk
 
             for(int i = 0; i < order.Count; i++)
             {
-                mysqlDB.InsertData(order[i].Menu_idx, customer.order_idx, order[i].Amount);
+                mysqlDB.InsertData(order[i].Menu_idx, customer.order_idx, order[i].Amount, order[i].Total);
             }
         }
 
