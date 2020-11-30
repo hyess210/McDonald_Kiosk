@@ -10,7 +10,7 @@
 
     <Grid Background="White">
         <StackPanel>
-            <ComboBox Background="#f1f1f1" Width="150" Margin="0 20 0 0" 
+            <ComboBox Background="#f1f1f1" Width="150" Margin="0 20 0 0" FontSize="16" 
                       SelectionChanged="cbTotalProfit_SelectionChanged" x:Name="cbTotalProfit">
                 <ComboBoxItem>현금 결제 총 매출액</ComboBoxItem>
                 <ComboBoxItem>카드 결제 총 매출액</ComboBoxItem>

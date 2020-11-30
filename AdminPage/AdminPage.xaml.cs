@@ -74,7 +74,7 @@ namespace McDonald_Kiosk.AdminPage
 
         private void GoByMenu_Click(object sender, RoutedEventArgs e)
         {
-            GoNavigation_Click(sender, e, "AdminPage/ByMenu.xaml");
+            GoNavigation_Click(sender, e, "AdminPage/StatisticsPage.xaml");
         }
 
         private void GoSales_Click(object sender, RoutedEventArgs e)
