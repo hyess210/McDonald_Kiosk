@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,15 +23,13 @@ namespace McDonald_Kiosk
         {
             InitializeComponent();
 
-            setTable();
-            setTimeText();
-            setGrids();
+            setLists();
             DBConnection();
             timerManage();
             changeBackground();
         }
 
-        private void setTable()
+        private void setLists()
         {
             Table table1 = new Table();
             Table table2 = new Table();
@@ -51,10 +50,7 @@ namespace McDonald_Kiosk
             tables.Add(table7);
             tables.Add(table8);
             tables.Add(table9);
-        }
 
-        private void setTimeText()
-        {
             timeTexts.Add(timer0);
             timeTexts.Add(timer2);
             timeTexts.Add(timer3);
@@ -64,10 +60,7 @@ namespace McDonald_Kiosk
             timeTexts.Add(timer7);
             timeTexts.Add(timer8);
             timeTexts.Add(timer9);
-        }
 
-        private void setGrids()
-        {
             grids.Add(Table1);
             grids.Add(Table2);
             grids.Add(Table3);
@@ -86,6 +79,7 @@ namespace McDonald_Kiosk
             MySqlConnection connection = new MySqlConnection(url);
             MySqlCommand command;
             MySqlDataReader dataReader;
+            int index = 0;
 
             while (count < 10)
             {
@@ -96,13 +90,17 @@ namespace McDonald_Kiosk
 
                 if (dataReader.Read())
                 {
-                     DateTime order_time = (DateTime)dataReader[0];
+                    index = count - 1;
+                    DateTime order_time = (DateTime)dataReader[0];
 
-                     TimeSpan leftTime = new TimeSpan(0, 1, 0) - (DateTime.Now - order_time);
-                     if (TimeSpan.Compare(leftTime, new TimeSpan(0, 1, 0)) == -1 && TimeSpan.Compare(leftTime, new TimeSpan(0, 0, 0)) == 1)
-                         tables[count - 1].left_time = leftTime.Seconds;
-                     else
-                         tables[count - 1].isEnabled = true;
+                    TimeSpan leftTime = new TimeSpan(0, 1, 0) - (DateTime.Now - order_time);
+                    if (TimeSpan.Compare(leftTime, new TimeSpan(0, 1, 0)) == -1 && TimeSpan.Compare(leftTime, new TimeSpan(0, 0, 0)) == 1)
+                    {
+                        tables[index].left_time = leftTime.Seconds;
+                        tables[index].order_time = order_time;
+                    }
+                    else
+                        tables[index].isEnabled = true;
                 }
                 else
                 {
@@ -134,7 +132,7 @@ namespace McDonald_Kiosk
                         --tables[i].left_time;
                     count++;
                 }
-                realTimeMapping(i, tables[i].isEnabled);
+                TimeMapping(i, tables[i].isEnabled);
                 if (count != beforeCount)
                 {
                     changeBackground();
@@ -145,12 +143,12 @@ namespace McDonald_Kiosk
             
         }
 
-        private void realTimeMapping(int idx, bool isEnabled)
+        private void TimeMapping(int idx, bool isEnabled)
         {
-            if (isEnabled)
+            if (isEnabled) 
                 timeTexts[idx].Content = "";
             else
-                timeTexts[idx].Content = tables[idx].left_time;
+                timeTexts[idx].Content = tables[idx].left_time + "\n결제 시간 : " + tables[idx].order_time.ToString();
         }
 
         private void changeBackground()
@@ -168,7 +166,10 @@ namespace McDonald_Kiosk
         {
             Grid param = sender as Grid;
             selectedIdx = int.Parse(param.Tag.ToString());
-            goToPay.IsEnabled = true;
+            if (tables[selectedIdx - 1].isEnabled)
+                goToPay.IsEnabled = true;
+            else
+                goToPay.IsEnabled = false;
         }
 
         private void goToPay_Click(object sender, EventArgs args)

@@ -40,32 +40,27 @@ namespace McDonald_Kiosk
                 json.Add("MSGType", 2);
                 json.Add("Id", "2211");
                 json.Add("ShopName", "맥도날드");
+                json.Add("Group", true);
                 json.Add("OrderNumber", OrderNumOp(Customer.getInstance().order_idx));
                 var menus = new JArray();
                 int max = OrderState.GetInstance().Count;
                 for (int i = 0; i < max; i++)
                 {
                     OrderState orderMenus = OrderState.GetInstance()[i];
-                    Console.WriteLine(orderMenus);
                     var menu = new JObject();
-                    Console.WriteLine(orderMenus.Menu);
                     menu.Add("Name", orderMenus.Menu);
                     menu.Add("Count", orderMenus.Amount);
                     menu.Add("Price", orderMenus.Price);
-                    Console.WriteLine(menu.ToString());
                     menus.Add(menu);
                 }
-                Console.WriteLine(menus.ToString());
                 json.Add("Menus", menus);
                 byte[] buff = Encoding.UTF8.GetBytes(json.ToString());
                 NetworkStream network = tcp.GetStream();
                 network.Write(buff, 0, buff.Length);
-                Console.WriteLine(json.ToString());
             } catch(SocketException)
             {
                 MessageBox.Show("서버와 연결이 되지 않습니다.");
             }
-            Console.WriteLine(Properties.Settings.Default.isAutoLogin);
         }
 
         private string OrderNumOp(int num)
