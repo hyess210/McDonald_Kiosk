@@ -27,7 +27,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -64,6 +64,30 @@
                        HorizontalAlignment="Center" Foreground="Gold" x:Name="tbRunningTimeSecond"/>
                 <TextBlock Text="초" FontSize="24"/>
             </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <ListView
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Height="130" Width="500"
+                    Margin="0,40,0,0" FontSize="20"
+                    Foreground="#666"
+                    x:Name="lvUserInfo"
+                    >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="lvUserName" Width="100"
+                                            Header="이름" 
+                                            DisplayMemberBinding="{Binding userName}"/>
+                        <GridViewColumn x:Name="lvUserPrice"  Width="200"
+                                            Header="바코드" 
+                                            DisplayMemberBinding="{Binding userQR}" />
+                        <GridViewColumn x:Name="lvUserAmount"  Width="100"
+                                            Header="QR코드" 
+                                        DisplayMemberBinding="{Binding userBarcode}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Grid>
 

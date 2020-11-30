@@ -25,22 +25,28 @@ namespace McDonald_Kiosk.AdminPage
         int hour = 0;
         int min = 0;
         int sec = 0;
+
+        string userName = "";
+        string userQR = "";
+        string userBarcode = "";
+
         public AdminPage()
         {
             InitializeComponent();
 
-            runningTimeManage();
+            RunningTimeManage();
+            GetUserInfo();
         }
 
-        public void runningTimeManage()
+        public void RunningTimeManage()
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += (object s, EventArgs a) => runningTimer(s, a, timer);
+            timer.Tick += (object s, EventArgs a) => RunningTimer(s, a, timer);
             timer.Start();
         }
 
-        private void runningTimer(object sender, EventArgs args, DispatcherTimer timer)
+        private void RunningTimer(object sender, EventArgs args, DispatcherTimer timer)
         {
             void timeManage(double time, TextBlock textBlock)
             {
@@ -68,6 +74,32 @@ namespace McDonald_Kiosk.AdminPage
             timeManage(sec, tbRunningTimeSecond);
             timeManage(min, tbRunningTimeMinute);
             timeManage(sec, tbRunningTimeSecond);
+        }
+
+        private void GetUserInfo()
+        {
+            string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception e) { MessageBox.Show(e.Message); }
+                string sql = "SELECT * FROM user";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    userName = rdr["user_name"].ToString();
+                    userQR = rdr["user_id"].ToString();
+                    userBarcode = rdr["barcode"].ToString();
+                }
+                rdr.Close();
+                lvUserInfo.Items.Refresh();
+            }
         }
 
         private void GoTotal_Click(object sender, RoutedEventArgs e)
