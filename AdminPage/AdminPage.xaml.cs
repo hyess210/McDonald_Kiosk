@@ -10,7 +10,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using MySql.Data.MySqlClient;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using System.Windows.Shapes;
 
 namespace McDonald_Kiosk.AdminPage
@@ -23,6 +25,46 @@ namespace McDonald_Kiosk.AdminPage
         public AdminPage()
         {
             InitializeComponent();
+
+            runningTimeManage();
+        }
+
+        public void runningTimeManage()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (object s, EventArgs a) => runningTimer(s, a, timer);
+            timer.Start();
+        }
+
+        //private void MainWindow_Exit(object sender, ExitEventArgs e)
+        //{
+        //    Properties.Settings.Default.Save();
+        //}
+
+        private void runningTimer(object sender, EventArgs args, DispatcherTimer timer)
+        {
+            void timeManage(double time, TextBlock textBlock)
+            {
+                if (time > 59)
+                {
+                    textBlock.Text = time.ToString() + "0 : ";
+                }
+                else
+                {
+                    textBlock.Text = time.ToString() + " : ";
+                }
+
+            }
+
+            Properties.Settings.Default.runningTime++;
+            Properties.Settings.Default.Save();
+
+            timeManage(Math.Floor((double)(Properties.Settings.Default.runningTime / 3600)), tbRunningTimeHour);
+            tbRunningTimeSecond.Text = Math.Floor((double)Properties.Settings.Default.runningTime % 3600).ToString();
+            timeManage(Math.Floor((double)(Properties.Settings.Default.runningTime / 60)), tbRunningTimeMinute);
+            tbRunningTimeSecond.Text = Math.Floor((double)Properties.Settings.Default.runningTime % 60).ToString();
+            //timeManage(Math.Floor((double)Properties.Settings.Default.runningTime % 3600), tbRunningTimeSecond);
         }
 
         private void GoTotal_Click(object sender, RoutedEventArgs e)
