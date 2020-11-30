@@ -10,19 +10,23 @@
 
     <Grid Background="White">
         <StackPanel>
-            <ComboBox Background="#f1f1f1" Width="100" Margin="0 20 0 0">
+            <ComboBox Background="#f1f1f1" Width="150" Margin="0 20 0 0" 
+                      SelectionChanged="cbTotalProfit_SelectionChanged" x:Name="cbTotalProfit">
                 <ComboBoxItem>현금 결제 총 매출액</ComboBoxItem>
                 <ComboBoxItem>카드 결제 총 매출액</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">전체 보기</ComboBoxItem>
             </ComboBox>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 60 0 0">
                 <TextBlock Text="총 매출액 : " FontSize="20" />
-                <TextBlock Text="{Binding totalProfit}" 
+                <TextBlock Text="{Binding tbTotalProfit}" 
                        FontSize="30" Foreground="Gold" 
                        x:Name="tbTotal"/>
                 <TextBlock Text="원" FontSize="20" />
             </StackPanel>
-            
+            <Button Content="이전" Width="100" Margin="0 40 0 0" 
+                    FontSize="20" Click="GoBack_Click" />
+
             <!--<TextBlock Text="할인 제외 순수 매출액 : " FontSize="20" />
             <TextBlock Text="{Binding noneSaleProfit}" 
                        FontSize="30" Foreground="Gold" 

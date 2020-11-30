@@ -142,7 +142,7 @@
                     <Button Height="40" Width="100" 
                             HorizontalAlignment="Left" Margin="30 30 0 0"
                             FontSize="24"
-                            Content="이전" Click="Button_Click"
+                            Content="이전" Click="BeforeButton_Click"
                             />
                     <Button Width="160" Height="40" FontSize="24"
                             VerticalAlignment="Center" HorizontalAlignment="Right"

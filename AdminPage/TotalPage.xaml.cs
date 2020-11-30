@@ -18,12 +18,18 @@ namespace McDonald_Kiosk.AdminPage
 {
     public partial class TotalPage : Page
     {
+        // isCard = 2 : 전체보기 / isCard = 0 : 현금 결제 매출액 / isCard = 1 : 카트 결제 매출액
+        int isCard = 2;
+
+        int totalProfit = 0;
         public TotalPage()
         {
             InitializeComponent();
+            tbTotal.Text = totalProfit.ToString();
+        }
 
-            int totalProfit = 0;
-
+        private void totalProfitValue()
+        {
             string connStr = "Server=10.80.162.193;Database=mcdonald_kiosk;Uid=root;Pwd=kmk5632980;";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -39,10 +45,45 @@ namespace McDonald_Kiosk.AdminPage
 
                 while (rdr.Read())
                 {
-                    totalProfit += Int32.Parse(rdr["total"].ToString());
+                    if (isCard == 2 )
+                    {
+                        totalProfit += Int32.Parse(rdr["total"].ToString());
+                    }
+                    else if (isCard == Int32.Parse(rdr["isCard"].ToString()))
+                    {
+                        totalProfit += Int32.Parse(rdr["total"].ToString());
+                    } else
+                    {
+                        totalProfit = 0;
+                    }
                 }
                 rdr.Close();
-                tbTotal.Text = totalProfit.ToString();
+            }
+        }
+
+        private void cbTotalProfit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cbTotalProfit.SelectedIndex)
+            {
+                case 0:
+                    isCard = 0;
+                    break;
+                case 1:
+                    isCard = 1;
+                    break;
+                default:
+                    isCard = 2;
+                    break;
+            }
+
+            totalProfitValue();
+        }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
             }
         }
     }
