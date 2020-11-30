@@ -72,7 +72,7 @@
                     Height="130" Width="500"
                     Margin="0,40,0,0" FontSize="20"
                     Foreground="#666"
-                    x:Name="lvUserInfo"
+                    Name="lvUserInfo"
                     >
                 <ListView.View>
                     <GridView>

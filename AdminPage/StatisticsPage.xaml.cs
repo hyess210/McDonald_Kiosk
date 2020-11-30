@@ -39,7 +39,8 @@ namespace McDonald_Kiosk.AdminPage
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            
+            string source = "AdminPage/ByUser.xaml";
+            ChangeSource(source);
         }
 
         private void ChangeSource(string value)

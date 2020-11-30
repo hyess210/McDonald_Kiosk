@@ -20,15 +20,32 @@ namespace McDonald_Kiosk.AdminPage
     /// <summary>
     /// AdminPage.xaml에 대한 상호 작용 논리
     /// </summary>
+    public class listData
+    {
+        public string userName { get; set; }
+        public string userQR { get; set; }
+        public string userBarcode { get; set; }
+
+        private static List<listData> instance;
+
+        public static List<listData> GetInstance()
+        {
+            if (instance == null)
+                instance = new List<listData>();
+
+            return instance;
+        }
+    }
+
     public partial class AdminPage : Page
     {
         int hour = 0;
         int min = 0;
         int sec = 0;
 
-        string userName = "";
-        string userQR = "";
-        string userBarcode = "";
+        public string userName = "";
+        public string userQR = "";
+        public string userBarcode = "";
 
         public AdminPage()
         {
@@ -98,7 +115,9 @@ namespace McDonald_Kiosk.AdminPage
                     userBarcode = rdr["barcode"].ToString();
                 }
                 rdr.Close();
-                lvUserInfo.Items.Refresh();
+                Console.WriteLine(userName);
+                listData.GetInstance().Add(new listData() { userName = userName, userQR = userQR, userBarcode = userBarcode });
+                lvUserInfo.ItemsSource = listData.GetInstance();
             }
         }
 

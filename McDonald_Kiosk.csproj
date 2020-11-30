@@ -119,6 +119,9 @@
     <Compile Include="AdminPage\ByMenu.xaml.cs">
       <DependentUpon>ByMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminPage\ByUser.xaml.cs">
+      <DependentUpon>ByUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage\Sales.xaml.cs">
       <DependentUpon>Sales.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminPage\ByMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPage\ByUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
