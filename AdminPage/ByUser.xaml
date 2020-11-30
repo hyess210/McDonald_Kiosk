@@ -11,12 +11,19 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1">
+            <ComboBox Name ="combo" Height="25" Width="250" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="신희송"/>
+                <ComboBoxItem Content="정재덕"/>
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Row="0">
             <lvc:CartesianChart Series="{Binding TopChart}" LegendLocation="Left" Margin="0, 0, 0, 10">
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
@@ -30,7 +37,7 @@
         <Grid Grid.Row="2">
             <lvc:CartesianChart Series="{Binding BottomChart}" LegendLocation="Left" Margin="0, 10, 0, 0">
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
+                    <lvc:Axis Labels="{Binding BotLabels}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
                     <lvc:Axis LabelFormatter="{Binding Formatter}"></lvc:Axis>

@@ -23,6 +23,7 @@ namespace McDonald_Kiosk.AdminPage
         public SeriesCollection TopChart { get; set; }
         public SeriesCollection BottomChart { get; set; }
         public string[] Labels { get; set; }
+        public string[] BotLabels { get; set; }
         public Func<double, string> Formatter { get; set; }
 
         public List<Menu> MenuData = new List<Menu>();
@@ -34,14 +35,18 @@ namespace McDonald_Kiosk.AdminPage
             public List<int> order_idx;
             public List<int> menu_idx;
             public List<string> menu_name;
+            public List<int> menu_amount;
             public List<int> total;
         };
 
         public ByUser()
         {
+            BotLabels = new string[10];
+
             InitializeComponent();
             CreateValues();
             GetValues();
+            SetTopValue();
         }
 
         private void GetValues()
@@ -64,6 +69,7 @@ namespace McDonald_Kiosk.AdminPage
                     menu.menu_idx = new List<int>();
                     menu.order_idx = new List<int>();
                     menu.menu_name = new List<string>();
+                    menu.menu_amount = new List<int>();
                     menu.total = new List<int>();
                     MenuData.Add(menu);
                 }
@@ -79,17 +85,72 @@ namespace McDonald_Kiosk.AdminPage
 
                 while (rdr.Read())
                 {
-                    int cnt = 0;
-                    foreach(Menu menu in MenuData)
+                    for(int i = 0; i < MenuData.Count; i++)
                     {
-                        if(menu.user_idx.Equals(rdr["user_idx"].ToString()))
+                        if(MenuData[i].user_idx.ToString().Equals(rdr["user_idx"].ToString()))
                         {
                             Menu tempMenu = new Menu();
-                            tempMenu = MenuData[cnt];
+                            tempMenu = MenuData[i];
                             tempMenu.order_idx.Add(int.Parse(rdr["order_idx"].ToString()));
-                            MenuData[cnt] = tempMenu;
+                            MenuData[i] = tempMenu;
                         }
-                        cnt++;
+                    }
+                }
+                rdr.Close();
+            }
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = "SELECT * FROM ordered_menu";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    for(int i = 0; i < MenuData.Count; i++)
+                    {
+                        Console.WriteLine(MenuData[i].order_idx.ToString());
+                        for(int j = 0; j < MenuData[i].order_idx.Count; j++)
+                        {
+                            if (MenuData[i].order_idx[j].ToString().Equals(rdr["order_idx"].ToString()))
+                            {
+                                Console.WriteLine("%");
+                                Menu tempMenu = new Menu();
+                                tempMenu = MenuData[i];
+                                tempMenu.menu_idx.Add(rdr.GetInt32("menu_Idx"));
+                                tempMenu.menu_amount.Add(int.Parse(rdr["amount"].ToString()));
+                                tempMenu.total.Add(int.Parse(rdr["total"].ToString()));
+                                MenuData[i] = tempMenu;
+                            }
+                        }
+                    }
+                }
+                rdr.Close();
+            }
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string sql = "SELECT * FROM menu";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    for(int i = 0; i < MenuData.Count; i++)
+                    {
+                        for(int j = 0; j < MenuData[i].menu_idx.Count; j++)
+                        {
+                            if(MenuData[i].menu_idx[j].ToString().Equals(rdr["menu_idx"]))
+                            {
+                                Menu menu = new Menu();
+                                menu = MenuData[i];
+                                menu.menu_name.Add(rdr["menu_name"].ToString());
+                                MenuData[i] = menu;
+                            }
+                        }
                     }
                 }
                 rdr.Close();
@@ -102,7 +163,7 @@ namespace McDonald_Kiosk.AdminPage
             {
                 new ColumnSeries
                 {
-                    Title = "회원별",
+                    Title = "총액",
                     Values = new ChartValues<double> { }
                 }
             };
@@ -111,17 +172,57 @@ namespace McDonald_Kiosk.AdminPage
             {
                 new ColumnSeries
                 {
-                    Title = "갯수",
+                    Title = "사용자별 갯수",
                     Values = new ChartValues<double> { }
                 }
             };
-
-            SetValueType();
         }
 
-        private void SetValueType()
+        private void SetTopValue()
         {
+            Labels = new string[MenuData.Count];
+            for (int i = 0; i < MenuData.Count; i++)
+            {
+                double total = 0;
+                for (int j = 0; j < MenuData[i].total.Count; j++)
+                {
+                    total += int.Parse(MenuData[i].total[j].ToString());
+                }
+                Console.WriteLine(total + " " + MenuData[i].user_name);
+                TopChart[0].Values.Add(total);
+                Labels[i] = MenuData[i].user_name;
+            }
+            Formatter = value => value.ToString("N");
+            DataContext = this;
+        }
 
+        private void SetUserAmount(string name)
+        {
+            for (int i = 0; i < MenuData.Count; i++)
+            {
+                if(MenuData[i].user_name.Equals(name))
+                {
+
+                    for (int j = 0; j < MenuData[i].menu_amount.Count; j++)
+                    {
+                        BottomChart[0].Values.Add(double.Parse(MenuData[i].menu_amount[j].ToString()));
+                    }
+                    for(int h = 0; h < 10; h++)
+                    {
+                        if(h <= MenuData[i].menu_name.Count - 1)
+                            BotLabels[h] = MenuData[i].menu_name[h];
+                    }
+                }
+            }
+            Formatter = value => value.ToString("N");
+            DataContext = this;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BottomChart[0].Values.Clear();
+            SetUserAmount(combo.Text.ToString());
+            Console.WriteLine(combo.Text.ToString());
         }
     }
 }
