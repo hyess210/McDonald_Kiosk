@@ -49,11 +49,15 @@
                     Margin="0 200 0 0"
                     Click="GoSales_Click"
                     />
+            <Button Content="이전" Width="80" Height="40"
+                    VerticalAlignment="Bottom" Margin="0 0 0 20"
+                    FontSize="16" Click="GoBack_ButtonClick" />
         </Grid>
 
         <Grid Grid.Column="1">
-            <TextBlock Text="프로그램 총 구동시간 : " FontSize="18" HorizontalAlignment="Center" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 40 0 0">
+            <TextBlock Text="프로그램 총 구동시간 : " FontSize="18" 
+                       HorizontalAlignment="Center" Margin="0 40 0 0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 80 0 0">
                 <TextBlock Text="0" FontSize="24" 
                        HorizontalAlignment="Center" Foreground="Gold" x:Name="tbRunningTimeHour"/>
                 <TextBlock Text="시간 " FontSize="24"/>

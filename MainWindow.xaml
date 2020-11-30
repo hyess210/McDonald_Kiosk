@@ -24,7 +24,7 @@
                     Margin="4,6,6,0"
                     Grid.Column="0" 
                     Background="White"
-                    Click="Button_Click">메세지</Button>
+                    Click="Button_Click">Message</Button>
             <Label Background="Transparent"
                    x:Name="DateLabel"
                    HorizontalAlignment="Right"
@@ -44,7 +44,7 @@
                     HorizontalAlignment="Right" 
                     Margin="0,6,6,4" Grid.Column="2" 
                     Background="White"
-                    Click="HomeButton_Click">홈버튼</Button>
+                    Click="HomeButton_Click">홈</Button>
         </Grid>
 
         <Grid Grid.Row="1">

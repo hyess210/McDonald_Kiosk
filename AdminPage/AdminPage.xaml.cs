@@ -140,5 +140,12 @@ namespace McDonald_Kiosk.AdminPage
         {
             NavigationService.Navigate(new Uri(navigateUrl, UriKind.Relative));
         }
+        private void GoBack_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+        }
     }
 }
