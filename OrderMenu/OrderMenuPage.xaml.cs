@@ -90,6 +90,7 @@ namespace McDonald_Kiosk
             lvAddedMenu.ItemsSource = OrderState.GetInstance();
             lvAddedMenu.Items.Refresh();
 
+            // 주문하기, 모두 삭제 버튼 enabled false로 초기화
             if (OrderState.GetInstance().Count == 0)
             {
                 SetButtonEnable(OrderButton, false);
@@ -100,6 +101,7 @@ namespace McDonald_Kiosk
                 SetButtonEnable(DeleteAllButton, true);
             }
 
+            // 카테고리별 리스트 아이템 추가
             for (int i = 0; i < menuList.Count; i++)
             {
                 Debug.WriteLine(i);
@@ -138,6 +140,7 @@ namespace McDonald_Kiosk
                 }
                 else
                 {
+                    // 아무것도 선택되지 않으면 버거 리스트를 
                     bugerList.Add(new OrderMenu.Food()
                     {
                         Price = menuList[i].Price,
@@ -165,6 +168,7 @@ namespace McDonald_Kiosk
 
         private void CheckLvAddedMenuEmpty()
         {
+            // 선택된 메뉴가 없을시 버튼 비활성화
             if (OrderState.GetInstance().Count <= 0)
             {
                 SetButtonEnable(OrderButton, false);
@@ -232,6 +236,7 @@ namespace McDonald_Kiosk
 
         private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
+            // 모두삭제 버튼
             void DeleteAllMenu()
             {
                 OrderState.GetInstance().Clear();
@@ -396,11 +401,5 @@ namespace McDonald_Kiosk
             pageCount -= pageCount;
             MenuPageButton_Click(sender, e);
         }
-
-        //private void DiningPlace_Closed (object sender, RoutedEventArgs e)
-        //{
-        //    SelectPayment selectPayment = new SelectPayment();
-        //    NavigationService.Navigate(selectPayment);
-        //}
     }
 }
