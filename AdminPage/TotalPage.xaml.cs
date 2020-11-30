@@ -57,6 +57,9 @@ namespace McDonald_Kiosk.AdminPage
                         totalProfit = 0;
                     }
                 }
+                if(tbTotal != null)
+                    tbTotal.Text = totalProfit.ToString();
+
                 rdr.Close();
             }
         }
@@ -75,7 +78,6 @@ namespace McDonald_Kiosk.AdminPage
                     isCard = 2;
                     break;
             }
-
             totalProfitValue();
         }
 
