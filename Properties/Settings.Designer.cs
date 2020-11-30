@@ -46,5 +46,17 @@ namespace McDonald_Kiosk.Properties {
                 this["isAutoLogin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.80.161.176")]
+        public string server {
+            get {
+                return ((string)(this["server"]));
+            }
+            set {
+                this["server"] = value;
+            }
+        }
     }
 }

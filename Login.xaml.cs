@@ -57,7 +57,7 @@ namespace McDonald_Kiosk
         private void SendMessage()
         {
             try {
-                TcpClient tcp = new TcpClient("10.80.163.155", 80);
+                TcpClient tcp = new TcpClient(Properties.Settings.Default.server, 80);
                 var json = new JObject();
                 json.Add("MSGType", 0);
                 json.Add("Id", "2211");

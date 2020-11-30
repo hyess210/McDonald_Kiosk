@@ -8,5 +8,8 @@
     <Setting Name="isAutoLogin" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="server" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.80.161.176</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
