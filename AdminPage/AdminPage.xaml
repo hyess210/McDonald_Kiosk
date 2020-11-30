@@ -24,24 +24,47 @@
     </Page.Resources>
 
     <Grid>
-        <Button Style="{StaticResource RoundButton}"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Button Style="{StaticResource RoundButton}"
                     Content="통계 화면"
                     Width="150" Height="70"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                     Click="GoByMenu_Click"
                     Margin="0 0 0 200"
                     ></Button>
-        <Button Content="총 매출액" Style="{StaticResource RoundButton}" 
+            <Button Content="총 매출액" Style="{StaticResource RoundButton}" 
                     Width="150" Height="70"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                     Click="GoTotal_Click"
                     />
-        <Button Content="할인율" Style="{StaticResource RoundButton}" 
+            <Button Content="할인율" Style="{StaticResource RoundButton}" 
                     Width="150" Height="70"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0 200 0 0"
                     Click="GoSales_Click"
                     />
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <TextBlock Text="프로그램 총 구동시간 : " FontSize="18" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 40 0 0">
+                <TextBlock Text="0" FontSize="24" 
+                       HorizontalAlignment="Center" Foreground="Gold" x:Name="tbRunningTimeHour"/>
+                <TextBlock Text="시간 " FontSize="24"/>
+                <TextBlock Text="0" FontSize="24"
+                       HorizontalAlignment="Center" Foreground="Gold" x:Name="tbRunningTimeMinute"/>
+                <TextBlock Text="분 " FontSize="24"/>
+                <TextBlock Text="0" FontSize="24" 
+                       HorizontalAlignment="Center" Foreground="Gold" x:Name="tbRunningTimeSecond"/>
+                <TextBlock Text="초" FontSize="24"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 
 </Page>
