@@ -1,0 +1,112 @@
+﻿<Page x:Class="McDonald_Kiosk.SelectPayment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:McDonald_Kiosk"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SelectPayment">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="2.8*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>    
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+            <Viewbox MaxHeight="70"
+                     Margin="25 0 25 0"
+                     VerticalAlignment="Bottom">
+                <Label Background="Transparent"
+                       FontWeight="Bold" Foreground="Black">
+                       식사하실 장소를 선택해 주세요.
+                </Label>
+            </Viewbox>
+        </Grid>
+        
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+            <ListView Loaded="ListView_Load" FontSize="15" 
+                      BorderBrush="Gray"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Menu" Width="193" DisplayMemberBinding="{Binding Menu}"/>
+                        <GridViewColumn Header="Price" Width="190" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Amount" Width="190" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Header="Total" Width="190" DisplayMemberBinding="{Binding Total}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
+            <Button Background="red" Click="Button_Click">
+                <Viewbox MaxHeight="100">
+                    <Label Background="Transparent"
+                           FontWeight="Bold" Foreground="White">
+                           현금 결제
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="7">
+            <Button Background="red" Click="Button_Click_1">
+                <Viewbox MaxHeight="100">
+                    <Label Background="Transparent"
+                           FontWeight="Bold" Foreground="White">
+                           카드 결제
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="5">
+            <Button Background="Gray"
+                    MaxHeight="50"
+                    Click="Button_Click_2">
+                <Viewbox>
+                    <Label Background="Transparent"
+                           FontWeight="Bold" Foreground="White">
+                        이전
+                    </Label>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3">
+            <Label Background="AliceBlue" FontSize="12px" 
+                   HorizontalContentAlignment="Center"
+                   BorderThickness="0.5px" BorderBrush="Gray">
+                합계
+            </Label>
+        </Grid>
+        
+        <Grid Grid.Column="3" Grid.Row="3">
+            <Label Background="AliceBlue" FontSize="12px" 
+                   HorizontalContentAlignment="Center"
+                   BorderThickness="0.5px" BorderBrush="Gray"
+                   Loaded="Label_Loaded">
+                
+            </Label>
+        </Grid>
+    </Grid>
+</Page>

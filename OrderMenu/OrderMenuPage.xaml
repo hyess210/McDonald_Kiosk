@@ -1,0 +1,261 @@
+﻿<Page x:Class="McDonald_Kiosk.OrderMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:McDonald_Kiosk"
+      mc:Ignorable="d"
+      Title="OrderMenuPage" Height="900" Width="1920">
+
+    <Page.Resources>
+        <Style x:Key="ListItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="Border" Padding="0" 
+                                Background='#f2f2f2'
+                                Width="100" Height="100"
+                                VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="RoundButton">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="3" Padding="2">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="white">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.15*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <ListBox x:Name="lbCategory" 
+                         BorderBrush="Transparent"
+                             VerticalAlignment="Top" Height="86"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                         SelectionChanged="lbCategory_SelectionChanged" Margin="71,0">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <!--<Setter Property="Foreground" Value="White"/>-->
+                            <Setter Property="Width" Value="250"/>
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Background" Value="#e6e6e6"/>
+                            <Setter Property="Padding" Value="5"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="15, 0, 0, 0"/>
+                            <Setter Property="FontSize" Value="25"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Grid>
+                                            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" 
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    Background="{TemplateBinding Background}" 
+                                                    Padding="{TemplateBinding Padding}" 
+                                                    SnapsToDevicePixels="true">
+                                                <ContentPresenter 
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                    ></ContentPresenter>
+                                            </Border>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="Gold"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Gold"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBoxItem>햄버거</ListBoxItem>
+                    <ListBoxItem>사이드</ListBoxItem>
+                    <ListBoxItem>음료</ListBoxItem>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListBox x:Name="lbMenus"
+                         Height="830"
+                         BorderBrush="Transparent" Background="#fff"
+                         VerticalAlignment="Top" HorizontalAlignment="Center"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                         SelectionChanged="lbMenus_SelectionChanged"
+                         >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="250" Height="220" 
+                                        Background="#f2f2f2">
+                                <Image Source="{Binding ImgPath}"/>
+                                <TextBlock Text="{Binding Name}" FontSize="16" Margin="0, 20, 0, 0" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="40" Width="100" 
+                            HorizontalAlignment="Left" Margin="30 30 0 0"
+                            FontSize="24"
+                            Content="이전" Click="BeforeButton_Click"
+                            />
+                    <Button Width="160" Height="40" FontSize="24"
+                            VerticalAlignment="Center" HorizontalAlignment="Right"
+                            Content="이전 페이지"
+                            Margin="430 30 0 0"
+                            x:Name="MenuBeforeButton"
+                            Click="MenuBeforeButton_Click"
+                            />
+                    <Button Width="160" Height="40" FontSize="24"
+                            VerticalAlignment="Center" HorizontalAlignment="Right"
+                            Background="Gold" Foreground="White"
+                            Content="다음 페이지"
+                            Margin="10 30 0 0"
+                            x:Name="MenuPageButton"
+                            Click="MenuPageButton_Click"
+                            />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <StackPanel>
+                <ListView
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Height="434" Width="760"
+                    Margin="100,30,100,0" FontSize="16"
+                    Foreground="#666"
+                    x:Name="lvAddedMenu"
+                    >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="MenuName" 
+                                            Header="메뉴" Width="310"
+                                            DisplayMemberBinding="{Binding Menu}"/>
+                            <GridViewColumn x:Name="MenuPrice" 
+                                            Header="가격" Width="175" 
+                                            DisplayMemberBinding="{Binding Price}" />
+                            <GridViewColumn x:Name="MenuAmount" 
+                                            Header="수량" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Button Click="MenuAddButton_Click" x:Name="MenuAddButton"
+                                                    Background="White" BorderBrush="Transparent"
+                                                    Width="40" Height="40">
+                                                +
+                                            </Button>
+                                            <TextBlock Text="{Binding Amount}" x:Name="MenuAmount"
+                                                       TextAlignment="Center"/>
+                                            <Button Click="MenuMinusButton_Click" x:Name="MenuMinusButton"
+                                                    Background="White" BorderBrush="Transparent"
+                                                    Width="40" Height="40">
+                                                -
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn x:Name="MenuButton" 
+                                            Header="총 가격" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Total}" HorizontalAlignment="Center"/>
+                                            <Button Click="MenuDeleteButton_Click" x:Name="MenuDeleteButton"
+                                                    Background="White" BorderBrush="Transparent"
+                                                    Width="40" Height="40">x</Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="DeleteAllButton" Click="DeleteAllButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Width" Value="220"/>
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Background" Value="LightGray"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Margin" Value="0 30 100 0"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="Content" Value="모두 삭제"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="Black" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#f4f4f4"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Height="40" Width="100" 
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Margin="0 250 100 0"
+                    FontSize="24" Background="Gold" Foreground="White"
+                        x:Name="OrderButton"
+                    Content="주문하기" 
+                        Click="GoDiningSelect_ButtonClick"
+                            />
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Page>

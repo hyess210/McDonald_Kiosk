@@ -1,0 +1,43 @@
+﻿<Page x:Class="McDonald_Kiosk.AdminPage.TotalPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:McDonald_Kiosk.AdminPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TotalPage">
+
+    <Grid Background="White">
+        <StackPanel>
+            <ComboBox Background="#f1f1f1" Width="150" Margin="0 20 0 0" FontSize="16" 
+                      SelectionChanged="cbTotalProfit_SelectionChanged" x:Name="cbTotalProfit">
+                <ComboBoxItem>현금 결제 총 매출액</ComboBoxItem>
+                <ComboBoxItem>카드 결제 총 매출액</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">전체 보기</ComboBoxItem>
+            </ComboBox>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 60 0 0">
+                <TextBlock Text="총 매출액 : " FontSize="20" />
+                <TextBlock Text="{Binding tbTotalProfit}" 
+                       FontSize="30" Foreground="Gold" 
+                       x:Name="tbTotal"/>
+                <TextBlock Text="원" FontSize="20" />
+            </StackPanel>
+            <Button Content="이전" Width="100" Margin="0 40 0 0" 
+                    FontSize="20" Click="GoBack_Click" />
+
+            <!--<TextBlock Text="할인 제외 순수 매출액 : " FontSize="20" />
+            <TextBlock Text="{Binding noneSaleProfit}" 
+                       FontSize="30" Foreground="Gold" 
+                       x:Name="tbNoSaleTotal"/>
+            <TextBlock Text="원" FontSize="20" />
+            
+            <TextBlock Text="할인 금액 : " FontSize="20" />
+            <TextBlock Text="{Binding saledPrice}" 
+                       FontSize="30" Foreground="Gold" 
+                       x:Name="tbSaledPrice"/>
+            <TextBlock Text="원" FontSize="20" />-->
+        </StackPanel>
+    </Grid>
+</Page>
